@@ -11,6 +11,7 @@
 <!-------------------------------------------->
 </head>
 <body>
+	<div id="system-cont">
 	<div id="header">
 		
 	</div>
@@ -75,6 +76,7 @@
 		<div id="content-system">
 			
 		</div>		
+	</div>
 	</div>
 	<div id="footer">
 		<div id="footer-center">
