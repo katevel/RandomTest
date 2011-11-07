@@ -30,7 +30,7 @@ a{
 }
 #menu{
 	width:auto;
-	height: 50px;
+	height: 40px;
 	background:#333;
 }
 #sidebar{
@@ -53,7 +53,7 @@ a{
 	height: 100px;
 	position: relative;
 	margin-top: -150px; /* negative value of footer height */
-	height: 150px;
+	height: 100px;
 	clear:both;
 	border-top:3px #444444;
 	background: #4489c8;
