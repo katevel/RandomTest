@@ -61,8 +61,8 @@ ul input.required
 
 <script>
   $(document).ready(function(){
-    $("#form").validate();
-		rules: {
+    $("#form").validate({
+    	rules: {
 			nivel:{
     			required: true,
     			number: true,
@@ -82,7 +82,8 @@ ul input.required
 				nivel: "Ingresa el nivel",
 				letra: "ingresa el curso",
 				generacion: "Ingresa la generacion"
-				
+		}
+    });		
   });
 </script>
 
