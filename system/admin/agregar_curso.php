@@ -70,7 +70,7 @@ ul input.required
     		},
     		letra:{
     			required: true,
-    			maxlength: 1
+    			maxlength: 1,
     		},
     		generacion:{
     			required: true,
@@ -79,15 +79,24 @@ ul input.required
     		}
   		},
   		messages:{
-				nivel: "Ingresa el nivel",
-				letra: "ingresa el curso",
+				nivel: {
+					required:"Debes ingresar el nivel del curso",
+					number: "* Debes ingresar un numero",
+					maxlength: "* Solo debe ser 1 numero"
+				},
+				letra: {
+					required: "Debes ingresar la letra",
+					maxlenght: "Puede ser solo 1 letra",
+				},
 				generacion: "Ingresa la generacion"
 		}
-    });		
+    });	
+    $("#letra").alphanumeric({allow:"A, B, C "});
+	
   });
 </script>
 
-<form class="" id="form" method="post" action="">
+<form class="" id="form" method="post" action="agrega_curso.php">
 <h2>Agregar Curso</h2>
 <ul>
     <li class="first">
@@ -100,6 +109,15 @@ ul input.required
         <h3>Letra</h3>
         <p>
         	<input type="text" id="letra" name="letra"  />
+        </p>
+    </li>
+    <li>
+        <h3>Nivel de enseñanza</h3>
+        <p>
+        <select class="enseñanza" name="enseñanza" id="enseñanza" />
+    		<option value="basica" selected="selected">Basica</option>
+    		<option value="media" >Media</option>
+    </select>
         </p>
     </li>
     <li>
