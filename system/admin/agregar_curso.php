@@ -46,6 +46,14 @@ ul li
     width:600px;
     overflow:hidden;
 }
+ul select{
+	width:300px;
+	padding: 5px;
+	position: relative;
+	border: solid 1px #666;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+}
 ul input[type="text"], ul input[type="password"]{
     width:300px;
     padding:5px;
@@ -60,6 +68,24 @@ ul input.required
 }
 ul input.error{
 	border: solid 1px #FF0000;
+}
+li label.error{
+	color: #FF0000;
+	font-family:Arial, Helvetica, sans-serif;
+	font-style: italic;
+	padding-left:5px;
+}
+li select.error{
+	color: #FF0000;
+	font-family:Arial, Helvetica, sans-serif;
+	font-style: italic;
+	padding-left:5px;
+}
+li input[type="submit"]{
+	float: right;
+	margin-right: 80px;
+	width: 90px;
+	height: 40px;
 }
 </style>
 
@@ -84,15 +110,15 @@ ul input.error{
   		},
   		messages:{
 				nivel: {
-					required:"Debes ingresar el nivel del curso",
+					required:"* Debes ingresar el nivel del curso",
 					number: "* Debes ingresar un numero",
 					maxlength: "* Solo debe ser 1 numero"
 				},
 				letra: {
-					required: "Debes ingresar la letra",
+					required: "* Debes ingresar la letra",
 					maxlenght: "Puede ser solo 1 letra",
 				},
-				generacion: "Ingresa la generacion"
+				generacion: "* Ingresa la generacion"
 		}
     });	
     $("#letra").alphanumeric({allow:"ABC"});
@@ -121,7 +147,7 @@ ul input.error{
         <select class="enseñanza" name="enseñanza" id="enseñanza" />
     		<option value="basica" selected="selected">Basica</option>
     		<option value="media" >Media</option>
-    </select>
+   		</select>
         </p>
     </li>
     <li>
