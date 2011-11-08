@@ -1,9 +1,11 @@
 <script type="text/javascript" src="../js/jquery.js"></script>
 <script type="text/javascript" src="../js/jquery.validate.js"></script>
+<script type="text/javascript" src="../js/jquery.alphanumeric.pack.js"></script>
 <style>
 body{
 	font-family:sans-serif;
-}
+}ç
+
 img 
 {
     border:none;
@@ -44,8 +46,7 @@ ul li
     width:600px;
     overflow:hidden;
 }
-ul input[type="text"], ul input[type="password"]
-{
+ul input[type="text"], ul input[type="password"]{
     width:300px;
     padding:5px;
     position:relative;
@@ -56,6 +57,9 @@ ul input[type="text"], ul input[type="password"]
 ul input.required 
 {
     border: solid 1px #f00;
+}
+ul input.error{
+	border: solid 1px #FF0000;
 }
 </style>
 
@@ -91,7 +95,7 @@ ul input.required
 				generacion: "Ingresa la generacion"
 		}
     });	
-    $("#letra").alphanumeric({allow:"A, B, C "});
+    $("#letra").alphanumeric({allow:"ABC"});
 	
   });
 </script>
@@ -112,7 +116,7 @@ ul input.required
         </p>
     </li>
     <li>
-        <h3>Nivel de enseñanza</h3>
+        <h3>Nivel de ense&ntilde;za</h3>
         <p>
         <select class="enseñanza" name="enseñanza" id="enseñanza" />
     		<option value="basica" selected="selected">Basica</option>
