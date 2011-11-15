@@ -40,7 +40,7 @@ $query1 = mysql_query("select idprofesor, nombre_profesor, apePat_profesor from 
     <li>
         <h3>Descripcion</h3>
         <p>
-        	<input type="text" id="descripcion" name="descripcion"  />
+        	<textarea id="descripcion" name="descripcion" rows="5" cols="2"></textarea>
         </p>
     </li>
     <li>
@@ -50,7 +50,7 @@ $query1 = mysql_query("select idprofesor, nombre_profesor, apePat_profesor from 
     		<?php
 			while($row = mysql_fetch_array($query1)){
 				echo "<option value='".$row[0]."'>".$row[1]." ".$row[2]."</option>";
-				}
+			}
 			?>
     	</select> <br />
         </p>

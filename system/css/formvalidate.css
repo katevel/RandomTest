@@ -42,6 +42,14 @@ ul li
     width:600px;
     overflow:hidden;
 }
+ul textarea{
+	width:300px;
+	padding: 5px;
+	position: relative;
+	border: solid 1px #666;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+}
 ul select{
 	width:300px;
 	padding: 5px;
