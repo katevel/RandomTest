@@ -20,7 +20,7 @@ if(!empty($nivel)){
 												 generacion,
 												 nivel_ens
 												 )
-					 VALUES('', '$nivel' , '".utf8_encode($letra)."', '$generacion' , '".utf8_encode($enseñanza)."' )")or die(mysql_error());
+					 VALUES('', '$nivel' , '".utf8_encode($letra)."', '$generacion' , 	'".utf8_encode($enseñanza)."' )")or die(mysql_error());
 	
 }else{
 	echo "error";

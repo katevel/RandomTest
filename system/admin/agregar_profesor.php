@@ -42,11 +42,11 @@
   });
 </script>
 
-<form class="" id="form" method="post" action="agrega_alumno.php">
-<h2>Agregar Alumno</h2>
+<form class="" id="form" method="post" action="agrega_profesor.php">
+<h2>Agregar Profesor</h2>
 <ul>
     <li class="first">
-        <h3>RUT Alumno</h3>
+        <h3>RUT Profesor</h3>
         <p>
         	<input type="text" id="rut" name="rut" />
         </p>
