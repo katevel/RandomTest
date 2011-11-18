@@ -95,3 +95,7 @@ li input[type="submit"]{
 	width: 90px;
 	height: 40px;
 }
+
+.hide:{
+display: none;
+}
