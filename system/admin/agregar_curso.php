@@ -2,26 +2,23 @@
 <script type="text/javascript" src="../js/jquery.js"></script>
 <script type="text/javascript" src="../js/jquery.validate.js"></script>
 <script type="text/javascript" src="../js/jquery.alphanumeric.pack.js"></script>
-	<script>
-		!window.jQuery && document.write('<script src="jquery.js"><\/script>');
-	</script>
-	<script type="text/javascript" src="../js/fancybox/jquery.mousewheel-3.0.4.pack.js"></script>
+<script type="text/javascript" src="../js/fancybox/jquery.mousewheel-3.0.4.pack.js"></script>
 	<script type="text/javascript" src="../js/fancybox/jquery.fancybox-1.3.4.pack.js"></script>
 	<link rel="stylesheet" type="text/css" href="../js/fancybox/jquery.fancybox-1.3.4.css" media="screen" />
 <script>
   $(document).ready(function(){
-  	$("#divform2").hide();
-  	
-  	("#buscarAlu").fancybox({
-				'width'				: '75%',
-				'height'			: '75%',
+  	$("#buscarAlu").click(function(e){
+  		$.fancybox({
+  				'href'				: 'agregar_alumno.php',
+				'width'				: 500,
+				'height'			: 400,
 				'autoScale'			: false,
 				'transitionIn'		: 'none',
 				'transitionOut'		: 'none',
 				'type'				: 'iframe'
-	});
-
-    $("#form1").validate({
+		});
+  	});
+  	$("#form1").validate({
     	rules: {
 			nivel:{
     			required: true,
@@ -53,15 +50,15 @@
     });	
     $("#letra").alphanumeric({allow:"ABC"});
 	
-	$(".siguiente").click(Function(){
+	$(".siguiente").click(function(){
 		$("#form1").addClass("hide"); 
 		$("#form2").removeClass("hide");
 	});
   });
 </script>
 
-<div id="form1">
-<form class="" id="form1" method="post" action="">
+<div id="form1" class="hide">
+<form  id="form1" method="post">
 <h2>Agregar Curso</h2>
 <ul>
     <li class="first">
@@ -100,14 +97,14 @@
 </div>
 
 
-<div id="divform2" class="hide">
-<form class="hide" id="form2" method="post" action="">
+<div id="divform2" class="">
+<form id="form2" method="post" action="">
 <h2>Agregar alumnos</h2>
 <ul>
     <li class="first">
         <h3></h3>
         <p>
-        	<li><a id="buscarAlu" href="agregar_alumno.php">Buscar</a></li>
+        	<li><a id="buscarAlu" href="Javascript: void(0);">Buscar</a></li>
         	
         </p>
     </li>
@@ -128,7 +125,7 @@
     </li>
     
     <li class="last">
-        <input value="Guardar" class=".siguiente" type="submit">
+        <input value="Guardar" class="siguiente" type="submit">
     </li>
 </ul>
 </form> 
