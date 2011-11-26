@@ -22,12 +22,10 @@ if(!empty($nivel)){
 												 )
 					 VALUES('', '$nivel' , '".utf8_encode($letra)."', '$generacion' , 	'".utf8_encode($enseñanza)."' )")or die(mysql_error());
 	
+	echo json_encode(array("status"=>"ok"));
 }else{
 	echo "error";
 	}
 }
-	echo "<script>alert(\"OK\");</script>";
-	echo "<script language=javascript>location.href=\"\";</script>";
-	
 
 ?>
