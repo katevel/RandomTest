@@ -1,26 +1,55 @@
 <link rel="stylesheet" type="text/css" href="../css/formvalidate.css" />
 <script type="text/javascript" src="../js/jquery.js"></script>
 <script type="text/javascript" src="../js/jquery.validate.js"></script>
+<script type="text/javascript" src="../js/jquery.form.js"></script>
 <script type="text/javascript" src="../js/jquery.alphanumeric.pack.js"></script>
-	<script>
-		!window.jQuery && document.write('<script src="jquery.js"><\/script>');
-	</script>
-	<script type="text/javascript" src="../js/fancybox/jquery.mousewheel-3.0.4.pack.js"></script>
-	<script type="text/javascript" src="../js/fancybox/jquery.fancybox-1.3.4.pack.js"></script>
-	<link rel="stylesheet" type="text/css" href="../js/fancybox/jquery.fancybox-1.3.4.css" media="screen" />
+<script type="text/javascript" src="../js/fancybox/jquery.mousewheel-3.0.4.pack.js"></script>
+<script type="text/javascript" src="../js/fancybox/jquery.fancybox-1.3.4.pack.js"></script>
+<link rel="stylesheet" type="text/css" href="../js/fancybox/jquery.fancybox-1.3.4.css" media="screen" />
+
 <script>
   $(document).ready(function(){
-  	$("#divform2").hide();
-  	("#buscarAlu").fancybox({
-				'width'				: '75%',
-				'height'			: '75%',
+  	$("#buscarAlu").click(function(e){
+  		$.fancybox({
+  				'href'				: 'agregar_alumno.php',
+				'width'				: 500,
+				'height'			: 400,
 				'autoScale'			: false,
 				'transitionIn'		: 'none',
 				'transitionOut'		: 'none',
 				'type'				: 'iframe'
-	});
-
-    $("#form1").validate({
+		});
+  	});
+  	
+  	
+    $("#letra").alphanumeric({allow:"ABC"});
+	
+	 var options_form1 = { 
+        //target:        '#output1',   // target element(s) to be updated with server response 
+        beforeSubmit:  validateForm1,  // pre-submit callback 
+        success:       responseFrom1,  // post-submit callback 
+ 
+        // other available options: 
+        url:       './agrega_curso.php',         // override for form's 'action' attribute 
+        type:      'post',        // 'get' or 'post', override for form's 'method' attribute 
+        dataType:  'json'        // 'xml', 'script', or 'json' (expected server response type) 
+        //clearForm: true        // clear all form fields after successful submit 
+        //resetForm: true        // reset the form after successful submit 
+ 
+        // $.ajax options can be used here too, for example: 
+        //timeout:   3000 
+    }; 
+ 
+    // bind form using 'ajaxForm' 
+    $('#form1').ajaxForm(options_form1); 
+	function responseFrom1(J){
+		if(J.status=='OK'){
+			$("#form1").addClass("hide"); 
+			$("#form2").removeClass("hide");	
+		}
+	}
+	function validateForm1(){
+  		$("#form1").validate({
     	rules: {
 			nivel:{
     			required: true,
@@ -49,18 +78,13 @@
 				},
 				generacion: "* Ingresa la generacion"
 		}
-    });	
-    $("#letra").alphanumeric({allow:"ABC"});
-	
-	$(".siguiente").click(Function(){
-		$("#form1").addClass("hide"); 
-		$("#form2").removeClass("hide");
-	});
-  });
+    	});		
+  	}
+ });
 </script>
 
 <div id="form1">
-<form class="" id="form1" method="post" action="">
+<form  id="form1" method="post" >
 <h2>Agregar Curso</h2>
 <ul>
     <li class="first">
@@ -100,13 +124,13 @@
 
 
 <div id="divform2" class="hide">
-<form class="hide" id="form2" method="post" action="">
+<form id="form2" method="post" action="">
 <h2>Agregar alumnos</h2>
 <ul>
     <li class="first">
         <h3></h3>
         <p>
-        	<li><a id="buscarAlu" href="agregar_alumno.php">Buscar</a></li>
+        	<li><a id="buscarAlu" href="Javascript: void(0);">Buscar</a></li>
         	
         </p>
     </li>
@@ -127,7 +151,7 @@
     </li>
     
     <li class="last">
-        <input value="Guardar" class=".siguiente" type="submit">
+        <input value="Guardar" class="siguiente" type="submit">
     </li>
 </ul>
 </form> 
