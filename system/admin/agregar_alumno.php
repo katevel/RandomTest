@@ -1,15 +1,21 @@
 <link rel="stylesheet" type="text/css" href="../css/formvalidate.css" />
 <script type="text/javascript" src="../js/jquery.js"></script>
 <script type="text/javascript" src="../js/jquery.validate.js"></script>
-
+<script type="text/javascript" src="../js/jquery.Rut.js"></script>
 
 <script>
   $(document).ready(function(){
+  	
+	$('#rut').Rut({
+	  on_error: function(){ alert('Rut incorrecto'); },
+	  format_on: 'keyup'
+	});
+
+	
     $("#form").validate({
     	rules: {
 			rut:{
-    			required: true,
-    			maxlength: 10
+    			required: true
     		},
     		nombre:{
     			required: true,

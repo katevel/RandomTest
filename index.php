@@ -12,8 +12,15 @@
 <script type="text/javascript" src="js/login.js"></script>
 <script type="text/javascript" src="js/fancybox/jquery.fancybox-1.3.4.pack.js"></script>
 <script type="text/javascript" src="js/fancybox/jquery.mousewheel-3.0.4.pack.js"></script>
+<script type="text/javascript" src="system/js/jquery.Rut.js"></script>
 <script type="text/javascript">
 $(document).ready(function(){
+	
+	$('#secret-user-name').Rut({
+	  on_error: function(){ alert('Rut incorrecto'); },
+	  format_on: 'keyup'
+	});
+
 	$('.slider').mobilyslider({
 		content: '.sliderContent',
 		children: 'div',
@@ -76,7 +83,7 @@ $(document).ready(function(){
 		<div id="sidebar">
 			<div class="login-block last"> 
 	            <h3>Ingreso Usuario</h3>
-	            <form action="#" method="post" target="_blank">
+	            <form method="post" action="system/ingresovalidacion.php">
 	                <p>
 	                	<label for="secret-user-name">Usuario</label>
 	                	<input type="text" name="secret-user-name" id="secret-user-name" />
