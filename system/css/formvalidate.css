@@ -99,3 +99,20 @@ li input[type="submit"]{
 .hide{
 	display: none;
 }
+#table-selected{
+	width: 500px;
+	height: auto;
+}
+#table-selected tr{
+	width: 500px;
+	border-bottom: 1px solid #DFDFDF;
+}
+#table-selected td{
+	width: 150px;
+	text-align: center;
+}
+#buscarAlu{
+	width: 100px;
+	background: url("../images/search.png") no-repeat;
+	background-position: top right;
+}

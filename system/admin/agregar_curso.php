@@ -11,7 +11,7 @@
   $(document).ready(function(){
   	$("#buscarAlu").click(function(e){
   		$.fancybox({
-  				'href'				: 'agregar_alumno.php',
+  				'href'				: 'buscar_alumno.php',
 				'width'				: 500,
 				'height'			: 400,
 				'autoScale'			: false,
@@ -20,7 +20,36 @@
 				'type'				: 'iframe'
 		});
   	});
-  	
+  	$("#form1").validate({
+    	rules: {
+			nivel:{
+    			required: true,
+    			number: true,
+    			maxlength: 1
+    		},
+    		letra:{
+    			required: true,
+    			maxlength: 1,
+    		},
+    		generacion:{
+    			required: true,
+    			number: true,
+    			range: [2000, 2100]
+    		}
+  		},
+  		messages:{
+				nivel: {
+					required:"* Debes ingresar el nivel del curso",
+					number: "* Debes ingresar un numero",
+					maxlength: "* Solo debe ser 1 numero"
+				},
+				letra: {
+					required: "* Debes ingresar la letra",
+					maxlenght: "Puede ser solo 1 letra",
+				},
+				generacion: "* Ingresa la generacion"
+			}
+    });
   	
     $("#letra").alphanumeric({allow:"ABC"});
 	
@@ -43,50 +72,25 @@
     // bind form using 'ajaxForm' 
     $('#form1').ajaxForm(options_form1); 
 	function responseFrom1(J){
-		if(J.status=='OK'){
-			$("#form1").addClass("hide"); 
-			$("#form2").removeClass("hide");	
+		if(J.status=='ok'){
+			$(".siguiente").removeAttr("disabled");
+			$("#form1-div").addClass("hide"); 
+			$("#form2-div").removeClass("hide");	
 		}
 	}
 	function validateForm1(){
-  		$("#form1").validate({
-    	rules: {
-			nivel:{
-    			required: true,
-    			number: true,
-    			maxlength: 1
-    		},
-    		letra:{
-    			required: true,
-    			maxlength: 1,
-    		},
-    		generacion:{
-    			required: true,
-    			number: true,
-    			ramge: [2000, 2100]
-    		}
-  		},
-  		messages:{
-				nivel: {
-					required:"* Debes ingresar el nivel del curso",
-					number: "* Debes ingresar un numero",
-					maxlength: "* Solo debe ser 1 numero"
-				},
-				letra: {
-					required: "* Debes ingresar la letra",
-					maxlenght: "Puede ser solo 1 letra",
-				},
-				generacion: "* Ingresa la generacion"
-		}
-    	});		
+		$(".siguiente").attr("disabled","disabled");
+		
+		
+  				
   	}
  });
 </script>
 
-<div id="form1">
-<form  id="form1" method="post" >
-<h2>Agregar Curso</h2>
-<ul>
+<div id="form1-div" class="hide">
+	<form id="form1" method="post" name="form_course">
+	<h2>Agregar Curso</h2>
+	<ul>
     <li class="first">
         <h3>Nivel</h3>
         <p>
@@ -102,7 +106,7 @@
     <li>
         <h3>Nivel de ense&ntilde;za</h3>
         <p>
-        <select class="enseñanza" name="enseñanza" id="enseñanza" />
+        <select class="learning" name="type-learning" id="learning" />
     		<option value="basica" selected="selected">Basica</option>
     		<option value="media" >Media</option>
    		</select>
@@ -123,37 +127,22 @@
 </div>
 
 
-<div id="divform2" class="hide">
-<form id="form2" method="post" action="">
-<h2>Agregar alumnos</h2>
-<ul>
-    <li class="first">
-        <h3></h3>
-        <p>
-        	<li><a id="buscarAlu" href="Javascript: void(0);">Buscar</a></li>
-        	
-        </p>
-    </li>
-    <li>
-        <h3>alu1</h3>
-        <p>
-        	<input type="text" id="letra" name="letra"  />
-        </p>
-    </li>
-    <li>
-        <h3>alu2</h3>
-        <p>
-        <select class="enseñanza" name="enseñanza" id="enseñanza" />
-    		<option value="basica" selected="selected">Basica</option>
-    		<option value="media" >Media</option>
-   		</select>
-        </p>
-    </li>
-    
-    <li class="last">
-        <input value="Guardar" class="siguiente" type="submit">
-    </li>
-</ul>
+<div id="form2-div" class="">
+	<form id="form2" method="post" action="">
+	<h2>Agregar alumnos</h2>
+	<div id="table-selected">
+		<table>
+			<tbody>
+				<tr>
+					<td>Nombre</td>
+					<td>Apellido</td>
+					<td>Rut</td>
+					<td>Opcion</td>
+					<td><button type="button" id="buscarAlu">Buscar</button></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
 </form> 
 
 </div>

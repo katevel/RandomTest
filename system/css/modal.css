@@ -1,0 +1,15 @@
+*{
+	margin:0;
+	padding: 0;
+}
+body{
+	font-family:sans-serif;
+}
+table{
+	margin-top:25px;
+	width:450px;
+}
+table td{
+	width: 150px;
+	text-align: center;
+}
