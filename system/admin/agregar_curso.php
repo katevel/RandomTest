@@ -11,7 +11,6 @@
 <script>
   $(document).ready(function(){
   	$("#divform2").hide();
-  	
   	("#buscarAlu").fancybox({
 				'width'				: '75%',
 				'height'			: '75%',
@@ -92,11 +91,11 @@
         </p>
     </li>
     
-    <li class="last">
-        <input value="Siguiente" class="siguiente" type="submit" data-goto="form2">
-    </li>
-</ul>
-</form> 
+	    <li class="last">
+	        <input value="Siguiente" class="siguiente" type="submit" data-goto="form2">
+	    </li>
+	</ul>
+	</form> 
 </div>
 
 
