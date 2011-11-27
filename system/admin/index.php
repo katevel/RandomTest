@@ -7,6 +7,7 @@
 <link type="text/css" href="../css/menu.css" rel="stylesheet" />
 <script type="text/javascript" src="../js/jquery.js"></script>
 <script type="text/javascript" src="../js/menu.js"></script>
+
 <script>
 	$(document).ready(function(){
 		$("#add-teacher").click(function(){
