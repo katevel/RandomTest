@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tiempo de generación: 26-11-2011 a las 02:11:44
+-- Tiempo de generación: 27-11-2011 a las 20:31:18
 -- Versión del servidor: 5.5.8
 -- Versión de PHP: 5.3.5
 
@@ -18,6 +18,33 @@ SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 --
 -- Base de datos: `randomtest`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `administrador`
+--
+
+CREATE TABLE IF NOT EXISTS `administrador` (
+  `idadministrador` int(11) NOT NULL AUTO_INCREMENT,
+  `rut_admin` varchar(12) NOT NULL,
+  `nombre_admin` varchar(45) NOT NULL,
+  `apePat_admin` varchar(45) NOT NULL,
+  `apeMat_admin` varchar(45) NOT NULL,
+  `fnac_admin` date NOT NULL,
+  `direccion_admin` varchar(45) NOT NULL,
+  `telefono_admin` varchar(45) NOT NULL,
+  `estado_admin` varchar(45) NOT NULL COMMENT '''ACTIVO''',
+  `password_admin` varchar(8) NOT NULL,
+  UNIQUE KEY `idadministrador` (`idadministrador`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
+
+--
+-- Volcar la base de datos para la tabla `administrador`
+--
+
+INSERT INTO `administrador` (`idadministrador`, `rut_admin`, `nombre_admin`, `apePat_admin`, `apeMat_admin`, `fnac_admin`, `direccion_admin`, `telefono_admin`, `estado_admin`, `password_admin`) VALUES
+(1, '16,414.117', 'Pablo', 'Salgado', 'Arias', '1987-02-16', 'Elqui 1234', '5154766', '', 'hola');
 
 -- --------------------------------------------------------
 
@@ -47,7 +74,7 @@ CREATE TABLE IF NOT EXISTS `alternativas` (
 
 CREATE TABLE IF NOT EXISTS `alumno` (
   `idalumno` int(11) NOT NULL AUTO_INCREMENT,
-  `rut_alumno` varchar(10) NOT NULL,
+  `rut_alumno` varchar(12) NOT NULL,
   `nombre_alumno` varchar(45) NOT NULL,
   `apePat_alumno` varchar(45) NOT NULL,
   `apeMat_alumno` varchar(45) NOT NULL,
@@ -55,7 +82,7 @@ CREATE TABLE IF NOT EXISTS `alumno` (
   `direccion_alumno` varchar(45) NOT NULL,
   `telefono_alumno` varchar(45) NOT NULL,
   `estado_alumno` varchar(45) NOT NULL DEFAULT 'ACTIVO',
-  `password_alumno` varchar(45) NOT NULL,
+  `password_alumno` varchar(8) NOT NULL,
   PRIMARY KEY (`idalumno`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
 
@@ -64,7 +91,7 @@ CREATE TABLE IF NOT EXISTS `alumno` (
 --
 
 INSERT INTO `alumno` (`idalumno`, `rut_alumno`, `nombre_alumno`, `apePat_alumno`, `apeMat_alumno`, `fnac_alumno`, `direccion_alumno`, `telefono_alumno`, `estado_alumno`, `password_alumno`) VALUES
-(1, '173123914', 'catherine', 'velasquez', 'miranda', '1989-11-10', 'El pino 853', '2261587', 'ACTIVO', 'holahola');
+(1, '17.312.391-4', 'catherine', 'velasquez', 'miranda', '1989-11-10', 'El pino 853', '2261587', 'ACTIVO', 'holahola');
 
 -- --------------------------------------------------------
 
@@ -238,7 +265,7 @@ CREATE TABLE IF NOT EXISTS `pregunta` (
 
 CREATE TABLE IF NOT EXISTS `profesor` (
   `idprofesor` int(11) NOT NULL AUTO_INCREMENT,
-  `rut_profesor` varchar(10) NOT NULL,
+  `rut_profesor` varchar(12) NOT NULL,
   `nombre_profesor` varchar(45) NOT NULL,
   `apePat_profesor` varchar(45) NOT NULL,
   `apeMat_profesor` varchar(45) NOT NULL,
@@ -246,16 +273,17 @@ CREATE TABLE IF NOT EXISTS `profesor` (
   `direccion_profesor` varchar(45) NOT NULL,
   `telefono_profesor` varchar(45) NOT NULL,
   `estado_profesor` varchar(45) NOT NULL DEFAULT 'ACTIVO',
-  `password_profesor` varchar(45) NOT NULL,
+  `password_profesor` varchar(8) NOT NULL,
   PRIMARY KEY (`idprofesor`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
 
 --
 -- Volcar la base de datos para la tabla `profesor`
 --
 
 INSERT INTO `profesor` (`idprofesor`, `rut_profesor`, `nombre_profesor`, `apePat_profesor`, `apeMat_profesor`, `fnac_profesor`, `direccion_profesor`, `telefono_profesor`, `estado_profesor`, `password_profesor`) VALUES
-(1, '17.312.391', 'catherine', 'velasquez', 'miranda', '1989-11-10', 'El pino, el bosque', '2261587', 'ACTIVO', 'sjsjsj');
+(1, '17.312.391', 'catherine', 'velasquez', 'miranda', '1989-11-10', 'El pino, el bosque', '2261587', 'ACTIVO', 'sjsjsj'),
+(2, '8.888.888-8', 'Maria', 'Perez', 'Gonzales', '2011-11-09', 'La granja 2345', '3456789', 'ACTIVO', 'profe');
 
 -- --------------------------------------------------------
 
