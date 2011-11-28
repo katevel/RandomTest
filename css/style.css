@@ -11,7 +11,7 @@ a{
 #header{
 	width:100%;
 	height: 130px;
-	/*background: #c7dcef;*/
+	/*background: #c7dcef;*/	
 }
 #system-cont{
 	width:1024px;
@@ -30,8 +30,7 @@ a{
 }
 #menu{
 	width:auto;
-	height: 40px;
-
+	height: 60px;
 }
 #sidebar{
 	width:300px;
@@ -56,7 +55,8 @@ a{
 	height: 100px;
 	clear:both;
 	border-top:3px #444444;
-	background: #4489c8;
+	background: #4489c8;	
+	
 }
 #footer-center{
 	width:600px;

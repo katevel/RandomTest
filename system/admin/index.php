@@ -4,18 +4,24 @@
 <title>Random TEST</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <link rel="stylesheet" type="text/css" href="../../css/style.css" />
-<link type="text/css" href="../css/menu.css" rel="stylesheet" />
-<script type="text/javascript" src="../js/jquery.js"></script>
-<script type="text/javascript" src="../js/menu.js"></script>
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.3/jquery.min.js"></script>
 
-<script>
-	$(document).ready(function(){
-		$("#add-teacher").click(function(){
-			$("#ajax-content").append("<h3>HOLA</h3>");
+<link rel="stylesheet" type="text/css" href="../css/newmenu.css" />
+	<script type="text/javascript">
+		$(function() {
+			//We initially hide the all dropdown menus
+			$('#dropdown_nav li').find('.sub_nav').hide();
+
+			//When hovering over the main nav link we find the dropdown menu to the corresponding link.
+			$('#dropdown_nav li').hover(function() {
+				//Find a child of 'this' with a class of .sub_nav and make the beauty fadeIn.
+				$(this).find('.sub_nav').fadeIn(100);
+			}, function() {
+				//Do the same again, only fadeOut this time.
+				$(this).find('.sub_nav').fadeOut(50);
+			});
 		});
-	});
-</script>
-
+	</script>
 <!-------------------------------------------->
 </head>
 <body>
@@ -25,60 +31,44 @@
 	</div>
 	<div id="main">
 		<div id="menu">
-				 <ul class="menu">
-        <li><a href="#" class="parent"><span>Alumnos</span></a>
-            <div>
-            <ul>
-                <li><a href="#" class="parent"><span>Ver alumnos</span></a></li>
-                        <li><a href="#"><span>Agregar Alumno</span></a></li>
-                        <li><a href="#"><span>Modificar Alumno</span></a></li>
-            
-            </ul>
-            </div>
-        </li>
-        <li><a href="#" class="parent"><span>Docentes</span></a>
-        	<div><ul>
-                <li><a href="#" class="parent"><span>Ver Docentes</span></a>
-				<li>
-					<a id="add-teacher" href="#">
-						<span>Agregar Docente</span>
-					</a>
-				</li>
-				<li><a href="#"><span>Modificar Docente</span></a></li>
-            </ul></div>
-            
-        </li>
-        <li><a href="#" class="parent"><span>Cursos</span></a>
-        	
-            <div><ul>
-                <li><a href="#" class="parent"><span>Ver Cursos</span></a>
-				<li><a href="#"><span>Agregar Curso</span></a></li>
-				<li><a href="#"><span>Modificar Curso</span></a></li>
-            </ul></div>
-            
-        </li>
-                <li><a href="#" class="parent"><span>Asignaturas</span></a>
-        	
-            <div><ul>
-                <li><a href="#" class="parent"><span>Ver Asignaturas</span></a>
-				<li><a href="#"><span>Agregar Asignatura</span></a></li>
-				<li><a href="#"><span>Modificar Asignatura</span></a></li>
-            </ul></div>
-            
-        </li>
-    </ul>
-		
-		
-		</div>	
-		
-		<div id="content-system">
-			<div id="ajax-content">
-				
-			</div>
+				<ul id="dropdown_nav">
+					<li><a href="#"><span>ALUMNOS</span></a>
+						<ul class="sub_nav">
+							<li><a href="#"><span>Ver Alumnos</span></a></li>
+							<li><a href="#"><span>Agregar Alumno </span></a></li>
+							<li><a href="#"><span>Modificar Alumno</span></a></li>
+						</ul>
+					</li>
+					<li><a href="#"><span>DOCENTES</span></a>
+						<ul class="sub_nav">
+							<li><a href="#"><span>Ver Docentes</span></a></li>
+							<li><a href="#"><span>Agregar Docente</span></a></li>
+							<li><a href="#"><span>Modificar Docente</span></a></li>
+						</ul>
+					</li>
+					<li><a href="#"><span>CURSOS</span></a>
+						<ul class="sub_nav">
+							<li><a href="#"><span>Ver Cursos</span></a></li>
+							<li><a href="#"><span>Agregar Curso</span></a></li>
+							<li><a href="#"><span>Modificar Curso</span></a></li>
+						</ul>
+					</li>
+					<li><a class="last" href="#"><span>ASIGNATURAS</span></a>
+						<ul class="sub_nav">
+							<li><a href="#"><span>Ver Asignaturas</span></a></li>
+							<li><a href="#"><span>Agregar Asignaturas</span></a></li>
+							<li><a href="#"><span>Modificar Asignaturas</span></a></li>
+						</ul>
+					</li>
+				</ul><br />
 			
-		</div>		
+		</div>
+		<div id="content-system">
+			
+			
+		</div>	
 	</div>
-	</div>
+	</div>	
 	<div id="footer">
 		<div id="footer-center">
 			<p>Random Test &copy; <?=date("Y");?>. Todos los derechos reservados</p>

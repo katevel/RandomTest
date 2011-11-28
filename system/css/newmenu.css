@@ -1,15 +1,4 @@
 /* CSS Reset */
-h1, h2, h3, h4, p, li, li a {
-	font-family:Arial, Sans-Serif;
-	font-size:5px;
-	font-weight:bold;
-	color:#525252;
-	text-decoration:none;
-}
-
-h1, h2, h3, h4 {
-	font-size:10px;
-}
 
 /* The Nav styling starts here, The above code is just to make the page look nice */
 #dropdown_nav {
@@ -32,16 +21,37 @@ h1, h2, h3, h4 {
 		float:left;
 		position:relative;
 		display:inline-block;
-	}
 
+	}
+		#dropdown_nav span {
+		    font-family: normal 12px 'Lucida Sans Unicode','Lucida Grande',Helvetica,Arial,sans-serif;
+		    padding-top: 18px;
+		    color: #787878;
+		    font-weight:bold;
+		    /*text-transform:uppercase;*/
+		   /* display: block;
+		    cursor: pointer;
+		    background-repeat: no-repeat;		*/
+		}
 		#dropdown_nav li a {
 			padding:10px 15px 10px 15px;
-			text-shadow:-1px 1px 0px #f6f6f6;
+			/*text-shadow:-1px 1px 0px #f6f6f6;*/
 			-moz-box-shadow:inset 0px 0px 1px #fff;
 			-webkit-box-shadow:inset 0px 0px 1px #fff;
 			border-right:1px solid #ccc;
+			/*font-family: normal 12px 'Lucida Sans Unicode','Lucida Grande',Helvetica,Arial,sans-serif;
+			font-family: "Trebuchet MS", sans-serif;
+			font-size:12px;
+			font-weight:bold;
+			 color: #787878;
+			color:#525252;
+			text-decoration:none;
+			text-transform:uppercase;*/
+			letter-spacing: 1px;
 		}
+
 		#dropdown_nav li a:hover {
+			
 			background:#f9f9f9;
 			background:-moz-linear-gradient(#f9f9f9, #e8e8e8);
 			background:-webkit-gradient(linear, 0 0, 0 100%, from(#f9f9f9), to(#e8e8e8));
@@ -92,4 +102,10 @@ h1, h2, h3, h4 {
 					background:#e2e2e2;
 					background:-moz-linear-gradient(#e2e2e2, #f3f3f3);
 					background:-webkit-gradient(linear, 0 0, 0 100%, from(#e2e2e2), to(#f3f3f3));
+				}
+				#dropdown_nav .sub_nav span {
+				    font-family: normal 12px 'Lucida Sans Unicode','Lucida Grande',Helvetica,Arial,sans-serif;
+				    padding-top: 18px;
+				    color: #787878;
+				    font-weight:normal;
 				}
