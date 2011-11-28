@@ -3,60 +3,64 @@ require("../conexion.php");
 $cn = conectar();
 
 ?>
-<script type="text/javascript" src="../js/jqueryui/js/jquery-1.6.2.min.js"></script>
-<script type="text/javascript" src="../js/jqueryui/js/jquery-ui-1.8.16.custom.min.js"></script>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Random TEST</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.3/jquery.min.js"></script>
 <link rel="stylesheet" type="text/css" href="../css/modal.css" />
-<link rel="stylesheet" type="text/css" href="../js/jqueryui/css/smoothness/jquery-ui-1.8.16.custom.css" />
 <script type="text/javascript">
+$(document).ready(function(){
 	$("#find-child").click(function(e){
-		
+		var rut = $("#search-text").val();
+		if(rut!=''){
+			$.ajax({
+			url:"func.search.php?type=search&term="+rut,
+			dataType:"html", type:"post",
+			success: function(data){
+					if(data!=''){
+						$("#list-searching tbody").append(data);
+					}else{
+						alert("No se encontraron resultados");
+					}	
+				}
+			});	
+		}else{
+			alert("Ingrese el rut del alumno");
+			$("#search-text").focus();
+		}
 	});
-	$("#search-text").autocomplete({
-		source: function( request, response ) {
-				$.ajax({
-					url: "http://ws.geonames.org/searchJSON",
-					dataType: "jsonp",
-					data: {
-						featureClass: "P",
-						style: "full",
-						maxRows: 12,
-						name_startsWith: request.term
-					},
-					success: function( data ) {
-						response( $.map( data.geonames, function( item ) {
-							return {
-								label: item.name + (item.adminName1 ? ", " + item.adminName1 : "") + ", " + item.countryName,
-								value: item.name
-							}
-						}));
-					}
-				});
-			},
-			minLength: 2,
-			select: function( event, ui ) {
-				log( ui.item ?
-					"Selected: " + ui.item.label :
-					"Nothing selected, input was " + this.value);
-			},
-			open: function() {
-				$( this ).removeClass( "ui-corner-all" ).addClass( "ui-corner-top" );
-			},
-			close: function() {
-				$( this ).removeClass( "ui-corner-top" ).addClass( "ui-corner-all" );
+});
+function agregar(_this){
+	if(_this!=''){
+		$.ajax({
+			url:"func.search.php?type=embed&term="+_this,
+			dataType:"html", type:"post",
+			success: function(data){
+				if(data!=''){
+					top.$("#table-selected tbody").append(data);
+				}
 			}
-	});
+		});
+	}
+}
 </script>
+</head>
+<body>
 <div id="search">
-	<input type="text" id="search-text" class="ui-widget-content" placeholder="Introduce el nombre a buscar..." size="60"/>
-	<button type="button" id="find-child">Buscar</button>
+	<input type="text" id="search-text" class="ui-widget-content" placeholder="Introduce el rut a buscar..." size="60"/>
+	<button id="find-child">Buscar</button>
 </div>
 <table id="list-searching">
 	<tbody>
-		<th>
+		<tr>
 			<td>Nombre</td>
 			<td>Apellido</td>
 			<td>Rut</td>
 			<td>Opcion</td>
-		</th>
+		</tr>
 	</tbody>
 </table>
+</body>
+</html>

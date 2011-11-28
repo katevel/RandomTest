@@ -52,7 +52,13 @@
     });
   	
     $("#letra").alphanumeric({allow:"ABC"});
-	
+	$(".opt-add").live('hover',function(e){
+		if(!$(this).hasClass('delete')){
+			$(this).removeClass("added").addClass("delete");
+		}
+	},function(){
+		$(this).removeClass("delete").addClass("added");
+	});
 	 var options_form1 = { 
         //target:        '#output1',   // target element(s) to be updated with server response 
         beforeSubmit:  validateForm1,  // pre-submit callback 

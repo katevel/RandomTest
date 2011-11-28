@@ -1,25 +1,50 @@
 <?php
+require("../conexion.php");
+$cn = conectar();
 
+if($_GET['type']=='search'){
 $term = $_GET['term'];
 
 $query = mysql_query("SELECT 
-					  Alumno.idalumno,
-					  Alumno.rut_alumno,
-					  Alumno.nombre_alumno,
-					  Alumno.apePat_alumno,
-					  Alumno.apePat_alumno 
+					  idalumno,
+					  rut_alumno,
+					  nombre_alumno,
+					  apePat_alumno,
+					  apePat_alumno 
 					FROM
-					  alumno Alumno 
-					WHERE Alumno.rut_alumno = '".$term."' 
-					ORDER BY Alumno.nombre_alumno ");
+					  alumno
+					WHERE rut_alumno = '".$term."' 
+					ORDER BY nombre_alumno ")or die(mysql_error());
 					
-	$row = mysql_fetch_assoc($query);
-	
-	echo "<tr>
-			<td>".$row['Alumno']['nombre_alumno']."</td>
-			<td>".$row['Alumno']['apePat_alumno']."</td>
-			<td>".$row['Alumno']['rut_alumno']."</td>
-			<td><a href='Javascript: agregar('".$row['Alumno']['idalumno']."');'>Agregar</a></td>
+	while($row = mysql_fetch_assoc($query)){
+	   echo "<tr>
+			<td>".$row['nombre_alumno']."</td>
+			<td>".$row['apePat_alumno']."</td>
+			<td>".$row['rut_alumno']."</td>
+			<td><a href='Javascript: void(0);' onclick='Javascript: agregar(".$row['idalumno'].");'>Agregar</a></td>
 		 </td>";
+	}
+}elseif($_GET['type']=='embed'){
+$term = $_GET['term'];
+$query = mysql_query("SELECT 
+					  idalumno,
+					  rut_alumno,
+					  nombre_alumno,
+					  apePat_alumno,
+					  apePat_alumno 
+					FROM
+					  alumno
+					WHERE idalumno = '".$term."' 
+					ORDER BY nombre_alumno")or die(mysql_error());
 
+	while($row = mysql_fetch_assoc($query)){
+		echo "<tr>
+			<td>".$row['nombre_alumno']."</td>
+			<td>".$row['apePat_alumno']."</td>
+			<td>".$row['rut_alumno']."</td>
+			<td><button type='button' class='opt-add added'></button></td>
+		 </td>";
+	}
+	
+}
 ?>

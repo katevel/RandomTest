@@ -116,3 +116,13 @@ li input[type="submit"]{
 	background: url("../images/search.png") no-repeat;
 	background-position: top right;
 }
+#table-selected .opt-add{
+	width: 60px;
+	height: 30px;
+}
+#table-selected .added{
+	background: url('../images/tick.png') no-repeat center;
+}
+#table-selected .delete{
+	background: url('../images/delete.png') no-repeat;
+}
