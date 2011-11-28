@@ -21,15 +21,17 @@ $(document).ready(function(){
 				//Do the same again, only fadeOut this time.
 				$(this).find('.sub_nav').fadeOut(50);
 		});
-		$("#veralu").click(function(e){
-			$.fancybox({
-				'url'				: '../modals/help.php',
-				'width' 			: 400,
-				'height'			: 'auto',
-				'type' 				: 'iframe',
-				'showCloseButton' 	: true			
-			});//fix no se habia cerrado	
-		});
+		
+		$("#agregaalu").click(function(e){
+        	$.ajax({  
+            url: 'agregar_alumno.php',  
+            success: function(data) {  
+                $('#content-system').html(data); 
+                 $('#content-system').slideDown(400); 
+            }  
+        	});  
+    	});
+
 		
 	});		
 
@@ -49,7 +51,7 @@ $(document).ready(function(){
 					<li><a href="#"><span>ALUMNOS</span></a>
 						<ul class="sub_nav">
 							<li><a id="veralu" href="#"><span>Ver Alumnos</span></a></li>
-							<li><a href="#"><span>Agregar Alumno </span></a></li>
+							<li><a id="agregaalu" href="#"><span>Agregar Alumno </span></a></li>
 							<li><a href="#"><span>Modificar Alumno</span></a></li>
 						</ul>
 					</li>
