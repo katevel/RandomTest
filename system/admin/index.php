@@ -4,42 +4,37 @@
 <title>Random TEST</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <link rel="stylesheet" type="text/css" href="../../css/style.css" />
-	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.3/jquery.min.js"></script>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.3/jquery.min.js"></script>
+<script type="text/javascript" src="../js/fancybox/jquery.fancybox-1.3.4.pack.js"></script>
 
 <link rel="stylesheet" type="text/css" href="../css/newmenu.css" />
 	<script type="text/javascript">
-$(function() {
-			//We initially hide the all dropdown menus
-
-});	
-	
-	
 $(document).ready(function(){
 	
 	$('#dropdown_nav li').find('.sub_nav').hide();
 
 			//When hovering over the main nav link we find the dropdown menu to the corresponding link.
-$('#dropdown_nav li').hover(function() {
+		$('#dropdown_nav li').hover(function() {
 				//Find a child of 'this' with a class of .sub_nav and make the beauty fadeIn.
 				$(this).find('.sub_nav').fadeIn(100);
-}, function() {
+		}, function() {
 				//Do the same again, only fadeOut this time.
 				$(this).find('.sub_nav').fadeOut(50);
-			});
-			
-		$("#veralu").click(function(e){
-		$.fancybox({
-			'url'	: 'modals/help.php',
-			'width' : 400,
-			'height': 'auto',
-			'type' : 'iframe',
-			'showCloseButton' : true			
 		});
+		$("#veralu").click(function(e){
+			$.fancybox({
+				'url'				: '../modals/help.php',
+				'width' 			: 400,
+				'height'			: 'auto',
+				'type' 				: 'iframe',
+				'showCloseButton' 	: true			
+			});//fix no se habia cerrado	
+		});
+		
 	});		
 
 			
-			
-}
+	
 	</script>
 <!-------------------------------------------->
 </head>
