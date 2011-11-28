@@ -64,15 +64,7 @@ $(document).ready(function(){
 		animationStart: function(){},
 		animationComplete: function(){}
 	});
-	/*$("#help").click(function(e){
-		$.fancybox({
-			'url'	: 'modals/help.php',
-			'width' : 400,
-			'height': 'auto',
-			'type' : 'iframe',
-			'showCloseButton' : true			
-		});
-	});*/
+
 });
 </script>
 
