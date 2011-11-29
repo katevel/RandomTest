@@ -1,32 +1,36 @@
-body{
-	font-family:sans-serif;
+.form-style{
+	font-family: normal 12px 'Lucida Sans Unicode','Lucida Grande',Helvetica,Arial,sans-serif;
+	color: #787878;
+	margin-top:20px;
+	margin-left:20%;
+}
+.form-style h3{
+	font-size: 1em;
+	margin-left:20px;
+	margin-bottom:10px;
 }
 
-img 
-{
-    border:none;
-}
-ul, ul li
+.form-style ul, ul li
 {
     list-style-type: none;
     margin: 0;
     padding: 0;
 }
-ul li.first
+.form-style ul li.first
 {
     border-top: 1px solid #DFDFDF;
 }
-ul li.last
+.form-style ul li.last
 {
     border: none;
 }
-ul p
+.form-style ul p
 {
     float: left;
     margin: 0;
     width: 310px;
 }
-ul h3
+.form-style ul h3
 {
     float: left;
     font-size: 14px;
@@ -35,45 +39,45 @@ ul h3
     width: 200px;
     margin-left:20px;
 }
-ul li
+.form-style ul li
 {
     border-bottom: 1px solid #DFDFDF;
     padding: 15px 0;
     width:600px;
     overflow:hidden;
 }
-ul textarea{
+.form-style ul textarea{
 	width:300px;
 	padding: 5px;
 	position: relative;
-	border: solid 1px #666;
+	border: solid 1px #787878;
 	-moz-border-radius: 5px;
 	-webkit-border-radius: 5px;
 }
-ul select{
+.form-style ul select{
 	width:300px;
 	padding: 5px;
 	position: relative;
-	border: solid 1px #666;
+	border: solid 1px #787878;
 	-moz-border-radius: 5px;
 	-webkit-border-radius: 5px;
 }
-ul input[type="text"], ul input[type="password"]{
+.form-style ul input[type="text"], ul input[type="password"]{
     width:300px;
     padding:5px;
     position:relative;
-    border:solid 1px #666;
+    border:solid 1px #787878;
     -moz-border-radius:5px;
     -webkit-border-radius:5px;
 }
-ul input.required 
+.form-style ul input.required 
 {
-    border: solid 1px #f00;
+    border: solid 1px #787878;
 }
-ul input.error{
+.form-style ul input.error{
 	border: solid 1px #FF0000;
 }
-li label.error{
+.form-style li label.error{
 	color: #FF0000;
 	font-family:Arial, Helvetica, sans-serif;
 	font-style: italic;
@@ -81,7 +85,7 @@ li label.error{
 	font-size: 11px;
 	float: right;
 }
-li select.error{
+.form-style li select.error{
 	color: #FF0000;
 	font-family:Arial, Helvetica, sans-serif;
 	font-style: italic;
@@ -89,7 +93,7 @@ li select.error{
 	font-size: 11px;
 	float: right;
 }
-li input[type="submit"]{
+.form-style li input[type="submit"]{
 	float: right;
 	margin-right: 80px;
 	width: 90px;

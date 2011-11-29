@@ -21,6 +21,7 @@
 		float:left;
 		position:relative;
 		display:inline-block;
+		z-index:1;
 
 	}
 		#dropdown_nav span {
