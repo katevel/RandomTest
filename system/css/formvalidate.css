@@ -1,32 +1,34 @@
-body{
+/*body{
 	font-family:sans-serif;
-}
+}*/
 
-img 
+#form img
 {
     border:none;
 }
-ul, ul li
+#form ul, ul li
 {
     list-style-type: none;
     margin: 0;
     padding: 0;
 }
-ul li.first
+#form ul li.first
 {
     border-top: 1px solid #DFDFDF;
 }
-ul li.last
+ #form ul li.last
 {
     border: none;
 }
-ul p
+ #form ul p
 {
     float: left;
     margin: 0;
     width: 310px;
 }
-ul h3
+
+#form ul h3
+
 {
     float: left;
     font-size: 14px;
@@ -35,14 +37,15 @@ ul h3
     width: 200px;
     margin-left:20px;
 }
-ul li
+
+ #form ul li
 {
     border-bottom: 1px solid #DFDFDF;
     padding: 15px 0;
     width:600px;
     overflow:hidden;
 }
-ul textarea{
+ #form ul textarea{
 	width:300px;
 	padding: 5px;
 	position: relative;
@@ -50,7 +53,7 @@ ul textarea{
 	-moz-border-radius: 5px;
 	-webkit-border-radius: 5px;
 }
-ul select{
+#form ul select{
 	width:300px;
 	padding: 5px;
 	position: relative;
@@ -58,7 +61,7 @@ ul select{
 	-moz-border-radius: 5px;
 	-webkit-border-radius: 5px;
 }
-ul input[type="text"], ul input[type="password"]{
+#form ul input[type="text"], ul input[type="password"]{
     width:300px;
     padding:5px;
     position:relative;
@@ -66,14 +69,15 @@ ul input[type="text"], ul input[type="password"]{
     -moz-border-radius:5px;
     -webkit-border-radius:5px;
 }
-ul input.required 
+
+ #form ul input.required 
 {
     border: solid 1px #f00;
 }
-ul input.error{
+#form ul input.error{
 	border: solid 1px #FF0000;
 }
-li label.error{
+#form li label.error{
 	color: #FF0000;
 	font-family:Arial, Helvetica, sans-serif;
 	font-style: italic;
@@ -81,7 +85,7 @@ li label.error{
 	font-size: 11px;
 	float: right;
 }
-li select.error{
+#form li select.error{
 	color: #FF0000;
 	font-family:Arial, Helvetica, sans-serif;
 	font-style: italic;
@@ -89,14 +93,14 @@ li select.error{
 	font-size: 11px;
 	float: right;
 }
-li input[type="submit"]{
+#form li input[type="submit"]{
 	float: right;
 	margin-right: 80px;
 	width: 90px;
 	height: 40px;
 }
 
-.hide{
+#hide{
 	display: none;
 }
 #table-selected{

@@ -6,7 +6,8 @@
 <link rel="stylesheet" type="text/css" href="../../css/style.css" />
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.3/jquery.min.js"></script>
 <script type="text/javascript" src="../js/fancybox/jquery.fancybox-1.3.4.pack.js"></script>
-
+<script type="text/javascript" src="../js/jquery.validate.js"></script>
+<script type="text/javascript" src="../js/jquery.Rut.js"></script>
 <link rel="stylesheet" type="text/css" href="../css/newmenu.css" />
 	<script type="text/javascript">
 $(document).ready(function(){
@@ -27,13 +28,52 @@ $(document).ready(function(){
             url: 'agregar_alumno.php',  
             success: function(data) {  
                 $('#content-system').html(data); 
-                 $('#content-system').slideDown(400); 
             }  
         	});  
     	});
+    	
+  	$('#rut').Rut({
+	  on_error: function(){ alert('Rut incorrecto'); },
+	  format_on: 'keyup'
+	});
+
+	
+    $("#form").validate({
+    	rules: {
+			rut:{
+    			required: true
+    		},
+    		nombre:{
+    			required: true,
+    			maxlength: 45
+    		},
+    		apePat:{
+    			required: true,
+    			maxlength: 45
+    		},
+    		apeMat:{
+    			required: true,
+    			maxlength: 45
+    		},
+    		fecha_nac: {
+    			required: true,
+    		},
+    		direccion: {
+    			required: true,
+    			maxlength: 45
+    		},
+    		telefono: {
+    			required: true
+    			
+    		},
+    		pass: {
+    			required: true
+    		}
+    		}
+    });		
 
 		
-	});		
+});		
 
 			
 	
