@@ -11,7 +11,6 @@
 <link rel="stylesheet" type="text/css" href="../css/newmenu.css" />
 	<script type="text/javascript">
 $(document).ready(function(){
-	
 	$('#dropdown_nav li').find('.sub_nav').hide();
 
 			//When hovering over the main nav link we find the dropdown menu to the corresponding link.
@@ -32,12 +31,7 @@ $(document).ready(function(){
             }  
         	});  
     	});
-
-		
 	});		
-
-			
-	
 	</script>
 <!-------------------------------------------->
 </head>
