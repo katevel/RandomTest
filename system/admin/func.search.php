@@ -60,4 +60,81 @@ $query = mysql_query("SELECT
 	}
 		
 }
+
+if($_GET['type']=='search2'){
+$term = $_GET['term2'];
+
+$query = mysql_query("SELECT 
+					  idasignatura,
+					  nombre_asignatura,
+					  descripcion_asignatura	,
+					  profesor_idprofesor 
+					FROM
+					  asignatura
+					WHERE nombre_asignatura = '".$term2."' 
+					ORDER BY nombre_asignatura ")or die(mysql_error());
+					
+	while($row = mysql_fetch_assoc($query)){
+		$idprofe= $row['profesor_idprofesor'];
+		$query2= mysql_query("SELECT 
+					  idprofesor,
+					  rut_profesor,
+					  nombre_profesor,
+					  apePat_profesor 
+					FROM
+					  profesor
+					WHERE idprofesor = '".$idprofe."' 
+					ORDER BY nombre_profesor ")or die(mysql_error());
+		while($row2 = mysql_fetch_assoc($query2)){
+			$nombreprofe= $row2['nombre_profesor']." ". $row2['apePat_profesor'];
+		}
+	   echo "<tr>
+			<td>".$row['nombre_asignatura']."</td>
+			<td>$nombreprofe</td>
+			<td><a href='Javascript: void(0);' onclick='Javascript: agregar(".$row['idasignatura'].");'>Agregar</a></td>
+		 </td>";
+	}
+}elseif($_GET['type']=='embed2'){
+$term = $_GET['term2'];
+
+$query2 = mysql_query("SELECT MAX(idcurso) FROM curso")or die(mysql_error());
+while($row2 = mysql_fetch_array($query2)){
+		$idcurso= $row2['0'];
+	}
+
+mysql_query("INSERT INTO asignatura_has_curso (asignatura_idasignatura, curso_idcurso) VALUE ('$term2', '$idcurso')")or die(mysql_error());
+			
+$query = mysql_query("SELECT 
+					  idasignatura,
+					  nombre_asignatura,
+					  profesor_idprofesor 
+					FROM
+					  asignatura
+					WHERE idasignatura = '".$term2."' 
+					ORDER BY nombre_asignatura")or die(mysql_error());
+
+	while($row = mysql_fetch_assoc($query)){
+		$idprofe= $row['profesor_idprofesor'];
+		$query2= mysql_query("SELECT 
+					  idprofesor,
+					  rut_profesor,
+					  nombre_profesor,
+					  apePat_profesor 
+					FROM
+					  profesor
+					WHERE idprofesor = '".$idprofe."' 
+					ORDER BY nombre_profesor ")or die(mysql_error());
+		while($row2 = mysql_fetch_assoc($query2)){
+			$nombreprofe= $row2['nombre_profesor']." ". $row2['apePat_profesor'];
+		}
+	   echo "<tr>
+			<td>".$row['nombre_asignatura']."</td>
+			<td>$nombreprofe</td>
+			<td><a href='Javascript: void(0);' onclick='Javascript: agregar(".$row['idasignatura'].");'>Agregar</a></td>
+		 </td>";
+		 
+
+	}
+		
+}
 ?>

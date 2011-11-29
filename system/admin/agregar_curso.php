@@ -9,9 +9,9 @@
 
 <script>
   $(document).ready(function(){
-  	$("#buscarAlu").click(function(e){
+  	$("#buscarAsig").click(function(e){
   		$.fancybox({
-  				'href'				: 'buscar_alumno.php',
+  				'href'				: 'buscar_asignatura.php',
 				'width'				: 500,
 				'height'			: 400,
 				'autoScale'			: false,
@@ -162,7 +162,8 @@
 				<tr>
 					<td>Nombre</td>
 					<td>Profesor</td>
-					<td><button type="button" id="buscarAlu">Buscar</button></td>
+					<td>Opcion</td>
+					<td><button type="button" id="buscarAsig">Buscar</button></td>
 				</tr>
 			</tbody>
 		</table>
