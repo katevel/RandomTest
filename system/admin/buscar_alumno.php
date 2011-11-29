@@ -40,6 +40,7 @@ function agregar(_this){
 			success: function(data){
 				if(data!=''){
 					top.$("#table-selected tbody").append(data);
+					alert("Se agrego el alumno al curso correctamente");
 				}
 			}
 		});

@@ -52,6 +52,7 @@
     });
   	
     $("#letra").alphanumeric({allow:"ABC"});
+    
 	$(".opt-add").live('hover',function(e){
 		if(!$(this).hasClass('delete')){
 			$(this).removeClass("added").addClass("delete");
@@ -151,4 +152,20 @@
 	</div>
 </form> 
 
+
+<div id="form3-div" class="">
+	<form id="form3" method="post" action="">
+	<h2>Agregar Asignaturas</h2>
+	<div id="table-selected">
+		<table>
+			<tbody>
+				<tr>
+					<td>Nombre</td>
+					<td>Profesor</td>
+					<td><button type="button" id="buscarAlu">Buscar</button></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</form> 
 </div>
