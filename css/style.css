@@ -41,7 +41,7 @@ a{
 }
 #content{
 	width:800px;
-	height: 400px;
+	height: auto;
 	float: left;
 }
 #content-system{
