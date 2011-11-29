@@ -45,7 +45,7 @@
   });
 </script>
 
-<form class="" id="form" method="post" action="agrega_alumno.php">
+<form class="form-style" id="form" method="post" action="agrega_alumno.php">
 <h2>Agregar Alumno</h2>
 <ul>
     <li class="first">
