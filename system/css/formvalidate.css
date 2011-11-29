@@ -120,6 +120,11 @@
 	background: url("../images/search.png") no-repeat;
 	background-position: top right;
 }
+#buscarAsig{
+	width: 100px;
+	background: url("../images/search.png") no-repeat;
+	background-position: top right;
+}
 #table-selected .opt-add{
 	width: 60px;
 	height: 30px;
