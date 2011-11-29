@@ -5,13 +5,10 @@
 
 <script>
   $(document).ready(function(){
-  	
-	/*$('#rut').Rut({
+	$('#rut').Rut({
 	  on_error: function(){ alert('Rut incorrecto'); },
 	  format_on: 'keyup'
 	});
-
-	
     $("#form").validate({
     	rules: {
 			rut:{
@@ -44,7 +41,7 @@
     			required: true
     		}
     		}
-    });*/		
+    });		
   });
 </script>
 

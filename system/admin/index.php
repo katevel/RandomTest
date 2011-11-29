@@ -4,6 +4,7 @@
 <title>Random TEST</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <link rel="stylesheet" type="text/css" href="../../css/style.css" />
+<link rel="stylesheet" type="text/css" href="../css/formvalidate.css" />
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.3/jquery.min.js"></script>
 <script type="text/javascript" src="../js/fancybox/jquery.fancybox-1.3.4.pack.js"></script>
 <script type="text/javascript" src="../js/jquery.validate.js"></script>
@@ -11,7 +12,6 @@
 <link rel="stylesheet" type="text/css" href="../css/newmenu.css" />
 	<script type="text/javascript">
 $(document).ready(function(){
-	
 	$('#dropdown_nav li').find('.sub_nav').hide();
 
 			//When hovering over the main nav link we find the dropdown menu to the corresponding link.
@@ -26,57 +26,13 @@ $(document).ready(function(){
 		$("#agregaalu").click(function(e){
         	$.ajax({  
             url: 'agregar_alumno.php',  
-            success: function(data) {  
-                $('#content-system').html(data); 
+            success: function(data) {   
+                 $('#content-system').html(data).fadeIn('slow');
+                 $("#agregaalu").attr("disabled","disabled");
             }  
         	});  
     	});
-    	
-  	$('#rut').Rut({
-	  on_error: function(){ alert('Rut incorrecto'); },
-	  format_on: 'keyup'
-	});
-
-	
-    $("#form").validate({
-    	rules: {
-			rut:{
-    			required: true
-    		},
-    		nombre:{
-    			required: true,
-    			maxlength: 45
-    		},
-    		apePat:{
-    			required: true,
-    			maxlength: 45
-    		},
-    		apeMat:{
-    			required: true,
-    			maxlength: 45
-    		},
-    		fecha_nac: {
-    			required: true,
-    		},
-    		direccion: {
-    			required: true,
-    			maxlength: 45
-    		},
-    		telefono: {
-    			required: true
-    			
-    		},
-    		pass: {
-    			required: true
-    		}
-    		}
-    });		
-
-		
-});		
-
-			
-	
+	});		
 	</script>
 <!-------------------------------------------->
 </head>
@@ -90,30 +46,30 @@ $(document).ready(function(){
 				<ul id="dropdown_nav">
 					<li><a href="#"><span>ALUMNOS</span></a>
 						<ul class="sub_nav">
-							<li><a id="veralu" href="#"><span>Ver Alumnos</span></a></li>
-							<li><a id="agregaalu" href="#"><span>Agregar Alumno </span></a></li>
+							<li><a id="veralu" href="Javascript: void(0);"><span>Ver Alumnos</span></a></li>
+							<li><a id="agregaalu" href="Javascript: void(0);"><span>Agregar Alumno </span></a></li>
 							<li><a href="#"><span>Modificar Alumno</span></a></li>
 						</ul>
 					</li>
 					<li><a href="#"><span>DOCENTES</span></a>
 						<ul class="sub_nav">
-							<li><a href="#"><span>Ver Docentes</span></a></li>
-							<li><a href="#"><span>Agregar Docente</span></a></li>
-							<li><a href="#"><span>Modificar Docente</span></a></li>
+							<li><a href="Javascript: void(0);"><span>Ver Docentes</span></a></li>
+							<li><a href="Javascript: void(0);"><span>Agregar Docente</span></a></li>
+							<li><a href="Javascript: void(0);"><span>Modificar Docente</span></a></li>
 						</ul>
 					</li>
 					<li><a href="#"><span>CURSOS</span></a>
 						<ul class="sub_nav">
-							<li><a href="#"><span>Ver Cursos</span></a></li>
-							<li><a href="#"><span>Agregar Curso</span></a></li>
-							<li><a href="#"><span>Modificar Curso</span></a></li>
+							<li><a href="Javascript: void(0);"><span>Ver Cursos</span></a></li>
+							<li><a href="Javascript: void(0);"><span>Agregar Curso</span></a></li>
+							<li><a href="Javascript: void(0);"><span>Modificar Curso</span></a></li>
 						</ul>
 					</li>
 					<li><a class="last" href="#"><span>ASIGNATURAS</span></a>
 						<ul class="sub_nav">
-							<li><a href="#"><span>Ver Asignaturas</span></a></li>
-							<li><a href="#"><span>Agregar Asignaturas</span></a></li>
-							<li><a href="#"><span>Modificar Asignaturas</span></a></li>
+							<li><a href="Javascript: void(0);"><span>Ver Asignaturas</span></a></li>
+							<li><a href="Javascript: void(0);"><span>Agregar Asignaturas</span></a></li>
+							<li><a href="Javascript: void(0);"><span>Modificar Asignaturas</span></a></li>
 						</ul>
 					</li>
 				</ul><br />
@@ -124,9 +80,11 @@ $(document).ready(function(){
 			
 		</div>	
 	</div>
-	</div>	
+	<div class="push"></div>
+	</div>
+		
 	<div id="footer">
-		<div id="footer-center">
+		<div class="footer-center">
 			<p>Random Test &copy; <?=date("Y");?>. Todos los derechos reservados</p>
 			<ul>
 				<li><a href="#">Home</a></li>
