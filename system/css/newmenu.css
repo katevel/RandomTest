@@ -20,6 +20,7 @@
 		float:left;
 		position:relative;
 		display:inline-block;
+		
 
 	}
 		#dropdown_nav span {
@@ -79,6 +80,7 @@
 			left:0px;
 			border:1px solid #ccc;
 			background:#e2e2e2;
+			z-index: 1;
 		}
 
 			#dropdown_nav .sub_nav li {

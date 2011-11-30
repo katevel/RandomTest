@@ -1,8 +1,4 @@
-<link rel="stylesheet" type="text/css" href="../css/formvalidate.css" />
-<script type="text/javascript" src="../js/jquery.js"></script>
-<script type="text/javascript" src="../js/jquery.validate.js"></script>
 <script type="text/javascript" src="../js/jquery.Rut.js"></script>
-
 <script>
   $(document).ready(function(){
   	
@@ -48,7 +44,7 @@
   });
 </script>
 
-<form class="" id="form" method="post" action="agrega_profesor.php">
+<form class="form-style" id="form" method="post" action="agrega_profesor.php">
 <h2>Agregar Profesor</h2>
 <ul>
     <li class="first">

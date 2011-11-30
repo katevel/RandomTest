@@ -1,6 +1,5 @@
 <script type="text/javascript" src="../js/jquery.validate.js"></script>
 <script type="text/javascript" src="../js/jquery.Rut.js"></script>
-
 <script>
   $(document).ready(function(){
 	$('#rut').Rut({

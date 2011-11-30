@@ -1,6 +1,3 @@
-<link rel="stylesheet" type="text/css" href="../css/formvalidate.css" />
-<script type="text/javascript" src="../js/jquery.js"></script>
-<script type="text/javascript" src="../js/jquery.validate.js"></script>
 <script type="text/javascript" src="../js/jquery.form.js"></script>
 <script type="text/javascript" src="../js/jquery.alphanumeric.pack.js"></script>
 <script type="text/javascript" src="../js/fancybox/jquery.mousewheel-3.0.4.pack.js"></script>
@@ -60,42 +57,39 @@
 	},function(){
 		$(this).removeClass("delete").addClass("added");
 	});
-	 var options_form1 = { 
-        //target:        '#output1',   // target element(s) to be updated with server response 
-        beforeSubmit:  validateForm1,  // pre-submit callback 
-        success:       responseFrom1,  // post-submit callback 
- 
-        // other available options: 
-        url:       './agrega_curso.php',         // override for form's 'action' attribute 
-        type:      'post',        // 'get' or 'post', override for form's 'method' attribute 
-        dataType:  'json'        // 'xml', 'script', or 'json' (expected server response type) 
-        //clearForm: true        // clear all form fields after successful submit 
-        //resetForm: true        // reset the form after successful submit 
- 
-        // $.ajax options can be used here too, for example: 
-        //timeout:   3000 
-    }; 
- 
-    // bind form using 'ajaxForm' 
-    $('#form1').ajaxForm(options_form1); 
-	function responseFrom1(J){
+	
+	var options_form1 = { // esta es la variable para ajax form para el primer formulario
+        beforeSubmit:  validateForm,  // la funcion antes de enviar los datos aca se pueden verificar los campos
+        success:       responseFrom1,  // la funcion que hace despues de guardar o recibir confirmacion de envio
+ 	    url:       './agrega_curso.php',     //la ruta hacia donde van los datos
+        type:      'post',        // el metodo de envio comun es post
+        dataType:  'json'        // el tipo de dato que quieres recibir de donde enviaste los datos puede ser html, json, xml
+    };
+    var option_form2 = {
+    	beforeSubmit: validateForm,
+    	success: 	  responseForm2,
+    
+    }
+    function responseForm2(){
+    	$("#form2").addClass("hide");
+    	$("#form3").removeClass("hide");
+    } 
+ 	function responseFrom1(J){
 		if(J.status=='ok'){
 			$(".siguiente").removeAttr("disabled");
-			$("#form1-div").addClass("hide"); 
-			$("#form2-div").removeClass("hide");	
+			$("#form1").addClass("hide"); 
+			$("#form2").removeClass("hide");	
 		}
 	}
-	function validateForm1(){
+	function validateForm1(){//esta funcion se llama antes de enviar los datos sirve para el primer formulario
 		$(".siguiente").attr("disabled","disabled");
 		
-		
-  				
   	}
+  	$('#form1').ajaxForm(options_form1); //se captura la funcion del formulario envio (cuando se apreta el boton guardar)
+  	$("#form2").ajaxForm(options_form2); // se captura el envio del segundo formulario y se le asignan las variables respectivas
  });
 </script>
-
-<div id="form1-div" class="hide">
-	<form id="form1" method="post" name="form_course">
+<form id="form1" class="form-style" name="form_course">
 	<h2>Agregar Curso</h2>
 	<ul>
     <li class="first">
@@ -113,7 +107,7 @@
     <li>
         <h3>Nivel de ense&ntilde;za</h3>
         <p>
-        <select class="learning" name="type-learning" id="learning" />
+        <select class="learning" name="type-learning" id="learning">
     		<option value="basica" selected="selected">Basica</option>
     		<option value="media" >Media</option>
    		</select>
@@ -127,15 +121,11 @@
     </li>
     
 	    <li class="last">
-	        <input value="Siguiente" class="siguiente" type="submit" data-goto="form2">
+	        <input value="Siguiente" class="siguiente" type="submit" >
 	    </li>
 	</ul>
-	</form> 
-</div>
-
-
-<div id="form2-div" class="">
-	<form id="form2" method="post" action="">
+</form> 
+<form id="form2" class="form-style hide" method="post" action="">
 	<h2>Agregar alumnos</h2>
 	<div id="table-selected">
 		<table>
@@ -151,10 +141,7 @@
 		</table>
 	</div>
 </form> 
-
-
-<div id="form3-div" class="">
-	<form id="form3" method="post" action="">
+<form id="form3" class="form-style hide" method="post" action="">
 	<h2>Agregar Asignaturas</h2>
 	<div id="table-selected">
 		<table>
@@ -169,4 +156,3 @@
 		</table>
 	</div>
 </form> 
-</div>

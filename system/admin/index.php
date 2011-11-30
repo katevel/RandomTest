@@ -23,14 +23,24 @@ $(document).ready(function(){
 				$(this).find('.sub_nav').fadeOut(50);
 		});
 		
-		$("#agregaalu").click(function(e){
-        	$.ajax({  
-            url: 'agregar_alumno.php',  
-            success: function(data) {   
-                 $('#content-system').html(data).fadeIn('slow');
-                 $("#agregaalu").attr("disabled","disabled");
-            }  
-        	});  
+		$(".option").click(function(e){
+			var type = $(this).attr("data-url"); //verifica hacia que archivo irá, cuando se hace click en el menu
+			var href = "";
+			if(type!=''){
+				switch(type){// aqui se verifica la url que hay que traer
+					case("agregaalu"): href = 'agregar_alumno.php'; break;
+					case("agregacurso"): href = 'agregar_curso.php'; break;
+					case("agregadoc"): href = 'agregar_profesor.php'; break;
+					case("agregaasig"): href = 'agregar_asignatura.php'; break;
+				}
+	        	$.ajax({  
+		            url: href, //esta variable se declara en la clasificacion va a variar segun el atributo type   
+		            success: function(data) {
+	            	 $("#contetn-system").html("");   
+	                 $('#content-system').html(data).show('slow');
+	            	}  
+	        	});  
+        	}
     	});
 	});		
 	</script>
@@ -46,30 +56,30 @@ $(document).ready(function(){
 				<ul id="dropdown_nav">
 					<li><a href="#"><span>ALUMNOS</span></a>
 						<ul class="sub_nav">
-							<li><a id="veralu" href="Javascript: void(0);"><span>Ver Alumnos</span></a></li>
-							<li><a id="agregaalu" href="Javascript: void(0);"><span>Agregar Alumno </span></a></li>
-							<li><a href="#"><span>Modificar Alumno</span></a></li>
+							<li><a id="veralu" class="option" data-url=" " href="Javascript: void(0);"><span>Ver Alumnos</span></a></li>
+							<li><a class="option" data-url="agregaalu" href="Javascript: void(0);"><span>Agregar Alumno </span></a></li>
+							<li><a class="option" data-url="" href="Javascript: void(0);"><span>Modificar Alumno</span></a></li>
 						</ul>
 					</li>
 					<li><a href="#"><span>DOCENTES</span></a>
 						<ul class="sub_nav">
-							<li><a href="Javascript: void(0);"><span>Ver Docentes</span></a></li>
-							<li><a href="Javascript: void(0);"><span>Agregar Docente</span></a></li>
-							<li><a href="Javascript: void(0);"><span>Modificar Docente</span></a></li>
+							<li><a class="option" data-url=" " href="Javascript: void(0);"><span>Ver Docentes</span></a></li>
+							<li><a class="option" data-url="agregadoc" href="Javascript: void(0);"><span>Agregar Docente</span></a></li>
+							<li><a class="option" data-url=" " href="Javascript: void(0);"><span>Modificar Docente</span></a></li>
 						</ul>
 					</li>
 					<li><a href="#"><span>CURSOS</span></a>
 						<ul class="sub_nav">
-							<li><a href="Javascript: void(0);"><span>Ver Cursos</span></a></li>
-							<li><a href="Javascript: void(0);"><span>Agregar Curso</span></a></li>
-							<li><a href="Javascript: void(0);"><span>Modificar Curso</span></a></li>
+							<li><a class="option" data-url=" " href="Javascript: void(0);"><span>Ver Cursos</span></a></li>
+							<li><a class="option" data-url="agregacurso" href="Javascript: void(0);"><span>Agregar Curso</span></a></li>
+							<li><a class="option" data-url="" href="Javascript: void(0);"><span>Modificar Curso</span></a></li>
 						</ul>
 					</li>
 					<li><a class="last" href="#"><span>ASIGNATURAS</span></a>
 						<ul class="sub_nav">
-							<li><a href="Javascript: void(0);"><span>Ver Asignaturas</span></a></li>
-							<li><a href="Javascript: void(0);"><span>Agregar Asignaturas</span></a></li>
-							<li><a href="Javascript: void(0);"><span>Modificar Asignaturas</span></a></li>
+							<li><a class="option" data-url=" " href="Javascript: void(0);"><span>Ver Asignaturas</span></a></li>
+							<li><a class="option" data-url="agregaasig" href="Javascript: void(0);"><span>Agregar Asignaturas</span></a></li>
+							<li><a class="option" data-url=" " href="Javascript: void(0);"><span>Modificar Asignaturas</span></a></li>
 						</ul>
 					</li>
 				</ul><br />

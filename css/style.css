@@ -27,6 +27,7 @@ a{
 }
 #main{
 	width:100%;
+	min-height: 380px;
 	height:auto;
 }
 #menu{
@@ -90,4 +91,10 @@ a{
 }
 .footer-center a{
 	color: #ffffff;
+}
+.hide{
+	display: none;
+}
+.hidden{
+	display:none !important;
 }

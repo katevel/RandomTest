@@ -3,11 +3,6 @@ require("../conexion.php");
 
 $cn = conectar();
 ?>
-<link rel="stylesheet" type="text/css" href="../css/formvalidate.css" />
-<script type="text/javascript" src="../js/jquery.js"></script>
-<script type="text/javascript" src="../js/jquery.validate.js"></script>
-
-
 <script>
   $(document).ready(function(){
     $("#form").validate({
@@ -28,7 +23,7 @@ $cn = conectar();
 $query1 = mysql_query("select idprofesor, nombre_profesor, apePat_profesor from profesor order by idprofesor asc ")or die(mysql_error());
 
 ?>
-<form class="" id="form" method="post" action="agrega_asignatura.php">
+<form class="form-style" id="form" method="post" action="agrega_asignatura.php">
 <h2>Agregar Asignatura</h2>
 <ul>
     <li class="first">
