@@ -110,7 +110,7 @@ $query1 = mysql_query("select idprofesor, nombre_profesor, apePat_profesor from 
 		<button type="button" id="add-contenido">Guardar</button>
 	</li>
 </ul>
-<table id="contenido-agregado">
+<table id="table">
 	<thead>
 		<tr>
 			<th scope="col">ID</th>

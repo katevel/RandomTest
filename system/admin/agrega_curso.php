@@ -3,6 +3,7 @@ require("../conexion.php");
 
 $cn = conectar();
 
+
 if($_SERVER['REQUEST_METHOD']=='POST'){
 	if(!empty($_POST)){
 		
@@ -14,7 +15,7 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
 	$query = mysql_query("INSERT INTO curso( idcurso,
 												 letra_curso,
 												 generacion,
-												 nivel_enseñanza
+												 nivel_ens
 												 )
 					 VALUES('', '".utf8_encode($letra)."', '$generacion' , 	'".utf8_encode($learning)."' )")or die(mysql_error());
 	

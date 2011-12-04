@@ -5,6 +5,9 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <link rel="stylesheet" type="text/css" href="../../css/style.css" />
 <link rel="stylesheet" type="text/css" href="../css/formvalidate.css" />
+<link rel="stylesheet" type="text/css" href="../js/fancybox/jquery.fancybox-1.3.4.css" media="screen" />
+<link rel="stylesheet" type="text/css" href="../js/jqueryui/css/smoothness/jquery-ui-1.8.16.custom.css" media="screen" />
+<link rel="stylesheet" type="text/css" href="../css/newmenu.css" />
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.3/jquery.min.js"></script>
 <script type="text/javascript" src="../js/fancybox/jquery.fancybox-1.3.4.pack.js"></script>
 <script type="text/javascript" src="../js/jquery.validate.js"></script>
@@ -13,9 +16,7 @@
 <script type="text/javascript" src="../js/jqueryui/js/jquery-ui-1.8.16.custom.min.js"></script>
 <script type="text/javascript" src="../js/jquery.alphanumeric.pack.js"></script>
 <script type="text/javascript" src="../js/fancybox/jquery.mousewheel-3.0.4.pack.js"></script>
-<link rel="stylesheet" type="text/css" href="../js/fancybox/jquery.fancybox-1.3.4.css" media="screen" />
-<link rel="stylesheet" type="text/css" href="../js/jqueryui/css/smoothness/jquery-ui-1.8.16.custom.css" media="screen" />
-<link rel="stylesheet" type="text/css" href="../css/newmenu.css" />
+
 <script type="text/javascript">
 $(document).ready(function(){
 	$('#dropdown_nav li').find('.sub_nav').hide();
