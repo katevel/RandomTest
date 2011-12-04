@@ -102,7 +102,7 @@ while($row2 = mysql_fetch_array($query2)){
 		$idcurso= $row2['0'];
 	}
 
-mysql_query("INSERT INTO asignatura_has_curso (asignatura_idasignatura, curso_idcurso) VALUE ('$term2', '$idcurso')")or die(mysql_error());
+mysql_query("INSERT INTO nivel (curso_idcurso, asignatura_idasignatura,nivel ) VALUE ('$idcurso', '$term2', )")or die(mysql_error());
 			
 $query = mysql_query("SELECT 
 					  idasignatura,

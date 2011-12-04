@@ -82,6 +82,13 @@ $(document).ready(function(){
 							<li><a class="option" data-url=" " href="Javascript: void(0);"><span>Modificar Asignaturas</span></a></li>
 						</ul>
 					</li>
+						<li><a class="last" href="#"><span>CONTENIDOS</span></a>
+						<ul class="sub_nav">
+							<li><a class="option" data-url=" " href="Javascript: void(0);"><span>Ver Contenidos</span></a></li>
+							<li><a class="option" data-url="agregacont" href="Javascript: void(0);"><span>Agregar Contenidos</span></a></li>
+							<li><a class="option" data-url=" " href="Javascript: void(0);"><span>Modificar Contenidos</span></a></li>
+						</ul>
+					</li>
 				</ul><br />
 			
 		</div>

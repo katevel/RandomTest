@@ -10,8 +10,7 @@
     $("#form").validate({
     	rules: {
 			rut:{
-    			required: true,
-    			maxlength: 10
+    			required: true
     		},
     		nombre:{
     			required: true,

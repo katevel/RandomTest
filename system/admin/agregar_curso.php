@@ -7,8 +7,9 @@
 <script>
   $(document).ready(function(){
   	$("#buscarAsig").click(function(e){
+  		var level = $('#level option: selected').val();
   		$.fancybox({
-  				'href'				: 'buscar_asignatura.php',
+  				'href'				: 'buscar_asignatura.php?level=level'
 				'width'				: 500,
 				'height'			: 400,
 				'autoScale'			: false,
@@ -95,7 +96,16 @@
     <li class="first">
         <h3>Nivel</h3>
         <p>
-        	<input type="text" id="nivel" name="nivel" />
+        <select class="learning" name="level" id="level">
+    		<option value="1" selected="selected">1</option>
+    		<option value="2" >2</option>
+    		<option value="2" >3</option>
+    		<option value="4" >4</option>
+    		<option value="5" >5</option>
+    		<option value="6" >6</option>
+    		<option value="7" >7</option>
+    		<option value="8" >8</option>
+   		</select>
         </p>
     </li>
     <li>
