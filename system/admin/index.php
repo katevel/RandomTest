@@ -10,8 +10,13 @@
 <script type="text/javascript" src="../js/jquery.validate.js"></script>
 <script type="text/javascript" src="../js/jquery.form.js"></script>
 <script type="text/javascript" src="../js/jquery.Rut.js"></script>
+<script type="text/javascript" src="../js/jqueryui/js/jquery-ui-1.8.16.custom.min.js"></script>
+<script type="text/javascript" src="../js/jquery.alphanumeric.pack.js"></script>
+<script type="text/javascript" src="../js/fancybox/jquery.mousewheel-3.0.4.pack.js"></script>
+<link rel="stylesheet" type="text/css" href="../js/fancybox/jquery.fancybox-1.3.4.css" media="screen" />
+<link rel="stylesheet" type="text/css" href="../js/jqueryui/css/smoothness/jquery-ui-1.8.16.custom.css" media="screen" />
 <link rel="stylesheet" type="text/css" href="../css/newmenu.css" />
-	<script type="text/javascript">
+<script type="text/javascript">
 $(document).ready(function(){
 	$('#dropdown_nav li').find('.sub_nav').hide();
 
