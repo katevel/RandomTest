@@ -61,7 +61,7 @@ $query = mysql_query("SELECT
 		
 }
 
-if($_GET['type']=='search2'){
+if($_GET['type']=='search2'){//guardar asignatura
 $term = $_GET['term2'];
 
 $query = mysql_query("SELECT 
@@ -94,7 +94,7 @@ $query = mysql_query("SELECT
 			<td><a href='Javascript: void(0);' onclick='Javascript: agregar(".$row['idasignatura'].");'>Agregar</a></td>
 		 </td>";
 	}
-}elseif($_GET['type']=='embed2'){
+}elseif($_GET['type']=='embed2'){//embutir asignaturas
 $term = $_GET['term2'];
 
 $query2 = mysql_query("SELECT MAX(idcurso) FROM curso")or die(mysql_error());
@@ -136,5 +136,8 @@ $query = mysql_query("SELECT
 
 	}
 		
+}
+if($_GET['type']=='content'){
+	$term = $_get['term'];
 }
 ?>
