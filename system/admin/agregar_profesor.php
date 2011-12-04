@@ -1,4 +1,5 @@
 <script type="text/javascript" src="../js/jquery.Rut.js"></script>
+
 <script>
   $(document).ready(function(){
   	
@@ -6,7 +7,22 @@
 	  on_error: function(){ alert('Rut incorrecto'); },
 	  format_on: 'keyup'
 	});
-	
+	$("#fecha_nac").datepicker({
+			changeMonth: true,
+			changeYear: true,
+			dayNames: ['Domingo','Lunes', 'Martes','Miercoles','Jueves','Viernes','Sabado'],
+			dayNamesMin: ['Do','Lu','Ma','Mi','Ju','Vi','Sa'],
+			dayNamesShort: ['Dom','Lun','Mar','Mie','Jue','Vie','Sab'],
+			dateFormat:'dd/mm/yy',
+			prevText: 'Atras',
+            nextText: 'Adelante',
+			monthNames: ['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'],
+			monthNamesShort: ['Ene','Feb','Mar','Abr','May','Jun','Jul','Ago','Sep','Oct','Nov','Dic'],
+			maxDate: '-15Y',
+			minDate: '-90Y',
+			yearRange: '-90Y:-15Y',
+            firstDay: 1
+	});
     $("#form").validate({
     	rules: {
 			rut:{
@@ -73,7 +89,7 @@
     <li>
         <h3>Fecha Nacimiento</h3>
         <p>
-        	<input type="text" name="fecha_nac"  />
+        	<input type="text" name="fecha_nac" id="fecha_nac" />
         </p>
     </li>
 	<li>

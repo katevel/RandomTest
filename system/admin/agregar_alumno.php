@@ -6,6 +6,22 @@
 	  on_error: function(){ alert('Rut incorrecto'); },
 	  format_on: 'keyup'
 	});
+	$("#fecha_nac").datepicker({
+			changeMonth: true,
+			changeYear: true,
+			dayNames: ['Domingo','Lunes', 'Martes','Miercoles','Jueves','Viernes','Sabado'],
+			dayNamesMin: ['Do','Lu','Ma','Mi','Ju','Vi','Sa'],
+			dayNamesShort: ['Dom','Lun','Mar','Mie','Jue','Vie','Sab'],
+			dateFormat:'dd/mm/yy',
+			prevText: 'Atras',
+            nextText: 'Adelante',
+			monthNames: ['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'],
+			monthNamesShort: ['Ene','Feb','Mar','Abr','May','Jun','Jul','Ago','Sep','Oct','Nov','Dic'],
+			maxDate: '-15Y',
+			minDate: '-90Y',
+			yearRange: '-90Y:-15Y',
+            firstDay: 1
+	});
     $("#form").validate({
     	rules: {
 			rut:{
@@ -39,6 +55,20 @@
     		}
     		}
     });		
+   	 var options_form1 = { // esta es la variable para ajax form para el primer formulario
+        success:       responseFrom1,  // la funcion que hace despues de guardar o recibir confirmacion de envio
+ 	    url:       './agrega_alumno.php',     //la ruta hacia donde van los datos
+        type:      'post',        // el metodo de envio comun es post
+        dataType:  'json'        // el tipo de dato que quieres recibir de donde enviaste los datos puede ser html, json, xml
+    };
+    function responseFrom1(J){
+		if(J.status=='ok'){
+			$("#form").addClass("hide"); 
+			$("#contetn-system").html("");
+		}
+	}
+  	$('#form').ajaxForm(options_form1);
+    
   });
 </script>
 
@@ -72,7 +102,7 @@
     <li>
         <h3>Fecha Nacimiento</h3>
         <p>
-        	<input type="text" name="fecha_nac"  />
+        	<input type="text" name="fecha_nac"  id="fecha_nac"/>
         </p>
     </li>
 	<li>

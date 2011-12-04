@@ -61,8 +61,8 @@ $query = mysql_query("SELECT
 		
 }
 
-if($_GET['type']=='search2'){
-$term2 = $_GET['term2'];
+if($_GET['type']=='search2'){//guardar asignatura
+$term = $_GET['term2'];
 
 $query = mysql_query("SELECT 
 					  idasignatura,
@@ -90,7 +90,7 @@ $query = mysql_query("SELECT
 			<td><a href='Javascript: void(0);' onclick='Javascript: agregar(".$row['idasignatura'].");'>Agregar</a></td>
 		 </td>";
 	}
-}elseif($_GET['type']=='embed2'){
+}elseif($_GET['type']=='embed2'){//embutir asignaturas
 $term = $_GET['term2'];
 
 $query2 = mysql_query("SELECT MAX(idcurso) FROM curso")or die(mysql_error());
@@ -128,5 +128,32 @@ $query = mysql_query("SELECT
 
 	}
 		
+}
+if($_GET['type']=='content'){
+	$term = $_GET['term'];
+	$desc = $_GET['desc'];
+	$asign = $_GET['asign'];
+	
+	mysql_query("INSERT INTO contenido (
+				  nombre_contenido,
+				  descripcion_contenido,
+				  asignatura_idasignatura
+				) 
+				VALUES
+				  ('".$term."','".$desc."','".$asign."')") or die(mysql_error());
+	$result = mysql_query("SELECT idcontenido 
+							FROM contenido 
+							WHERE nombre_contenido = '".$term."' 
+							AND asignatura_idasignatura = ".$asign." LIMIT 1")or die(mysql_error());
+							
+	while($row = mysql_fetch_array($result)){
+		$id = $row[0];
+	}
+	echo json_encode(array("status"=>"ok","id"=>$id,"title"=>$term,"desc"=>$desc));
+	echo "<tr>
+			<td>".$id."</td>
+			<td>".$term."</td>
+			<td>".$term."</td>
+			<tr>";
 }
 ?>
