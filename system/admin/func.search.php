@@ -67,24 +67,20 @@ $term = $_GET['term2'];
 $query = mysql_query("SELECT 
 					  idasignatura,
 					  nombre_asignatura,
-					  descripcion_asignatura	,
-					  profesor_idprofesor 
+					  descripcion_asignatura
 					FROM
 					  asignatura
 					WHERE nombre_asignatura = '".$term2."' 
 					ORDER BY nombre_asignatura ")or die(mysql_error());
 					
 	while($row = mysql_fetch_assoc($query)){
-		$idprofe= $row['profesor_idprofesor'];
-		$query2= mysql_query("SELECT 
-					  idprofesor,
-					  rut_profesor,
-					  nombre_profesor,
-					  apePat_profesor 
-					FROM
-					  profesor
-					WHERE idprofesor = '".$idprofe."' 
-					ORDER BY nombre_profesor ")or die(mysql_error());
+		$idasignatura= $row['idasignatura'];
+		$query2= mysql_query("SELECT idprofesor, 
+									rut_profesor, 
+									nombre_profesor 
+							 FROM profesor INNER JOIN profesor_has_asignatura ON
+							 idprofesor = profesor_idprofesor INNER JOIN asignatura ON
+							 asignatura_idasignatura = idasignatura WHERE idasignatura = '".$idasginatura."' ")or die(mysql_error());
 		while($row2 = mysql_fetch_assoc($query2)){
 			$nombreprofe= $row2['nombre_profesor']." ". $row2['apePat_profesor'];
 		}
@@ -102,28 +98,24 @@ while($row2 = mysql_fetch_array($query2)){
 		$idcurso= $row2['0'];
 	}
 
-mysql_query("INSERT INTO nivel (curso_idcurso, asignatura_idasignatura,nivel ) VALUE ('$idcurso', '$term2', )")or die(mysql_error());
+mysql_query("INSERT INTO nivel (id_nivel, curso_idcurso, asignatura_idasignatura, nivel ) VALUE ('', '$idcurso', '$term2', )")or die(mysql_error());
 			
 $query = mysql_query("SELECT 
 					  idasignatura,
 					  nombre_asignatura,
-					  profesor_idprofesor 
 					FROM
 					  asignatura
 					WHERE idasignatura = '".$term2."' 
 					ORDER BY nombre_asignatura")or die(mysql_error());
 
 	while($row = mysql_fetch_assoc($query)){
-		$idprofe= $row['profesor_idprofesor'];
-		$query2= mysql_query("SELECT 
-					  idprofesor,
-					  rut_profesor,
-					  nombre_profesor,
-					  apePat_profesor 
-					FROM
-					  profesor
-					WHERE idprofesor = '".$idprofe."' 
-					ORDER BY nombre_profesor ")or die(mysql_error());
+		$idprofe= $row['idasginatura'];
+		$query2= mysql_query("SELECT idprofesor, 
+									rut_profesor, 
+									nombre_profesor 
+							 FROM profesor INNER JOIN profesor_has_asignatura ON
+							 idprofesor = profesor_idprofesor INNER JOIN asignatura ON
+							 asignatura_idasignatura = idasignatura WHERE idasignatura= '".$idasginatura."' ")or die(mysql_error());
 		while($row2 = mysql_fetch_assoc($query2)){
 			$nombreprofe= $row2['nombre_profesor']." ". $row2['apePat_profesor'];
 		}
