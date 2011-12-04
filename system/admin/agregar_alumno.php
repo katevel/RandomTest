@@ -56,7 +56,7 @@
     		}
     });		
    	 var options_form1 = { // esta es la variable para ajax form para el primer formulario
-        success:       responseFrom1,  // la funcion que hace despues de guardar o recibir confirmacion de envio
+        success:   responseFrom1,  // la funcion que hace despues de guardar o recibir confirmacion de envio
  	    url:       './agrega_alumno.php',     //la ruta hacia donde van los datos
         type:      'post',        // el metodo de envio comun es post
         dataType:  'json'        // el tipo de dato que quieres recibir de donde enviaste los datos puede ser html, json, xml
@@ -64,7 +64,7 @@
     function responseFrom1(J){
 		if(J.status=='ok'){
 			$("#form").addClass("hide"); 
-			$("#contetn-system").html("");
+			$("#content-system").html("");
 		}
 	}
   	$('#form').ajaxForm(options_form1);
