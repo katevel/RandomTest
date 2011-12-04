@@ -35,7 +35,7 @@ $(document).ready(function(){
 			if(type!=''){
 				switch(type){// aqui se verifica la url que hay que traer
 					case("agregaalu"): href = 'agregar_alumno.php'; break;
-					case("agregacurso"): href = 'agregar_curso.php'; break;
+					case("agregacurso"): href = 'add_curso.php'; break;
 					case("agregadoc"): href = 'agregar_profesor.php'; break;
 					case("agregaasig"): href = 'agregar_asignatura.php'; break;
 				}
