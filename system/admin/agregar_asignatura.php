@@ -19,17 +19,22 @@ $cn = conectar();
     });
     $("#add-contenido").click(function(){
     	var contenido = $("#nuevo-contenido").val();
-    	if(contenido!=''){
+    	var asignatura = $("#asignatura").val();
+    	var desc = $("#description").val();
+    	if(contenido!='' && desc!=''){
     		$.ajax({
-    			url:"func.search.php?type=content&term="+contenido,
-    			type:"POST",dataType:"json",
-    			success: function(J){
-    				if(J.status=='OK'){
-    					$("#contenido-agregado tbody").append("<tr><td>"+J.id+"</td><td>"+J.contenido+"</td><tr>");
-    					$("#nuevo-contenido").val("");	
+    			url:"func.search.php?type=content&term="+contenido+"&asign="+asignatura+"&desc="+desc,
+    			type:"POST",dataType:"html",
+    			success: function(data){
+    				if(data!=''){
+    					$("#contenido-agregado tbody").append(data);
+    					$("#nuevo-contenido").val("");
+    					$("#description").val("");	
     				}
     			}
     		})
+    	}else{
+    		$("#nuevo-contenido").focus();
     	}    	
     });	
     var options_form1 = { // esta es la variable para ajax form para el primer formulario
@@ -40,7 +45,7 @@ $cn = conectar();
     };
     function responseFrom1(J){
 		if(J.status=='ok'){
-			$("#form1").addClass("hide"); 
+			$("#form").addClass("hide"); 
 			$("#contenido-asignatura").removeClass("hide");
 			$("#contenido-asignatura").find("#asignatura").val(J.asignatura);	
 		}
@@ -86,18 +91,36 @@ $query1 = mysql_query("select idprofesor, nombre_profesor, apePat_profesor from 
 </ul>
 </form>
 <div id="contenido-asignatura" class="form-style hide">
-	<h3>Agregar Contenido</h3>
+	<h2>Agregar Contenido</h2>
 	<input type="hidden" id="asignatura" value="" />
-	<input type="text" id="nuevo-contenido" size="50"/>
-	<button type="button" id="add-contenido">Guardar</button>
-	<table id="contenido-agregado">
-		<thead>
-			<td>ID</td>
-			<td>Nombre Contenido</td>
-		</thead>
-		<tbody>
-			
-		</tbody>
-	</table>
+<ul>
+	<li class="first">
+		<h3>Titulo</h3>
+		<p>
+		<input type="text" id="nuevo-contenido" size="50"/>
+		</p>
+	</li>
+	<li>
+		<h3>Descripcion</h3>
+		<p>
+		<textarea id="description"></textarea>
+		</p>
+	</li>
+	<li class="last">
+		<button type="button" id="add-contenido">Guardar</button>
+	</li>
+</ul>
+<table id="contenido-agregado">
+	<thead>
+		<tr>
+			<th scope="col">ID</th>
+			<th scope="col">Nombre Contenido</th>
+			<th scope="col">Descripción</th>
+		</tr>
+	</thead>
+	<tbody>
+		
+	</tbody>
+</table>
 	<button type="button" id="Guardar-todo">Guardar</button>
 </div>
