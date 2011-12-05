@@ -9,13 +9,13 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
 @$nombre = $_POST['nombre'];
 @$apePat = $_POST['apePat'];
 @$apeMat = $_POST['apeMat'];
-@$fechaNac = $_POST['fecha_nac'];
 @$direccion = $_POST['direccion'];
 @$telefono = $_POST['telefono'];
 @$pass = $_POST['pass'];
 
 	if(!empty($rut)){
-		
+		$exp = explode("/",$_POST['fecha_nac']);
+		$fechaNac = $exp[2]."-".$exp[1]."-".$exp[0];
 		$query = mysql_query("INSERT INTO profesor ( idprofesor,
 													rut_profesor, 
 													 nombre_profesor, 

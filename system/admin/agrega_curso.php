@@ -19,9 +19,14 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
 												 )
 					 VALUES('', '".utf8_encode($letra)."', '$generacion' , 	'".utf8_encode($learning)."' )")or die(mysql_error());
 	
-		echo json_encode(array("status"=>"ok"));
+	$last = mysql_query("SELECT idcurso FROM curso ORDER BY idcurso DESC LIMIT 1")or die(mysql_error());
+	while($row = mysql_fetch_array($last)){
+		$id_curso = $row[0];
+	}
+	
+		echo json_encode(array("status"=>"ok","curso"=>$id_curso));
 	}else{
-		echo json_encode(array("status"=>"error"));
+		echo json_encode(array("status"=>"error", "curso"=>"nan"));
 	}
 }
 

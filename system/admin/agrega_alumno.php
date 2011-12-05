@@ -9,13 +9,14 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
 	@$nombre = $_POST['nombre'];
 	@$apePat = $_POST['apePat'];
 	@$apeMat = $_POST['apeMat'];
-	@$fechaNac = $_POST['fecha_nac'];
 	@$direccion = $_POST['direccion'];
 	@$telefono = $_POST['telefono'];
 	@$pass = $_POST['pass'];
-	
+	echo "<pre>".print_r($_POST)."</pre>";die();
 	if(!empty($rut)){
-		
+		// fecha de naciomiento
+		$exp = explode("/",$_POST['fecha_nac']);
+		$fechaNac = $exp[2]."-".$exp[1]."-".$exp[0];
 		$query = mysql_query("INSERT INTO alumno ( idalumno	,
 													rut_alumno, 
 													 nombre_alumno, 

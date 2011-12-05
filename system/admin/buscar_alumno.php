@@ -3,20 +3,24 @@ require("../conexion.php");
 $cn = conectar();
 
 ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<title>Random TEST</title>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.3/jquery.min.js"></script>
 <link rel="stylesheet" type="text/css" href="../css/modal.css" />
+<link rel="stylesheet" type="text/css" href="../../css/style.css" />
+<link rel="stylesheet" type="text/css" href="../css/formvalidate.css" />
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.3/jquery.min.js"></script>
+<script type="text/javascript" src="../js/jquery.Rut.js"></script>
 <script type="text/javascript">
 $(document).ready(function(){
+	
+	$('#search-text').Rut({
+	  on_error: function(){ alert('Rut incorrecto'); },
+	  format_on: 'keyup'
+	});
 	$("#find-child").click(function(e){
 		var rut = $("#search-text").val();
+		var course = <?=$_GET['course'];?>;
 		if(rut!=''){
 			$.ajax({
-			url:"func.search.php?type=search&term="+rut,
+			url:"func.search.php?type=search&term="+rut+"&course="+course,
 			dataType:"html", type:"post",
 			success: function(data){
 					if(data!=''){
@@ -32,26 +36,37 @@ $(document).ready(function(){
 		}
 	});
 });
-function agregar(_this){
-	if(_this!=''){
+function agregar(_this, course){
+	if(_this!='' && course!=''){
 		$.ajax({
-			url:"func.search.php?type=embed&term="+_this,
+			url:"func.search.php?type=embed&term="+_this+"&course="+course,
 			dataType:"html", type:"post",
 			success: function(data){
 				if(data!=''){
 					top.$("#table-selected tbody").append(data);
-					alert("Se agrego el alumno al curso correctamente");
+					if(confirm("Se agrego el alumno correctamente")){
+						
+					}
 				}
 			}
 		});
 	}
 }
 </script>
-</head>
-<body>
-<div id="search">
-	<input type="text" id="search-text" class="ui-widget-content" placeholder="Introduce el rut a buscar..." size="60"/>
-	<button id="find-child">Buscar</button>
+<div id="search" class="form-style" style="margin-left:8%;">
+	<h2>Busqueda de Alumno</h2>
+	<ul>
+		<li class="first">
+			<p>
+				<input type="text" id="search-text" class="ui-widget-content" placeholder="Introduce el rut a buscar..." size="60"/>
+			</p>	
+		</li>
+		<li class="last">
+			<p>
+				<button id="find-child">Buscar</button>		
+			</p>
+		</li>
+	</ul>
 </div>
 <table id="list-searching">
 	<tbody>
@@ -63,5 +78,3 @@ function agregar(_this){
 		</tr>
 	</tbody>
 </table>
-</body>
-</html>

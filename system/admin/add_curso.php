@@ -1,15 +1,34 @@
-<link rel="stylesheet" type="text/css" href="../js/fancybox/jquery.fancybox-1.3.4.css" media="screen" />
-<script type="text/javascript" src="../js/fancybox/jquery.fancybox-1.3.4.pack.js"></script>
-<script type="text/javascript" src="../js/fancybox/jquery.fancybox-1.3.4.js"></script>
-
 <script type="text/javascript">
 $(document).ready(function(){
-	
-
   $("#searchAlumno").click(function(e){
-  
+  	var curso = $("#curso_added").val();
+  	
+  	if(curso!=''){
+	  	$.fancybox({
+	    		'href'				: 'buscar_alumno.php?course='+curso,
+	    		'width'				: 750,
+				'height'			: 420,
+				'autoScale'			: false,
+				'transitionIn'		: 'none',
+				'transitionOut'		: 'none',
+				'type'				: 'iframe'
+	    });
+	  }
   });
-	
+  $("#searchAsig").click(function(e){
+  	 var curso = $("#curso_added2").val();
+  	 if(curso!=''){
+  	 	$.fancybox({
+	    		'href'				: 'buscar_asignatura.php?course='+curso,
+	    		'width'				: 750,
+				'height'			: 420,
+				'autoScale'			: false,
+				'transitionIn'		: 'none',
+				'transitionOut'		: 'none',
+				'type'				: 'iframe'
+	    });
+  	 }
+  });
    $("#form").validate({
     	rules: {
 			nivel:{
@@ -49,10 +68,19 @@ $(document).ready(function(){
     function responseFrom1(J){
 		if(J.status=='ok'){
 			$("#form").addClass("hide");
-			$("#form2").removeClass("hide"); 
+			$("#form2").removeClass("hide");
+			$("#form2").find("#curso_added").val(J.curso);
+			$("#form3").find("#curso_added2").val(J.curso);  
 		}
 	}
-  	$('#form').ajaxForm(options_form1);	
+  	$('#form').ajaxForm(options_form1);
+  	$("#go-to-asign").click(function(e){
+  		$("#form2").addClass("hide");
+  		$("#form3").removeClass("hide");
+  	});
+  	$("#close-add").click(function(e){
+  		$("#contetn-system").html("");   
+  	});	
   });
 </script>
 <form class="form-style" id="form">
@@ -101,18 +129,46 @@ $(document).ready(function(){
 </form>
 <div id="form2" class="form-style hide">
 	<h2>Agregar alumnos</h2>
-	<button type="button" id="searchAlumno">Buscar</button>
-	<table id="table">
+	<input type="hidden" id="curso_added" />
+	<table id="table-selected">
 		<thead>
 			<tr>
 				<th scope="col">Nombre</th>
 				<th scope="col">Apellido</th>
 				<th scope="col">Rut</th>
-				<th scope="col">Opcion</th>
+				<th scope="col">Opción</th>
+				<th scope="col"><button type="button" id="searchAlumno" class="button-search">Buscar</button></th>
 			</tr>
 		</thead>
 		<tbody>
 			
 		</tbody>
 	</table>
-</div> 
+	<ul>
+		<li class="last">
+			<button type="button" id="go-to-asign">Agregar Asignaturas</button>		
+		</li>
+	</ul>
+	
+</div>
+<div id="form3" class="form-style hide">
+	<h2>Agregar Asignaturas</h2>
+	<input type="hidden" id="curso_added2" />
+	<div id="table-asignatura">
+		<table id="table-selected">
+			<tbody>
+				<tr>
+					<td>Nombre</td>
+					<td>Profesor</td>
+					<td>Opcion</td>
+					<td><button type="button" id="searchAsig" class="button-search">Buscar</button></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<ul>
+		<li class="last">
+			<button type="button" id="close-add">Guardar</button>
+		</li>
+	</ul>
+</div>  
