@@ -96,14 +96,14 @@ $query = mysql_query("SELECT
 }elseif($_GET['type']=='embed2'){//embutir asignaturas
 $term = $_GET['term2'];
 $curso = $_GET['course'];
-/*$query2 = mysql_query("SELECT MAX(idcurso) FROM curso")or die(mysql_error());
+
+// ya teniamos el id del curso era mejor consultar por el nivel del id de ese curso =D 
+$query2 = mysql_query("SELECT nivel_ens FROM curso WHERE idcurso = ".$curso." ")or die(mysql_error());
 while($row2 = mysql_fetch_array($query2)){
-		$idcurso= $row2['0'];
- * 
-	}-- y el nivel ? :( no se aahh eso te pregnte ayer.. de pasar el dato del primero formuylario
- * para la otra pag.. y despues aca.. te acordai? el nivel del cursp.. en el primero formularo de agregar curso yiam amor an)
-*/
-mysql_query("INSERT INTO nivel (id_nivel, curso_idcurso, asignatura_idasignatura, nivel ) VALUE ('', '$curso', '$term2' )")or die(mysql_error());
+		$nivel_ens= $row2['0'];
+}
+
+mysql_query("INSERT INTO nivel (id_nivel, curso_idcurso, asignatura_idasignatura, nivel ) VALUE ('', ".$curso.",".$term2.",".$nivel_ens." )")or die(mysql_error());
 			
 $query = mysql_query("SELECT 
 					  idasignatura,
