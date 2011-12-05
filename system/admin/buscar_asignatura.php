@@ -39,7 +39,7 @@ function agregar(_this, course){
 			dataType:"html", type:"post",
 			success: function(data){
 				if(data!=''){
-					top.$("#table-selected tbody").append(data);
+					top.$("#table-asignatura tbody").append(data);
 					alert("Se agrego la asignatura al curso correctamente");
 				}
 			}

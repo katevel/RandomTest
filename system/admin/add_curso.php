@@ -154,18 +154,20 @@ $(document).ready(function(){
 <div id="form3" class="form-style hide">
 	<h2>Agregar Asignaturas</h2>
 	<input type="hidden" id="curso_added2" />
-	<div id="table-asignatura">
-		<table id="table-selected">
-			<tbody>
+	<table id="table-asignatura">
+			<thead>
 				<tr>
-					<td>Nombre</td>
-					<td>Profesor</td>
-					<td>Opcion</td>
-					<td><button type="button" id="searchAsig" class="button-search">Buscar</button></td>
+					<th scope="col">Nombre</th>
+					<th scope="col">Profesor</th>
+					<th scope="col">Opcion</th>
+					<th scope="col"><button type="button" id="searchAsig" class="button-search">Buscar</button></th>
 				</tr>
+			</thead>
+			<tbody>
+			
 			</tbody>
-		</table>
-	</div>
+	</table>
+	
 	<ul>
 		<li class="last">
 			<button type="button" id="close-add">Guardar</button>
