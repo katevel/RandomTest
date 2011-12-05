@@ -74,31 +74,36 @@ $query = mysql_query("SELECT
 					ORDER BY nombre_asignatura ")or die(mysql_error());
 					
 	while($row = mysql_fetch_assoc($query)){
-		$idasignatura= $row['idasignatura'];
+		@$idasignatura= $row['idasignatura'];
+		$nombre_asignatura = $row['nombre_asignatura'];
+	}
 		$query2= mysql_query("SELECT idprofesor, 
 									rut_profesor, 
-									nombre_profesor 
+									nombre_profesor,
+									apePat_profesor 
 							 FROM profesor INNER JOIN profesor_has_asignatura ON
 							 idprofesor = profesor_idprofesor INNER JOIN asignatura ON
-							 asignatura_idasignatura = idasignatura WHERE idasignatura = '".$idasginatura."' ")or die(mysql_error());
+							 asignatura_idasignatura = idasignatura WHERE idasignatura = '".@$idasignatura."' ")or die(mysql_error());
 		while($row2 = mysql_fetch_assoc($query2)){
 			$nombreprofe= $row2['nombre_profesor']." ". $row2['apePat_profesor'];
 		}
 	   echo "<tr>
-			<td>".$row['nombre_asignatura']."</td>
+			<td>".$nombre_asignatura."</td>
 			<td>".$nombreprofe."</td>
-			<td><a href='Javascript: void(0);' onclick='Javascript: agregar(".$row['idasignatura'].",".$curso.");'>Agregar</a></td>
+			<td><a href='Javascript: void(0);' onclick='Javascript: agregar(".$idasignatura.",".$curso.");'>Agregar</a></td>
 		 </td>";
-	}
+	
 }elseif($_GET['type']=='embed2'){//embutir asignaturas
 $term = $_GET['term2'];
 $curso = $_GET['course'];
 /*$query2 = mysql_query("SELECT MAX(idcurso) FROM curso")or die(mysql_error());
 while($row2 = mysql_fetch_array($query2)){
 		$idcurso= $row2['0'];
-	}
+ * 
+	}-- y el nivel ? :( no se aahh eso te pregnte ayer.. de pasar el dato del primero formuylario
+ * para la otra pag.. y despues aca.. te acordai? el nivel del cursp.. en el primero formularo de agregar curso yiam amor an)
 */
-mysql_query("INSERT INTO nivel (id_nivel, curso_idcurso, asignatura_idasignatura, nivel ) VALUE ('', '$curso', '$term2', )")or die(mysql_error());
+mysql_query("INSERT INTO nivel (id_nivel, curso_idcurso, asignatura_idasignatura, nivel ) VALUE ('', '$curso', '$term2' )")or die(mysql_error());
 			
 $query = mysql_query("SELECT 
 					  idasignatura,
