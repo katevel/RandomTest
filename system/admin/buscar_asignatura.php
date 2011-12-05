@@ -10,12 +10,13 @@ $cn = conectar();
 <script type="text/javascript">
 $(document).ready(function(){
 	
-	var course = <?=$_GET['course']?>;
+	
 	$("#find-asig").click(function(e){
 		var asignatura = $("#search-text").val();
 		if(asignatura!=''){
+			var course = <?=$_GET['course']?>;
 			$.ajax({
-			url:"func.search.php?type=search2&term2="+asignatura,
+			url:"func.search.php?type=search2&term2="+asignatura+"&course="+course,
 			dataType:"html", type:"post",
 			success: function(data){
 					if(data!=''){
@@ -31,10 +32,10 @@ $(document).ready(function(){
 		}
 	});
 });
-function agregar(_this){
+function agregar(_this, course){
 	if(_this!=''){
 		$.ajax({
-			url:"func.search.php?type=embed2&term2="+_this,
+			url:"func.search.php?type=embed2&term2="+_this+"&course="+course,
 			dataType:"html", type:"post",
 			success: function(data){
 				if(data!=''){

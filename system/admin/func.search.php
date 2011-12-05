@@ -63,7 +63,7 @@ $query = mysql_query("SELECT
 
 if($_GET['type']=='search2'){//guardar asignatura
 $term = $_GET['term2'];
-
+$curso = $_GET['course'];
 $query = mysql_query("SELECT 
 					  idasignatura,
 					  nombre_asignatura,
@@ -86,19 +86,19 @@ $query = mysql_query("SELECT
 		}
 	   echo "<tr>
 			<td>".$row['nombre_asignatura']."</td>
-			<td>$nombreprofe</td>
-			<td><a href='Javascript: void(0);' onclick='Javascript: agregar(".$row['idasignatura'].");'>Agregar</a></td>
+			<td>".$nombreprofe."</td>
+			<td><a href='Javascript: void(0);' onclick='Javascript: agregar(".$row['idasignatura'].",".$curso.");'>Agregar</a></td>
 		 </td>";
 	}
 }elseif($_GET['type']=='embed2'){//embutir asignaturas
 $term = $_GET['term2'];
-
-$query2 = mysql_query("SELECT MAX(idcurso) FROM curso")or die(mysql_error());
+$curso = $_GET['course'];
+/*$query2 = mysql_query("SELECT MAX(idcurso) FROM curso")or die(mysql_error());
 while($row2 = mysql_fetch_array($query2)){
 		$idcurso= $row2['0'];
 	}
-
-mysql_query("INSERT INTO nivel (id_nivel, curso_idcurso, asignatura_idasignatura, nivel ) VALUE ('', '$idcurso', '$term2', )")or die(mysql_error());
+*/
+mysql_query("INSERT INTO nivel (id_nivel, curso_idcurso, asignatura_idasignatura, nivel ) VALUE ('', '$curso', '$term2', )")or die(mysql_error());
 			
 $query = mysql_query("SELECT 
 					  idasignatura,
