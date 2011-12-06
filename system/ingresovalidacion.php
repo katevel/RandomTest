@@ -66,7 +66,7 @@ if(empty($user) || empty($pass)){
 							session_start(); 
 							$_SESSION[user_id] = $row[rut_admin];
 							$_SESSION[user_name] = $row[nombre_admin]." ".$row[apePat_admin];
-							$_SESSION[user_type] = "Alumno";
+							$_SESSION[user_type] = "Admin";
 							
 							//TODO OK PERMITIR INGRESO
 							header("Location: admin/index.php");

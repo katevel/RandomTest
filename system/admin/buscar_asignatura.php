@@ -7,20 +7,16 @@ $cn = conectar();
 <link rel="stylesheet" type="text/css" href="../../css/style.css" />
 <link rel="stylesheet" type="text/css" href="../css/formvalidate.css" />
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.3/jquery.min.js"></script>
-<script type="text/javascript" src="../js/jquery.Rut.js"></script>
 <script type="text/javascript">
 $(document).ready(function(){
 	
-	$('#search-text').Rut({
-	  on_error: function(){ alert('Rut incorrecto'); },
-	  format_on: 'keyup'
-	});
-	$("#find-child").click(function(e){
-		var rut = $("#search-text").val();
-		var course = <?=$_GET['course'];?>;
-		if(rut!=''){
+	
+	$("#find-asig").click(function(e){
+		var asignatura = $("#search-text").val();
+		if(asignatura!=''){
+			var course = <?=$_GET['course']?>;
 			$.ajax({
-			url:"func.search.php?type=search&term="+rut+"&course="+course,
+			url:"func.search.php?type=search2&term2="+asignatura+"&course="+course,
 			dataType:"html", type:"post",
 			success: function(data){
 					if(data!=''){
@@ -31,22 +27,20 @@ $(document).ready(function(){
 				}
 			});	
 		}else{
-			alert("Ingrese el rut del alumno");
+			alert("Ingrese nombre de la asignatura");
 			$("#search-text").focus();
 		}
 	});
 });
 function agregar(_this, course){
-	if(_this!='' && course!=''){
+	if(_this!=''){
 		$.ajax({
-			url:"func.search.php?type=embed&term="+_this+"&course="+course,
+			url:"func.search.php?type=embed2&term2="+_this+"&course="+course,
 			dataType:"html", type:"post",
 			success: function(data){
 				if(data!=''){
-					top.$("#table-selected tbody").append(data);
-					if(confirm("Se agrego el alumno correctamente")){
-						
-					}
+					top.$("#table-asignatura tbody").append(data);
+					alert("Se agrego la asignatura al curso correctamente");
 				}
 			}
 		});
@@ -54,27 +48,25 @@ function agregar(_this, course){
 }
 </script>
 <div id="search" class="form-style" style="margin-left:8%;">
-	<h2>Busqueda de Alumno</h2>
+	<h2>Buscar Asignatura</h2>
 	<ul>
 		<li class="first">
+			<h3>Nombre Asignatura</h3>
 			<p>
-				<input type="text" id="search-text" class="ui-widget-content" placeholder="Introduce el rut a buscar..." size="60"/>
-			</p>	
-		</li>
-		<li class="last">
-			<p>
-				<button id="find-child">Buscar</button>		
+				<input type="text" id="search-text" class="ui-widget-content" placeholder="Introduce el nombre a buscar... " size="60"/>
 			</p>
 		</li>
+		<li class="last">
+			<button id="find-asig">Buscar</button>
+		</li>
 	</ul>
+	
 </div>
 <table id="list-searching">
 	<tbody>
 		<tr>
 			<td>Nombre</td>
-			<td>Apellido</td>
-			<td>Rut</td>
-			<td>Opcion</td>
+			<td>Profesor</td>
 		</tr>
 	</tbody>
 </table>

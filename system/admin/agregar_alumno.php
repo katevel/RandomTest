@@ -1,17 +1,27 @@
-<link rel="stylesheet" type="text/css" href="../css/formvalidate.css" />
-<script type="text/javascript" src="../js/jquery.js"></script>
 <script type="text/javascript" src="../js/jquery.validate.js"></script>
 <script type="text/javascript" src="../js/jquery.Rut.js"></script>
-
 <script>
   $(document).ready(function(){
-  	
 	$('#rut').Rut({
 	  on_error: function(){ alert('Rut incorrecto'); },
 	  format_on: 'keyup'
 	});
-
-	
+	$("#fecha_nac").datepicker({
+			changeMonth: true,
+			changeYear: true,
+			dayNames: ['Domingo','Lunes', 'Martes','Miercoles','Jueves','Viernes','Sabado'],
+			dayNamesMin: ['Do','Lu','Ma','Mi','Ju','Vi','Sa'],
+			dayNamesShort: ['Dom','Lun','Mar','Mie','Jue','Vie','Sab'],
+			dateFormat:'dd/mm/yy',
+			prevText: 'Atras',
+            nextText: 'Adelante',
+			monthNames: ['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'],
+			monthNamesShort: ['Ene','Feb','Mar','Abr','May','Jun','Jul','Ago','Sep','Oct','Nov','Dic'],
+			maxDate: '-15Y',
+			minDate: '-90Y',
+			yearRange: '-90Y:-15Y',
+            firstDay: 1
+	});
     $("#form").validate({
     	rules: {
 			rut:{
@@ -45,10 +55,24 @@
     		}
     		}
     });		
+   	 var options_form1 = { // esta es la variable para ajax form para el primer formulario
+        success:   responseFrom1,  // la funcion que hace despues de guardar o recibir confirmacion de envio
+ 	    url:       './agrega_alumno.php',     //la ruta hacia donde van los datos
+        type:      'post',        // el metodo de envio comun es post
+        dataType:  'json'        // el tipo de dato que quieres recibir de donde enviaste los datos puede ser html, json, xml
+    };
+    function responseFrom1(J){
+		if(J.status=='ok'){
+			$("#form").addClass("hide"); 
+			$("#content-system").html("");
+		}
+	}
+  	$('#form').ajaxForm(options_form1);
+    
   });
 </script>
 
-<form class="" id="form" method="post" action="agrega_alumno.php">
+<form class="form-style" id="form" method="post" action="agrega_alumno.php">
 <h2>Agregar Alumno</h2>
 <ul>
     <li class="first">
@@ -78,7 +102,7 @@
     <li>
         <h3>Fecha Nacimiento</h3>
         <p>
-        	<input type="text" name="fecha_nac"  />
+        	<input type="text" name="fecha_nac"  id="fecha_nac"/>
         </p>
     </li>
 	<li>
