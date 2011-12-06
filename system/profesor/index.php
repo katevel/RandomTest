@@ -28,10 +28,9 @@ $(document).ready(function(){
 			var href = "";
 			if(type!=''){
 				switch(type){// aqui se verifica la url que hay que traer
-					case("agregaalu"): href = 'agregar_alumno.php'; break;
-					case("agregacurso"): href = 'agregar_curso.php'; break;
-					case("agregadoc"): href = 'agregar_profesor.php'; break;
-					case("agregaasig"): href = 'agregar_asignatura.php'; break;
+					case("add-preg"): href = 'agregar_pregunta.php'; break;
+					case("gen-test"): href = 'generar_prueba.php'; break;
+					case("see-result"): href = 'ver_resultados.php'; break;
 				}
 	        	$.ajax({  
 		            url: href, //esta variable se declara en la clasificacion va a variar segun el atributo type   
@@ -46,6 +45,8 @@ $(document).ready(function(){
 	</script>
 <!-------------------------------------------->
 </head>
+<? session_start();?>
+<?php if(!empty($_SESSION['user_id']) && !empty($_SESSION['user_name']) && $_SESSION['user_type']=='Profesor'){ ?>
 <body>
 	<div id="system-cont">
 	<div id="header">
@@ -54,18 +55,22 @@ $(document).ready(function(){
 	<div id="main">
 		<div id="menu">
 				<ul id="dropdown_nav">
-					<li><a href="#"><span>Ingresar Preguntas</span></a>
-
+					<li>
+						<a href="Javascript: void(0);" data-url="add-preg" class="option">
+						<span>Ingresar Preguntas</span>
+						</a>
 					</li>
-					<li><a href="#"><span>Generar Prueba</span></a>
-
-
+					<li>
+						<a href="Javascript: void(0);" data-url="gen-test" class="option">
+						<span>Generar Prueba</span>
+						</a>
 					</li>
-					<li><a href="#"><span>Resultados</span></a>
-
+					<li>
+						<a href="Javascript: void(0);" data-url="see-result" class="option">
+							<span>Resultados</span>
+						</a>
 					</li>
-					</ul>
-								
+				</ul>				
 		</div>
 		<div id="content-system">
 			
@@ -88,4 +93,8 @@ $(document).ready(function(){
 		</div>
 	</div>	
 </body>
+<? }else{
+	echo "<script>alert(\'No tienes privilegios en este sitio\');</script>";
+	header("Location: ../../index.php");
+} ?>
 </html>

@@ -53,6 +53,8 @@ $(document).ready(function(){
 	</script>
 <!-------------------------------------------->
 </head>
+<? session_start();?>
+<? if(!empty($_SESSION['user_id']) && !empty($_SESSION['user_name']) && $_SESSION['user_type']=='Admin'){ ?>
 <body>
 	<div id="system-cont">
 	<div id="header">
@@ -89,13 +91,6 @@ $(document).ready(function(){
 							<li><a class="option" data-url=" " href="Javascript: void(0);"><span>Modificar Asignaturas</span></a></li>
 						</ul>
 					</li>
-						<li><a class="last" href="#"><span>CONTENIDOS</span></a>
-						<ul class="sub_nav">
-							<li><a class="option" data-url=" " href="Javascript: void(0);"><span>Ver Contenidos</span></a></li>
-							<li><a class="option" data-url="agregacont" href="Javascript: void(0);"><span>Agregar Contenidos</span></a></li>
-							<li><a class="option" data-url=" " href="Javascript: void(0);"><span>Modificar Contenidos</span></a></li>
-						</ul>
-					</li>
 				</ul><br />
 			
 		</div>
@@ -106,7 +101,6 @@ $(document).ready(function(){
 	</div>
 	<div class="push"></div>
 	</div>
-		
 	<div id="footer">
 		<div class="footer-center">
 			<p>Random Test &copy; <?=date("Y");?>. Todos los derechos reservados</p>
@@ -120,4 +114,8 @@ $(document).ready(function(){
 		</div>
 	</div>	
 </body>
+<?}else{
+	echo "<script>alert(\'No tienes privilegios en este sitio\');</script>";
+	header("Location: ../../index.php");
+}?>
 </html>
