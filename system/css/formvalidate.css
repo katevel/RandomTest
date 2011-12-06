@@ -99,6 +99,12 @@
 	width: 90px;
 	height: 40px;
 }
+.form-style .emb{
+	margin-right: 9px;
+}
+.form-style label, input[type="checkbox"]{
+	margin-top:4px;
+}
 
 #table-selected{
 	width: 500px;
