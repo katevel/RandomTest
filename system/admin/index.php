@@ -24,11 +24,11 @@ $(document).ready(function(){
 		
 		$("#agregaalu").click(function(e){
         	$.ajax({  
-            url: 'agregar_alumno.php',  
-            success: function(data) {  
-                $('#content-system').html(data); 
-                 $('#content-system').slideDown(400); 
-            }  
+	            url: 'agregar_alumno.php',  
+	            success: function(data) {  
+	                $('#content-system').html(data); 
+	                 $('#content-system').slideDown(400); 
+	            }  
         	});  
     	});
 
