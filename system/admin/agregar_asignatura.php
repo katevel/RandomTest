@@ -37,6 +37,9 @@ $cn = conectar();
     		$("#nuevo-contenido").focus();
     	}    	
     });	
+    $("#save-todo").click(function(e){
+    	$("#content-system").html("");
+    });
     var options_form1 = { // esta es la variable para ajax form para el primer formulario
         success:       responseFrom1,  // la funcion que hace despues de guardar o recibir confirmacion de envio
  	    url:       './agrega_asignatura.php',     //la ruta hacia donde van los datos
@@ -110,7 +113,7 @@ $query1 = mysql_query("select idprofesor, nombre_profesor, apePat_profesor from 
 		<button type="button" id="add-contenido">Guardar</button>
 	</li>
 </ul>
-<table id="table">
+<table id="contenido-agregado">
 	<thead>
 		<tr>
 			<th scope="col">ID</th>
@@ -122,5 +125,5 @@ $query1 = mysql_query("select idprofesor, nombre_profesor, apePat_profesor from 
 		
 	</tbody>
 </table>
-	<button type="button" id="Guardar-todo">Guardar</button>
+	<button type="button" id="save-todo">Guardar</button>
 </div>
