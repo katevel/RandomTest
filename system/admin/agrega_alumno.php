@@ -12,7 +12,6 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
 	@$direccion = $_POST['direccion'];
 	@$telefono = $_POST['telefono'];
 	@$pass = $_POST['pass'];
-	echo "<pre>".print_r($_POST)."</pre>";die();
 	if(!empty($rut)){
 		// fecha de naciomiento
 		$exp = explode("/",$_POST['fecha_nac']);

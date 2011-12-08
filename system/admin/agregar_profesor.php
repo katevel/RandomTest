@@ -18,9 +18,9 @@
             nextText: 'Adelante',
 			monthNames: ['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'],
 			monthNamesShort: ['Ene','Feb','Mar','Abr','May','Jun','Jul','Ago','Sep','Oct','Nov','Dic'],
-			maxDate: '-15Y',
+			maxDate: '-2Y',
 			minDate: '-90Y',
-			yearRange: '-90Y:-15Y',
+			yearRange: '-90Y:-2Y',
             firstDay: 1
 	});
     $("#form").validate({

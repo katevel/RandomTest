@@ -84,7 +84,7 @@ $(document).ready(function(){
   });
 </script>
 <form class="form-style" id="form">
-<h2>Agregar Asignatura</h2>
+<h2>Agregar Curso</h2>
 <ul>
     <li class="first">
         <h3>Nivel</h3>
