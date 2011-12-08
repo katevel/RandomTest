@@ -15,7 +15,7 @@ $asignaturas = mysql_query("SELECT
 							  Asignatura.nombre_asignatura
 							FROM profesor_has_asignatura Has,
 							  asignatura Asignatura
-							WHERE Has.profesor_idprofesor = 1
+							WHERE Has.profesor_idprofesor = ".$_SESSION[user_id]."
 							    AND Has.asignatura_idasignatura = Asignatura.idasignatura
 							ORDER BY Asignatura.nombre_asignatura ASC")or die(mysql_error());
 
