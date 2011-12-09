@@ -10,6 +10,8 @@
 <script type="text/javascript" src="../js/jquery.validate.js"></script>
 <script type="text/javascript" src="../js/jquery.Rut.js"></script>
 <script type="text/javascript" src="../js/jquery.form.js"></script>
+<script type="text/javascript" src="../js/jquery.reset.js"></script>
+
 <link rel="stylesheet" type="text/css" href="../css/newmenu.css" />
 	<script type="text/javascript">
 $(document).ready(function(){
@@ -36,7 +38,7 @@ $(document).ready(function(){
 	        	$.ajax({  
 		            url: href, //esta variable se declara en la clasificacion va a variar segun el atributo type   
 		            success: function(data) {
-	            	 $("#contetn-system").html("");   
+	            	 $("#content-system").html("");   
 	                 $('#content-system').html(data).show('slow');
 	            	}  
 	        	});  

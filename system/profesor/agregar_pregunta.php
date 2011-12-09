@@ -76,7 +76,8 @@ $(document).ready(function(){
 			$("#form").addClass("hide");
 			$("#form2").removeClass("hide");
 			$("#cant-ing").val(J.cant);
-			$("#asign-ing").val(J.cant);
+			$("#asign-ing").val(J.asign);
+			$("#form2").find(".countdown").text("Preguntas restantes: "+J.cant);
 		}
 	}
 	function responseForm2(J){
@@ -84,8 +85,14 @@ $(document).ready(function(){
 			var cant = $("#cant-ing").val();
 			cant = parseInt(cant);
 			cant = cant-1;
-			$("#cant-ing").val("");
-			$("#cant-ing").val(cant);
+			if(cant>0){
+				$("#form2").reset();
+				$("#cant-ing").val("");
+				$("#cant-ing").val(cant);
+				$("#form2").find(".countdown").text("Preguntas restantes: "+cant);
+			}else{
+				$("#content-system").html(""); 
+			}
 		}
 	}
   	$('#form').ajaxForm(options_form1);
@@ -125,6 +132,7 @@ $(document).ready(function(){
 	<input type="hidden" name="cant-ing" id="cant-ing" value="" />
 	<input type="hidden" name="asign-ing" id="asign-ing" value="" />
 	<ul>
+	<h2 class="countdown"></h2>
 	<li class="first">
         <h3>Pregunta</h3>
         <p>
