@@ -212,11 +212,11 @@ CREATE TABLE `profesor` (
   `estado_profesor` varchar(45) NOT NULL DEFAULT 'ACTIVO',
   `password_profesor` varchar(8) NOT NULL,
   PRIMARY KEY (`idprofesor`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 
 /*Data for the table `profesor` */
 
-insert  into `profesor`(`idprofesor`,`rut_profesor`,`nombre_profesor`,`apePat_profesor`,`apeMat_profesor`,`fnac_profesor`,`direccion_profesor`,`telefono_profesor`,`estado_profesor`,`password_profesor`) values (1,'11.686.636-6','Miriam','Suarez','Santana','1985-12-13','sadad22','4232683','ACTIVO','hola'),(2,'12.481.700-5','Mauricio','Sarmiento','Valdivia','1981-12-24','sadasd2','5236588','ACTIVO','hola'),(3,'6.412.030-1','Macarena','Rivas','Cruz','1964-12-17','asdadasd22','5236947','ACTIVO','hola'),(4,'5.746.204-3','Javiera','Jimenez','Diaz','1978-12-21','sadasd2','2544896','ACTIVO','hola'),(5,'11.180.542-3','Natalia','Jaque','Rojas','1954-12-24','sadsadw2','4236574','ACTIVO','hola'),(6,'13.278.930-4','Bruno','Navarro','Jaramillo','1957-12-25','sadkflasdkjlsadfjl','5412369','ACTIVO','hola');
+insert  into `profesor`(`idprofesor`,`rut_profesor`,`nombre_profesor`,`apePat_profesor`,`apeMat_profesor`,`fnac_profesor`,`direccion_profesor`,`telefono_profesor`,`estado_profesor`,`password_profesor`) values (1,'11.686.636-6','Miriam','Suarez','Santana','1985-12-13','sadad22','4232683','ACTIVO','hola'),(2,'12.481.700-5','Mauricio','Sarmiento','Valdivia','1981-12-24','sadasd2','5236588','ACTIVO','hola'),(3,'6.412.030-1','Macarena','Rivas','Cruz','1964-12-17','asdadasd22','5236947','ACTIVO','hola'),(4,'5.746.204-3','Javiera','Jimenez','Diaz','1978-12-21','sadasd2','2544896','ACTIVO','hola'),(5,'11.180.542-3','Natalia','Jaque','Rojas','1954-12-24','sadsadw2','4236574','ACTIVO','hola'),(6,'13.278.930-4','Bruno','Navarro','Jaramillo','1957-12-25','sadkflasdkjlsadfjl','5412369','ACTIVO','hola'),(7,'16.414.117-9','Pablo','Salgado','Arias','1987-02-16','asdasd','5254766','ACTIVO','123');
 
 /*Table structure for table `profesor_has_asignatura` */
 
@@ -228,11 +228,11 @@ CREATE TABLE `profesor_has_asignatura` (
   `asignatura_idasignatura` int(11) NOT NULL,
   PRIMARY KEY (`profesor_idprofesor`,`asignatura_idasignatura`),
   UNIQUE KEY `id_profe_asig` (`id_profe_asig`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
 
 /*Data for the table `profesor_has_asignatura` */
 
-insert  into `profesor_has_asignatura`(`id_profe_asig`,`profesor_idprofesor`,`asignatura_idasignatura`) values (1,1,1),(2,2,2),(3,3,3),(4,4,4),(5,6,5),(6,4,6);
+insert  into `profesor_has_asignatura`(`id_profe_asig`,`profesor_idprofesor`,`asignatura_idasignatura`) values (1,1,1),(2,2,2),(3,3,3),(4,4,4),(5,6,5),(6,4,6),(7,7,1),(8,7,2);
 
 /*Table structure for table `prueba` */
 
