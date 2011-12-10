@@ -11,7 +11,6 @@
 <script type="text/javascript" src="../js/jquery.Rut.js"></script>
 <script type="text/javascript" src="../js/jquery.form.js"></script>
 <script type="text/javascript" src="../js/jquery.reset.js"></script>
-
 <link rel="stylesheet" type="text/css" href="../css/newmenu.css" />
 	<script type="text/javascript">
 $(document).ready(function(){
@@ -63,6 +62,11 @@ $(document).ready(function(){
 						<span>Ingresar Preguntas</span>
 						</a>
 					</li>
+					<li><a href="#"><span>Generar Prueba</span></a>
+						<ul class="sub_nav">
+							<li><a class="option" data-url=" " href="Javascript: void(0);"><span>Prueba Presencial</span></a></li>
+							<li><a class="option" data-url="agregadoc" href="Javascript: void(0);"><span>Prueba Online</span></a></li>
+						</ul>
 					<li>
 						<a href="Javascript: void(0);" data-url="gen-test" class="option">
 						<span>Generar Prueba</span>
