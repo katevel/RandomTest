@@ -33,6 +33,8 @@ $(document).ready(function(){
 					case("add-preg"): href = 'agregar_pregunta.php'; break;
 					case("gen-test"): href = 'generar_prueba.php'; break;
 					case("see-result"): href = 'ver_resultados.php'; break;
+					case("gen-presencial"): href = 'presencial.php'; break;
+					case("gen-online"): href = 'online.php'; break;
 				}
 	        	$.ajax({  
 		            url: href, //esta variable se declara en la clasificacion va a variar segun el atributo type   
@@ -64,8 +66,8 @@ $(document).ready(function(){
 					</li>
 					<li><a href="#"><span>Generar Prueba</span></a>
 						<ul class="sub_nav">
-							<li><a class="option" data-url=" " href="Javascript: void(0);"><span>Prueba Presencial</span></a></li>
-							<li><a class="option" data-url="agregadoc" href="Javascript: void(0);"><span>Prueba Online</span></a></li>
+							<li><a class="option" data-url="gen-presencial" href="Javascript: void(0);"><span>Prueba Presencial</span></a></li>
+							<li><a class="option" data-url="gen-online" href="Javascript: void(0);"><span>Prueba Online</span></a></li>
 						</ul>
 					<li>
 						<a href="Javascript: void(0);" data-url="gen-test" class="option">
