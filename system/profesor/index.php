@@ -58,8 +58,10 @@ $(document).ready(function(){
 
 					</li>
 					<li><a href="#"><span>Generar Prueba</span></a>
-
-
+						<ul class="sub_nav">
+							<li><a class="option" data-url=" " href="Javascript: void(0);"><span>Prueba Presencial</span></a></li>
+							<li><a class="option" data-url="agregadoc" href="Javascript: void(0);"><span>Prueba Online</span></a></li>
+													</ul>
 					</li>
 					<li><a href="#"><span>Resultados</span></a>
 
