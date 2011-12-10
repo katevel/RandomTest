@@ -4,7 +4,7 @@ $cn = conectar();
 
 if($_GET['type']=='search'){
 $term = $_GET['term'];
-
+$curso = $_GET['course'];
 $query = mysql_query("SELECT 
 					  idalumno,
 					  rut_alumno,
@@ -21,18 +21,18 @@ $query = mysql_query("SELECT
 			<td>".$row['nombre_alumno']."</td>
 			<td>".$row['apePat_alumno']."</td>
 			<td>".$row['rut_alumno']."</td>
-			<td><a href='Javascript: void(0);' onclick='Javascript: agregar(".$row['idalumno'].");'>Agregar</a></td>
+			<td><a href='Javascript: void(0);' onclick='Javascript: agregar(".$row['idalumno'].",".$curso.");'>Agregar</a></td>
 		 </td>";
 	}
 }elseif($_GET['type']=='embed'){
 $term = $_GET['term'];
-
-$query2 = mysql_query("SELECT MAX(idcurso) FROM curso")or die(mysql_error());
+$curso = $_GET['course']; //se envia por ajax :p
+/*$query2 = mysql_query("SELECT MAX(idcurso) FROM curso")or die(mysql_error());
 while($row2 = mysql_fetch_array($query2)){
 		$idcurso= $row2['0'];
-	}
+	}*/
 
-mysql_query("INSERT INTO alumno_has_curso (alumno_idalumno, curso_idcurso) VALUE ('$term', '$idcurso')")or die(mysql_error());
+mysql_query("INSERT INTO alumno_has_curso (alumno_idalumno, curso_idcurso) VALUE ('$term', '$curso')")or die(mysql_error());
 			
 $query = mysql_query("SELECT 
 					  idalumno,
@@ -63,7 +63,7 @@ $query = mysql_query("SELECT
 
 if($_GET['type']=='search2'){//guardar asignatura
 $term = $_GET['term2'];
-
+$curso = $_GET['course'];
 $query = mysql_query("SELECT 
 					  idasignatura,
 					  nombre_asignatura,
@@ -74,31 +74,36 @@ $query = mysql_query("SELECT
 					ORDER BY nombre_asignatura ")or die(mysql_error());
 					
 	while($row = mysql_fetch_assoc($query)){
-		$idasignatura= $row['idasignatura'];
+		@$idasignatura= $row['idasignatura'];
+		$nombre_asignatura = $row['nombre_asignatura'];
+	}
 		$query2= mysql_query("SELECT idprofesor, 
 									rut_profesor, 
-									nombre_profesor 
+									nombre_profesor,
+									apePat_profesor 
 							 FROM profesor INNER JOIN profesor_has_asignatura ON
 							 idprofesor = profesor_idprofesor INNER JOIN asignatura ON
-							 asignatura_idasignatura = idasignatura WHERE idasignatura = '".$idasginatura."' ")or die(mysql_error());
+							 asignatura_idasignatura = idasignatura WHERE idasignatura = '".@$idasignatura."' ")or die(mysql_error());
 		while($row2 = mysql_fetch_assoc($query2)){
 			$nombreprofe= $row2['nombre_profesor']." ". $row2['apePat_profesor'];
 		}
 	   echo "<tr>
-			<td>".$row['nombre_asignatura']."</td>
-			<td>$nombreprofe</td>
-			<td><a href='Javascript: void(0);' onclick='Javascript: agregar(".$row['idasignatura'].");'>Agregar</a></td>
+			<td>".$nombre_asignatura."</td>
+			<td>".$nombreprofe."</td>
+			<td><a href='Javascript: void(0);' onclick='Javascript: agregar(".$idasignatura.",".$curso.");'>Agregar</a></td>
 		 </td>";
-	}
+	
 }elseif($_GET['type']=='embed2'){//embutir asignaturas
 $term = $_GET['term2'];
+$curso = $_GET['course'];
 
-$query2 = mysql_query("SELECT MAX(idcurso) FROM curso")or die(mysql_error());
+// ya teniamos el id del curso era mejor consultar por el nivel del id de ese curso =D 
+$query2 = mysql_query("SELECT nivel_ens FROM curso WHERE idcurso = ".$curso." ")or die(mysql_error());
 while($row2 = mysql_fetch_array($query2)){
-		$idcurso= $row2['0'];
-	}
+		$nivel_ens= $row2['0'];
+}
 
-mysql_query("INSERT INTO nivel (id_nivel, curso_idcurso, asignatura_idasignatura, nivel ) VALUE ('', '$idcurso', '$term2', )")or die(mysql_error());
+mysql_query("INSERT INTO nivel (id_nivel, curso_idcurso, asignatura_idasignatura, nivel ) VALUE ('', ".$curso.",".$term2.",".$nivel_ens." )")or die(mysql_error());
 			
 $query = mysql_query("SELECT 
 					  idasignatura,

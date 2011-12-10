@@ -5,6 +5,9 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <link rel="stylesheet" type="text/css" href="../../css/style.css" />
 <link rel="stylesheet" type="text/css" href="../css/formvalidate.css" />
+<link rel="stylesheet" type="text/css" href="../js/fancybox/jquery.fancybox-1.3.4.css" media="screen" />
+<link rel="stylesheet" type="text/css" href="../js/jqueryui/css/smoothness/jquery-ui-1.8.16.custom.css" media="screen" />
+<link rel="stylesheet" type="text/css" href="../css/newmenu.css" />
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.3/jquery.min.js"></script>
 <script type="text/javascript" src="../js/fancybox/jquery.fancybox-1.3.4.pack.js"></script>
 <script type="text/javascript" src="../js/jquery.validate.js"></script>
@@ -13,13 +16,10 @@
 <script type="text/javascript" src="../js/jqueryui/js/jquery-ui-1.8.16.custom.min.js"></script>
 <script type="text/javascript" src="../js/jquery.alphanumeric.pack.js"></script>
 <script type="text/javascript" src="../js/fancybox/jquery.mousewheel-3.0.4.pack.js"></script>
-<link rel="stylesheet" type="text/css" href="../js/fancybox/jquery.fancybox-1.3.4.css" media="screen" />
-<link rel="stylesheet" type="text/css" href="../js/jqueryui/css/smoothness/jquery-ui-1.8.16.custom.css" media="screen" />
-<link rel="stylesheet" type="text/css" href="../css/newmenu.css" />
+
 <script type="text/javascript">
 $(document).ready(function(){
 	$('#dropdown_nav li').find('.sub_nav').hide();
-
 			//When hovering over the main nav link we find the dropdown menu to the corresponding link.
 		$('#dropdown_nav li').hover(function() {
 				//Find a child of 'this' with a class of .sub_nav and make the beauty fadeIn.
@@ -28,14 +28,13 @@ $(document).ready(function(){
 				//Do the same again, only fadeOut this time.
 				$(this).find('.sub_nav').fadeOut(50);
 		});
-		
 		$(".option").click(function(e){
 			var type = $(this).attr("data-url"); //verifica hacia que archivo irá, cuando se hace click en el menu
 			var href = "";
 			if(type!=''){
 				switch(type){// aqui se verifica la url que hay que traer
 					case("agregaalu"): href = 'agregar_alumno.php'; break;
-					case("agregacurso"): href = 'agregar_curso.php'; break;
+					case("agregacurso"): href = 'add_curso.php'; break;
 					case("agregadoc"): href = 'agregar_profesor.php'; break;
 					case("agregaasig"): href = 'agregar_asignatura.php'; break;
 				}
@@ -52,6 +51,8 @@ $(document).ready(function(){
 	</script>
 <!-------------------------------------------->
 </head>
+<? session_start();?>
+<? if(!empty($_SESSION['user_id']) && !empty($_SESSION['user_name']) && $_SESSION['user_type']=='Admin'){ ?>
 <body>
 	<div id="system-cont">
 	<div id="header">
@@ -88,13 +89,6 @@ $(document).ready(function(){
 							<li><a class="option" data-url=" " href="Javascript: void(0);"><span>Modificar Asignaturas</span></a></li>
 						</ul>
 					</li>
-						<li><a class="last" href="#"><span>CONTENIDOS</span></a>
-						<ul class="sub_nav">
-							<li><a class="option" data-url=" " href="Javascript: void(0);"><span>Ver Contenidos</span></a></li>
-							<li><a class="option" data-url="agregacont" href="Javascript: void(0);"><span>Agregar Contenidos</span></a></li>
-							<li><a class="option" data-url=" " href="Javascript: void(0);"><span>Modificar Contenidos</span></a></li>
-						</ul>
-					</li>
 				</ul><br />
 			
 		</div>
@@ -105,7 +99,6 @@ $(document).ready(function(){
 	</div>
 	<div class="push"></div>
 	</div>
-		
 	<div id="footer">
 		<div class="footer-center">
 			<p>Random Test &copy; <?=date("Y");?>. Todos los derechos reservados</p>
@@ -119,4 +112,8 @@ $(document).ready(function(){
 		</div>
 	</div>	
 </body>
+<?}else{
+	echo "<script>alert(\'No tienes privilegios en este sitio\');</script>";
+	header("Location: ../../index.php");
+}?>
 </html>

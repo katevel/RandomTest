@@ -1,4 +1,3 @@
-
 <form class="form-style" id="form">
 	<h2>Agregar Curso</h2>
 	<ul>

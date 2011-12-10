@@ -124,9 +124,10 @@ $(document).ready(function(){
 	            </form>
         	</div>
 		</div>
+		<div class="push"></div>
 	</div>
 	<div id="footer">
-		<div id="footer-center">
+		<div class="footer-center">
 			<p>Random Test &copy; <?=date("Y");?>. Todos los derechos reservados</p>
 			<ul>
 				<li><a href="#">Home</a></li>
@@ -136,6 +137,6 @@ $(document).ready(function(){
 				<li><a href="#">Contacto</a></li>
 			</ul>
 		</div>
-	</div>	
+	</div>		
 </body>
 </html>

@@ -22,11 +22,11 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
 		
 			while($row = mysql_fetch_assoc($query2)){
 			@$idasignatura= $row['idasignatura'];
-			$query3 = mysql_query("INSERT INTO profesor_has_asignatura ( id_profe_asig,
+			$query3 = mysql_query("INSERT INTO profesor_has_asignatura ( 
 																		profesor_idprofesor,
 													   					asignatura_idasignatura
 													 					) 
-							 VALUES('','$idprofe' , '$idasignatura' )")or die(mysql_error());
+							 VALUES('$idprofe' , '$idasignatura' )")or die(mysql_error());
 	
 			}
 		echo json_encode(array("status"=>"ok","asignatura"=>$idasignatura));

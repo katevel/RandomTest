@@ -99,6 +99,12 @@
 	width: 90px;
 	height: 40px;
 }
+.form-style .emb{
+	margin-right: 9px;
+}
+.form-style label, input[type="checkbox"]{
+	margin-top:4px;
+}
 
 #table-selected{
 	width: 500px;
@@ -112,7 +118,7 @@
 	width: 150px;
 	text-align: center;
 }
-#buscarAlu{
+.button-search{
 	width: 100px;
 	background: url("../images/search.png") no-repeat;
 	background-position: top right;
@@ -133,7 +139,7 @@
 	background: url('../images/delete.png') no-repeat;
 }
 
-#contenido-agregado
+table
 {
 	font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
 	font-size: 12px;
@@ -142,7 +148,7 @@
 	text-align: left;
 	border-collapse: collapse;
 }
-#contenido-agregado th
+table th
 {
 	font-size: 13px;
 	font-weight: normal;
@@ -152,7 +158,7 @@
 	border-bottom: 1px solid #fff;
 	color: #039;
 }
-#contenido-agregado td
+table td
 {
 	padding: 8px;
 	background: #e8edff; 
@@ -160,7 +166,7 @@
 	color: #669;
 	border-top: 1px solid transparent;
 }
-#contenido-agregado tr:hover td
+table tr:hover td
 {
 	background: #d0dafd;
 	color: #339;

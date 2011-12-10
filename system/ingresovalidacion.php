@@ -25,13 +25,13 @@ if(empty($user) || empty($pass)){
 		session_register("user_id");
 		session_register("user_name");
 		session_register("user_type");
-		session_start(); 
-		$_SESSION[user_id] = $row[rut_profesor];
-		$_SESSION[user_name] = $row[nombre_profesor]." ".$row[apePat_profesor];
-		$_SESSION[user_type] = "Profesor";
+		$_SESSION['user_id'] = "$row[idprofesor]";
+		$_SESSION['user_name'] = "$row[nombre_profesor] $row[apePat_profesor]";
+		$_SESSION['user_type'] = "Profesor";
 
 
 		//TODO OK PERMITIR INGRESO
+		
 		header("Location: profesor/index.php");
 
 	}else{
@@ -45,10 +45,9 @@ if(empty($user) || empty($pass)){
 			session_register("user_id");
 			session_register("user_name");
 			session_register("user_type");
-			session_start(); 
-			$_SESSION[user_id] = $row[rut_alumno];
-			$_SESSION[user_name] = $row[nombre_alumno]." ".$row[apePat_alumno];
-			$_SESSION[user_type] = "Alumno";
+			$_SESSION['user_id'] = "$row[idalumno]";
+			$_SESSION['user_name'] = "$row[nombre_alumno]  $row[apePat_alumno]";
+			$_SESSION['user_type'] = "Alumno";
 					
 						//TODO OK PERMITIR INGRESO
 						header("Location: alumno/index.php");
@@ -63,10 +62,9 @@ if(empty($user) || empty($pass)){
 							session_register("user_id");
 							session_register("user_name");
 							session_register("user_type");
-							session_start(); 
-							$_SESSION[user_id] = $row[rut_admin];
-							$_SESSION[user_name] = $row[nombre_admin]." ".$row[apePat_admin];
-							$_SESSION[user_type] = "Alumno";
+							$_SESSION['user_id'] = "$row[idadministrador]";
+							$_SESSION['user_name'] = "$row[nombre_admin] $row[apePat_admin]";
+							$_SESSION['user_type'] = "Admin";
 							
 							//TODO OK PERMITIR INGRESO
 							header("Location: admin/index.php");
