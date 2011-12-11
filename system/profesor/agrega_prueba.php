@@ -52,21 +52,21 @@ $cn = conectar();
 			                    'Creator'=>'',
 			                    'Producer'=>''
 			                    );
-								
 			$pdf->addInfo($datacreator);
-			$pdf->ezText("<b>Prueba de ".$nombre_asignatura."</b><br />",20);
-			$pdf->ezText("Nombre Alumno: ........................................ Fecha:...... Curso: .....<br />",20);
-			$pdf->ezText("\n\n\n",20);
+			$pdf->ezText("<b>Prueba de ".$nombre_asignatura."</b>\n",20);
+			$pdf->ezText("Nombre Alumno: ........................................ Fecha:...... Curso: .....\n",12);
+			$pdf->ezText("\n\n\n",10);
+			/*
 			$i = 1;
 			while($row = mysql_fetch_array($query)){
-				$alternativas = getAlternatives($row[0]);
-				$pdf->ezText("".$i." - ".$row[1]."\n",12);
-				$pdf->ezText("\n\n\n",10);
-				foreach($alternativas['alternativa'] as $a => $alternativa){
+				//$alternativas = getAlternatives($row[0]);
+				//$pdf->ezText("".$i." - ".$row[1]."\n",12);
+				//$pdf->ezText("\n\n\n",10);
+				/*foreach($alternativas['alternativa'] as $a => $alternativa){
 				$pdf->ezText("-".$alternativa,10);	
 				}
 			$i++;
-			}				
+			}	*/			
 			$pdf->ezStream();
 	
 /*		}
