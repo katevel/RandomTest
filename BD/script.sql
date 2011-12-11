@@ -147,6 +147,7 @@ CREATE TABLE `detalle_prueba` (
   `prueba_idprueba` int(11) NOT NULL,
   `iddificultad` int(11) NOT NULL,
   `idcontenido` int(11) NOT NULL,
+  `cantidad` int(3) NOT NULL,
   PRIMARY KEY (`iddetalle_prueba`,`prueba_idprueba`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
