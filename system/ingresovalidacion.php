@@ -72,6 +72,7 @@ if(empty($user) || empty($pass)){
 						}else{
 							
 							echo "<script>alert(\"Usuario o password incorrectos\");</script>";
+							header("Location: ../index.php?error=empty");
 						}
 							
 						}
