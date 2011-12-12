@@ -45,6 +45,7 @@ if($_POST['type']=='FIRST'){
 			$resultado = array();
 			include('../lib/class.ezpdf.php');
 			$pdf = new Cezpdf('a4');
+			$pdf->selectFont('../lib/fonts/Helvetica.afm');
 			$datacreator = array (
 			                    'Title'=>'Ejemplo PDF',
 			                    'Author'=>'',
@@ -53,9 +54,8 @@ if($_POST['type']=='FIRST'){
 			                    'Producer'=>''
 			                    );
 			$pdf->addInfo($datacreator);
-			$pdf->ezText("<b>Prueba de ".$nombre_asignatura."</b>\n",20);
-			$pdf->ezText("\n\n\n",10);
-			$pdf->ezText("Nombre Alumno: ........................................ Fecha:...... Curso: .....\n",12);
+			$pdf->ezText("<b>Prueba de ".$nombre_asignatura."\n</b>",20);
+			$pdf->ezText("\n\nNombre Alumno: ........................................ Fecha:...... Curso: .....\n",12);
 			$pdf->ezText("\n\n\n",10);
 			
 			$i = 1;
