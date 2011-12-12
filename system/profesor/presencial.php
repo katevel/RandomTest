@@ -122,5 +122,5 @@ $(document).ready(function(){
 		</tbody>
 	</table>
 	<input type="submit" value="Generar" />
-	
 </form>
+

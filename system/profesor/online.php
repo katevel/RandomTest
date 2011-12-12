@@ -36,6 +36,9 @@ $(document).ready(function(){
         type:      'post',        // el metodo de envio comun es post
         dataType:  'json'        // el tipo de dato que quieres recibir de donde enviaste los datos puede ser html, json, xml
     };
+    var options_form3 = {
+    	beforeSubmit: beforeForm3
+    };
     function responseForm(J){
 		if(J.status=='ok'){
 			$("#form").addClass("hide");
@@ -46,11 +49,17 @@ $(document).ready(function(){
 	}
 	function responseForm2(J){
 		if(J.status=='ok'){
-			
+			$("#form2").addClass("hide");
+			$("#form3").removeClass("hide");
 		}
+	}
+	function beforeForm3(){
+		$("#content-system").html(""); 
 	}
   	$('#form').ajaxForm(options_form1);
   	$('#form2').ajaxForm(options_form2);
+  	$('#form3').ajaxForm(options_form3);
+  	
   	$("#add-preguntas").click(function(e){
   		var asign = $("#asign-form2").val();
   		var curso = $("#curso-form2").val();
@@ -122,5 +131,16 @@ $(document).ready(function(){
 		</tbody>
 	</table>
 	<input type="submit" value="Generar" />
-	
+</form>
+<form id="form3" class="form-style hide">
+	<ul>
+		<li class="first">
+			<p>
+				Se agrego la prueba exitosamente.
+			</p>
+		</li>
+		<li class="last">
+			<input type="submit" value="Cerrar">
+		</li>	
+	</ul>
 </form>
