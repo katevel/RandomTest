@@ -3,7 +3,7 @@ require("../conexion.php");
 include("global.php");
 $cn = conectar();
 
-/*if($_POST['type']=='FIRST'){
+if($_POST['type']=='FIRST'){
 		echo json_encode(array("status"=>"ok","asignatura"=>$_POST['asignatura'],"curso"=>$_POST['curso']));	
 }else{
 	if($_POST['type']=='AFTER'){
@@ -18,7 +18,7 @@ $cn = conectar();
 		$cantidad_grupos =  count($preguntas);
 		
 		if($cantidad_grupos == 3){
-			$limit = ((int)$preguntas[0]['cantidad'])+((int)$preguntas[1]['cantidad'])+((int)$preguntas[2]['cantidad']);*/
+			$limit = ((int)$preguntas[0]['cantidad'])+((int)$preguntas[1]['cantidad'])+((int)$preguntas[2]['cantidad']);
 			$query = mysql_query("(
 								SELECT
 								  Pregunta.idPregunta, Pregunta.pregunta
@@ -55,7 +55,6 @@ $cn = conectar();
 			                    );
 			$pdf->addInfo($datacreator);
 			$pdf->ezText("<b>Prueba de ".$nombre_asignatura."\n</b>",20);
-
 			$pdf->ezText("\n\nNombre Alumno: ........................................ Fecha:...... Curso: .....\n",12);
 			$pdf->ezText("\n\n\n",10);
 			
@@ -72,7 +71,10 @@ $cn = conectar();
 			ob_end_clean();	
 			$pdf->ezStream();
 	
-/*		}
+		}
 	}
-}	*/
+	if($_POST['type']=='ONLINE'){
+		echo "<pre>"; print_r($_POST); echo "</pre>";
+	}
+}	
 ?>
