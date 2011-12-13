@@ -1,6 +1,6 @@
 /*
-SQLyog Ultimate v9.02 
-MySQL - 5.5.8-log : Database - randomtest
+SQLyog Enterprise - MySQL GUI v8.05 
+MySQL - 5.1.36-community-log : Database - randomtest
 *********************************************************************
 */
 
@@ -8,10 +8,9 @@ MySQL - 5.5.8-log : Database - randomtest
 
 /*!40101 SET SQL_MODE=''*/;
 
-/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
-/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
 CREATE DATABASE /*!32312 IF NOT EXISTS*/`randomtest` /*!40100 DEFAULT CHARACTER SET utf8 */;
 
 USE `randomtest`;
@@ -36,7 +35,11 @@ CREATE TABLE `administrador` (
 
 /*Data for the table `administrador` */
 
+LOCK TABLES `administrador` WRITE;
+
 insert  into `administrador`(`idadministrador`,`rut_admin`,`nombre_admin`,`apePat_admin`,`apeMat_admin`,`fnac_admin`,`direccion_admin`,`telefono_admin`,`estado_admin`,`password_admin`) values (1,'17.312.391-4','Catherine','Velásquez','Miranda','1989-11-10','el pino 853','9871504','ACTIVO','wishyou');
+
+UNLOCK TABLES;
 
 /*Table structure for table `alternativas` */
 
@@ -46,11 +49,17 @@ CREATE TABLE `alternativas` (
   `idalternativas` int(11) NOT NULL AUTO_INCREMENT,
   `alternativa` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
   `pregunta_idPregunta` int(11) NOT NULL,
-  `alternativascol` varchar(45) COLLATE utf8_unicode_ci NOT NULL,
+  `tipo` varchar(45) COLLATE utf8_unicode_ci NOT NULL DEFAULT 'OPCION' COMMENT 'OPCION, CORRECTA',
   PRIMARY KEY (`idalternativas`,`pregunta_idPregunta`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 /*Data for the table `alternativas` */
+
+LOCK TABLES `alternativas` WRITE;
+
+insert  into `alternativas`(`idalternativas`,`alternativa`,`pregunta_idPregunta`,`tipo`) values (1,'asdasd1',1,'CORRECTA'),(2,'asdasd2',1,'OPCION'),(3,'asdasda3',1,'OPCION'),(4,'asdasd4',1,'OPCION'),(5,'asdasd 1',2,'OPCION'),(6,'asdasd43',2,'OPCION'),(7,'asdasd3',2,'OPCION'),(8,'asdasd4',2,'CORRECTA'),(9,'asdasd 1',3,'OPCION'),(10,'asdsdas 2',3,'OPCION'),(11,'asdasd 3',3,'CORRECTA'),(12,'asdasds 4',3,'OPCION'),(13,'Sdasdasd 1',4,'CORRECTA'),(14,'asdasd2',4,'OPCION'),(15,'asdasd 3',4,'OPCION'),(16,'asdasd 4',4,'OPCION');
+
+UNLOCK TABLES;
 
 /*Table structure for table `alumno` */
 
@@ -72,7 +81,11 @@ CREATE TABLE `alumno` (
 
 /*Data for the table `alumno` */
 
+LOCK TABLES `alumno` WRITE;
+
 insert  into `alumno`(`idalumno`,`rut_alumno`,`nombre_alumno`,`apePat_alumno`,`apeMat_alumno`,`fnac_alumno`,`direccion_alumno`,`telefono_alumno`,`estado`,`password_alumno`) values (1,'18.608.786-0','Maria','Cerda','Ramirez','1996-12-04','Esadffds','545454545','ACTIVO','hola'),(2,'20.803.254-2','Alex','Perez','Salazar','2005-12-10','asas','5216444','ACTIVO','hola'),(3,'13.535.560-7','Alan','Cabezas','Cabezon','2004-12-22','sadasd','5254584','ACTIVO','hola'),(4,'17.558.173-1','Alexandra','Tapia','Herrera','2008-12-19','sdsd','525447','ACTIVO','hola'),(5,'18.257.595-k','Antonio','Arancibia','Aguirre','2004-12-16','sdasd44ds','5874158','ACTIVO','hola'),(6,'7.635.601-7','Karla','Rojas','Rivera','2003-12-17','sadads','2345566','ACTIVO','hola'),(7,'14.605.759-4','Karol','Villaroel','Massa','2002-12-13','sdsdsdsd','2344556','ACTIVO','hola'),(8,'16.168.600-k','Valeria','Massa','Perez','2002-12-12','sadasd454','5214587','ACTIVO','hola'),(9,'19.097.697-1','Alexis','Sanchez','Mora','2004-12-09','asasd22','2334567','ACTIVO','hola'),(10,'19.097.697-1','Felipe','Gutierres','Perez','1997-12-19','sadad22','2345566','ACTIVO','hola'),(11,'9.530.554-7','Kassandra','Villa','Sanchez','2004-12-23','sadsd22','5215478','ACTIVO','hola'),(12,'20.579.729-7','Carlos','Villanueva','Valdivia','2006-12-08','sdad2','4114589','ACTIVO','hola'),(13,'13.205.437-1','Christian','Diaz','Aguirre	','2002-12-18','sadasd','2345678','ACTIVO','hola'),(14,'5.141.607-4','Catalina','Fernandez','Quiroz','1999-12-09','qdsfdsdgsdf','2345678','ACTIVO','hola'),(15,'5.014.806-8','Clara','Aguirre','MuÃƒÂ±oz','1996-12-27','23123rsdf','2345678','ACTIVO','hola'),(16,'24.346.531-1','Cristobal','Salazar','Herrera','1996-12-19','adsdas232','5412369','ACTIVO','hola'),(17,'11.249.780-3','Celia','Cruz','Rivera','2006-12-15','sadsd23','5236478','ACTIVO','hola'),(18,'6.550.435-9','Ivan','Pacheco','Villanueva','2006-12-14','sadasd2','5235489','ACTIVO','hola'),(19,'22.701.391-5','Ismael','Plaza','Prieto','2007-12-14','sadsadasd2','5236987','ACTIVO','hola'),(20,'19.774.485-5','Martin','Serrano','Salas','2005-12-16','sadasda3','5236587','ACTIVO','hola');
+
+UNLOCK TABLES;
 
 /*Table structure for table `alumno_has_curso` */
 
@@ -87,7 +100,11 @@ CREATE TABLE `alumno_has_curso` (
 
 /*Data for the table `alumno_has_curso` */
 
+LOCK TABLES `alumno_has_curso` WRITE;
+
 insert  into `alumno_has_curso`(`alumno_idalumno`,`curso_idcurso`,`estado`) values (1,1,'ACTIVO'),(2,1,'ACTIVO'),(3,1,'ACTIVO'),(4,1,'ACTIVO'),(5,1,'ACTIVO'),(6,1,'ACTIVO'),(7,1,'ACTIVO'),(8,1,'ACTIVO'),(9,1,'ACTIVO'),(10,1,'ACTIVO'),(11,2,'ACTIVO'),(12,2,'ACTIVO'),(13,2,'ACTIVO'),(14,2,'ACTIVO'),(15,2,'ACTIVO'),(16,2,'ACTIVO'),(17,2,'ACTIVO'),(18,2,'ACTIVO'),(19,2,'ACTIVO'),(20,2,'ACTIVO');
+
+UNLOCK TABLES;
 
 /*Table structure for table `asignatura` */
 
@@ -102,7 +119,11 @@ CREATE TABLE `asignatura` (
 
 /*Data for the table `asignatura` */
 
+LOCK TABLES `asignatura` WRITE;
+
 insert  into `asignatura`(`idasignatura`,`nombre_asignatura`,`descripcion_asignatura`) values (1,'Lenguaje','klsdjfklsfjkld'),(2,'Matematicas','dsfdasdf'),(3,'Historia','sdfsafd'),(4,'Lenguaje','asdasdasd'),(5,'Matematicas','aasdasd'),(6,'Historia','asdasdasd');
+
+UNLOCK TABLES;
 
 /*Table structure for table `contenido` */
 
@@ -118,7 +139,11 @@ CREATE TABLE `contenido` (
 
 /*Data for the table `contenido` */
 
+LOCK TABLES `contenido` WRITE;
+
 insert  into `contenido`(`idcontenido`,`nombre_contenido`,`descripcion_contenido`,`asignatura_idasignatura`) values (1,'Introduccion','asdfasdf',1),(2,'Lengua Castellana','asdfdsaf',1),(3,'Literatura','sadfsadfdsaf',1),(4,'Ortografia','sdfasdf',1),(5,'Poesia','asdfsadf',1),(6,'Sumas','asdasd',2),(7,'Restas','safdsf',2),(8,'Divisiones','sdfsf',2),(9,'Multiplicaciones','asdfasdf',2),(10,'Numeros Primos','sdfsadf',2),(11,'Historia Chile','sdfsadf',3),(12,'Politica','sdfsfdsd',3),(13,'Historia Universal','asdfsadf',3),(14,'Introduccion','asdasda',4),(15,'Lengua Castellana','asdasdas',4),(16,'Literatura','asdasdasd',4),(17,'Ortografia','asdasdasd',4),(18,'Sumas','asdasd',5),(19,'Restas','asdasda',5),(20,'Divisiones','asdasdasd',5),(21,'Multiplicaciones','asdasdasd',5),(22,'Numeros Primos','asdasdasd',5),(23,'Historia Chile','asdasd',6),(24,'Politica','asdasd',6),(25,'Historia Universal','asdasd',6);
+
+UNLOCK TABLES;
 
 /*Table structure for table `curso` */
 
@@ -136,7 +161,11 @@ CREATE TABLE `curso` (
 
 /*Data for the table `curso` */
 
+LOCK TABLES `curso` WRITE;
+
 insert  into `curso`(`idcurso`,`letra_curso`,`generacion`,`estado`,`tipo_ens`,`nivel_ens`) values (1,'A',2011,'ACTIVO','1','1'),(2,'B',2009,'ACTIVO','1','5'),(3,'A',2009,'ACTIVO','1','8'),(4,'B',2005,'ACTIVO','1','7');
+
+UNLOCK TABLES;
 
 /*Table structure for table `detalle_prueba` */
 
@@ -149,9 +178,15 @@ CREATE TABLE `detalle_prueba` (
   `idcontenido` int(11) NOT NULL,
   `cantidad` int(3) NOT NULL,
   PRIMARY KEY (`iddetalle_prueba`,`prueba_idprueba`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8;
 
 /*Data for the table `detalle_prueba` */
+
+LOCK TABLES `detalle_prueba` WRITE;
+
+insert  into `detalle_prueba`(`iddetalle_prueba`,`prueba_idprueba`,`iddificultad`,`idcontenido`,`cantidad`) values (1,1,2,2,2),(2,1,1,4,3),(3,1,3,3,5),(4,2,2,2,2),(5,2,1,4,3),(6,2,3,3,5),(7,3,2,2,2),(8,3,1,4,3),(9,3,3,3,5),(10,4,2,2,2),(11,4,1,4,3),(12,4,3,3,5),(13,5,2,2,2),(14,5,1,4,3),(15,5,3,3,5),(16,6,2,2,2),(17,6,1,4,3),(18,6,3,3,5),(19,7,2,2,2),(20,7,1,4,3),(21,7,3,3,5),(22,8,2,2,2),(23,8,1,4,3),(24,8,3,3,5),(25,9,2,2,2),(26,9,1,4,3),(27,9,3,3,5),(28,10,2,2,2),(29,10,1,4,3),(30,10,3,3,5);
+
+UNLOCK TABLES;
 
 /*Table structure for table `dificultad` */
 
@@ -161,9 +196,15 @@ CREATE TABLE `dificultad` (
   `iddificultad` int(11) NOT NULL AUTO_INCREMENT,
   `descripcion_dificultad` varchar(45) NOT NULL,
   PRIMARY KEY (`iddificultad`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 /*Data for the table `dificultad` */
+
+LOCK TABLES `dificultad` WRITE;
+
+insert  into `dificultad`(`iddificultad`,`descripcion_dificultad`) values (1,'Baja'),(2,'Media'),(3,'Alta');
+
+UNLOCK TABLES;
 
 /*Table structure for table `nivel` */
 
@@ -179,7 +220,11 @@ CREATE TABLE `nivel` (
 
 /*Data for the table `nivel` */
 
+LOCK TABLES `nivel` WRITE;
+
 insert  into `nivel`(`id_nivel`,`curso_idcurso`,`asignatura_idasignatura`,`nivel`) values (1,1,1,1),(2,1,2,1),(3,1,3,1),(4,2,6,5),(5,2,4,5),(6,2,5,5);
+
+UNLOCK TABLES;
 
 /*Table structure for table `pregunta` */
 
@@ -188,14 +233,19 @@ DROP TABLE IF EXISTS `pregunta`;
 CREATE TABLE `pregunta` (
   `idPregunta` int(11) NOT NULL AUTO_INCREMENT,
   `pregunta` longtext NOT NULL,
-  `respuesta` longtext NOT NULL,
   `profesor_idprofesor` int(11) NOT NULL,
   `dificultad_iddificultad` int(11) NOT NULL,
   `contenido_idcontenido` int(11) NOT NULL,
   PRIMARY KEY (`idPregunta`,`profesor_idprofesor`,`dificultad_iddificultad`,`contenido_idcontenido`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 
 /*Data for the table `pregunta` */
+
+LOCK TABLES `pregunta` WRITE;
+
+insert  into `pregunta`(`idPregunta`,`pregunta`,`profesor_idprofesor`,`dificultad_iddificultad`,`contenido_idcontenido`) values (1,'Pregunta 1',7,2,1),(2,'PREGUNTA 2',7,1,2),(3,'PREGUNTA 3',7,3,3),(4,'PREGUNTA 4',7,2,3);
+
+UNLOCK TABLES;
 
 /*Table structure for table `profesor` */
 
@@ -217,7 +267,11 @@ CREATE TABLE `profesor` (
 
 /*Data for the table `profesor` */
 
+LOCK TABLES `profesor` WRITE;
+
 insert  into `profesor`(`idprofesor`,`rut_profesor`,`nombre_profesor`,`apePat_profesor`,`apeMat_profesor`,`fnac_profesor`,`direccion_profesor`,`telefono_profesor`,`estado_profesor`,`password_profesor`) values (1,'11.686.636-6','Miriam','Suarez','Santana','1985-12-13','sadad22','4232683','ACTIVO','hola'),(2,'12.481.700-5','Mauricio','Sarmiento','Valdivia','1981-12-24','sadasd2','5236588','ACTIVO','hola'),(3,'6.412.030-1','Macarena','Rivas','Cruz','1964-12-17','asdadasd22','5236947','ACTIVO','hola'),(4,'5.746.204-3','Javiera','Jimenez','Diaz','1978-12-21','sadasd2','2544896','ACTIVO','hola'),(5,'11.180.542-3','Natalia','Jaque','Rojas','1954-12-24','sadsadw2','4236574','ACTIVO','hola'),(6,'13.278.930-4','Bruno','Navarro','Jaramillo','1957-12-25','sadkflasdkjlsadfjl','5412369','ACTIVO','hola'),(7,'16.414.117-9','Pablo','Salgado','Arias','1987-02-16','asdasd','5254766','ACTIVO','123');
+
+UNLOCK TABLES;
 
 /*Table structure for table `profesor_has_asignatura` */
 
@@ -233,7 +287,11 @@ CREATE TABLE `profesor_has_asignatura` (
 
 /*Data for the table `profesor_has_asignatura` */
 
+LOCK TABLES `profesor_has_asignatura` WRITE;
+
 insert  into `profesor_has_asignatura`(`id_profe_asig`,`profesor_idprofesor`,`asignatura_idasignatura`) values (1,1,1),(2,2,2),(3,3,3),(4,4,4),(5,6,5),(6,4,6),(7,7,1),(8,7,2);
+
+UNLOCK TABLES;
 
 /*Table structure for table `prueba` */
 
@@ -247,9 +305,15 @@ CREATE TABLE `prueba` (
   `fechaHora_inicio` datetime NOT NULL,
   `fechaHora_termino` datetime NOT NULL,
   PRIMARY KEY (`idprueba`,`alumno_idalumno`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
 
 /*Data for the table `prueba` */
+
+LOCK TABLES `prueba` WRITE;
+
+insert  into `prueba`(`idprueba`,`nombre`,`alumno_idalumno`,`estado`,`fechaHora_inicio`,`fechaHora_termino`) values (1,'Lenguaje',1,'ACTIVA','2011-12-12 00:22:03','2011-12-12 00:22:03'),(2,'Lenguaje',2,'ACTIVA','2011-12-12 00:22:03','2011-12-12 00:22:03'),(3,'Lenguaje',3,'ACTIVA','2011-12-12 00:22:03','2011-12-12 00:22:03'),(4,'Lenguaje',4,'ACTIVA','2011-12-12 00:22:03','2011-12-12 00:22:03'),(5,'Lenguaje',5,'ACTIVA','2011-12-12 00:22:03','2011-12-12 00:22:03'),(6,'Lenguaje',6,'ACTIVA','2011-12-12 00:22:03','2011-12-12 00:22:03'),(7,'Lenguaje',7,'ACTIVA','2011-12-12 00:22:03','2011-12-12 00:22:03'),(8,'Lenguaje',8,'ACTIVA','2011-12-12 00:22:04','2011-12-12 00:22:04'),(9,'Lenguaje',9,'ACTIVA','2011-12-12 00:22:04','2011-12-12 00:22:04'),(10,'Lenguaje',10,'ACTIVA','2011-12-12 00:22:04','2011-12-12 00:22:04');
+
+UNLOCK TABLES;
 
 /*Table structure for table `resultado` */
 
@@ -265,7 +329,9 @@ CREATE TABLE `resultado` (
 
 /*Data for the table `resultado` */
 
+LOCK TABLES `resultado` WRITE;
+
+UNLOCK TABLES;
+
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
-/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
-/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;

@@ -1,3 +1,22 @@
+<?php session_start();
+require("../conexion.php");
+$cn = conectar();  
+if(!empty($_SESSION['user_id']) && !empty($_SESSION['user_name']) && $_SESSION['user_type']=='Alumno'){ 
+	
+$query = mysql_query("SELECT
+						  Prueba.idprueba,
+						  Prueba.nombre,
+						  DATE(Prueba.fechaHora_inicio)
+						FROM prueba Prueba
+						WHERE Prueba.alumno_idalumno = ".$_SESSION['user_id']."
+						    AND Prueba.estado = 'ACTIVA'")or die(mysql_error());
+while($row = mysql_fetch_array($query)){
+	$nombre = $row[1];
+	$fecha = $row[2];
+}	
+	
+	
+?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -10,7 +29,7 @@
 <script type="text/javascript" src="../js/jquery.validate.js"></script>
 <script type="text/javascript" src="../js/jquery.Rut.js"></script>
 <link rel="stylesheet" type="text/css" href="../css/newmenu.css" />
-	<script type="text/javascript">
+<script type="text/javascript">
 $(document).ready(function(){
 	$('#dropdown_nav li').find('.sub_nav').hide();
 
@@ -28,24 +47,23 @@ $(document).ready(function(){
 			var href = "";
 			if(type!=''){
 				switch(type){// aqui se verifica la url que hay que traer
-					case("agregaalu"): href = 'agregar_alumno.php'; break;
-					case("agregacurso"): href = 'agregar_curso.php'; break;
-					case("agregadoc"): href = 'agregar_profesor.php'; break;
-					case("agregaasig"): href = 'agregar_asignatura.php'; break;
+					case("resolve"): href = 'resolver.php'; break;
+					case("result"): href = 'resultado.php'; break;				
 				}
 	        	$.ajax({  
 		            url: href, //esta variable se declara en la clasificacion va a variar segun el atributo type   
 		            success: function(data) {
-	            	 $("#contetn-system").html("");   
+	            	 $("#content-system").html("");   
 	                 $('#content-system').html(data).show('slow');
 	            	}  
 	        	});  
         	}
     	});
-	});		
-	</script>
+});		
+</script>
 <!-------------------------------------------->
 </head>
+
 <body>
 	<div id="system-cont">
 	<div id="header">
@@ -54,19 +72,40 @@ $(document).ready(function(){
 	<div id="main">
 		<div id="menu">
 				<ul id="dropdown_nav">
-					<li><a href="#"><span>Resolver Prueba</span></a>
-
+					<li>
+						<a href="Javascript: void(0);" class="option" data-url="resolve"><span>Resolver Prueba</span></a>
 					</li>
-
-					<li><a href="#"><span>Resultados</span></a>
-
+					<li>
+						<a href="Javascript: void(0);" class="option" data-url="result"><span>Resultados</span></a>
 					</li>
-					</ul>
-								
+				</ul>			
 		</div>
 		<div id="content-system">
-			
-			
+			<?if(!empty($nombre)){ 
+				$exp = explode("-", $fecha);	
+			?>
+			<form class="form-style">
+				<ul>
+					<li class="first">
+						
+						<h2>
+							Tienes una prueba pendiente de <?=$nombre;?> con fecha <?=$exp[2]."/".$exp[1]."/".$exp[0]?>
+						</h2>
+						<img src="../../img/alert.png" />
+					</li>
+				</ul>
+			</form>
+			<?}else{?>
+			<form class="form-style">
+				<ul>
+					<li class="first">
+						<p>
+							No tienes ninguna prueba pendiente
+						</p>
+					</li>
+				</ul>
+			</form>
+			<?}?>
 		</div>	
 	</div>
 	<div class="push"></div>
@@ -86,3 +125,4 @@ $(document).ready(function(){
 	</div>	
 </body>
 </html>
+<?}?>

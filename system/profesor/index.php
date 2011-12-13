@@ -12,7 +12,7 @@
 <script type="text/javascript" src="../js/jquery.form.js"></script>
 <script type="text/javascript" src="../js/jquery.reset.js"></script>
 <link rel="stylesheet" type="text/css" href="../css/newmenu.css" />
-	<script type="text/javascript">
+<script type="text/javascript">
 $(document).ready(function(){
 	$('#dropdown_nav li').find('.sub_nav').hide();
 
