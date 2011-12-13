@@ -13,9 +13,9 @@ function getAlternatives($question_id){
 	$result = array();
 
 	while($row = mysql_fetch_array($query)){
-		$result['id'][] = $row[0];
-		$result['alternativa'][] = $row[1];
+		$result[] = $row[1];
 	}
+	
 	return $result; 
 }
 

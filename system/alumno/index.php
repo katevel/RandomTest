@@ -29,6 +29,7 @@ while($row = mysql_fetch_array($query)){
 <script type="text/javascript" src="../js/jquery.validate.js"></script>
 <script type="text/javascript" src="../js/jquery.Rut.js"></script>
 <link rel="stylesheet" type="text/css" href="../css/newmenu.css" />
+<link rel="stylesheet" type="text/css" href="../css/prueba.css" />
 <script type="text/javascript">
 $(document).ready(function(){
 	$('#dropdown_nav li').find('.sub_nav').hide();

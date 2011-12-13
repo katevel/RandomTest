@@ -44,7 +44,35 @@ $query_preguntas = mysql_query("SELECT Pregunta.idPregunta, Pregunta.pregunta
 			$preguntas['pregunta'][] = $row_pregunta[1];
 			$preguntas['alternativas'][] = getAlternatives($row_pregunta[0]);
 	}								
-								
-	echo "<pre>"; print_r($preguntas); echo "</pre>";
-								
+	$fuentes = array("A)","B)","C)","D)","E)","F)");
+?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Random TEST</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+</head>
+<body>
+<div id="prueba">
+	<? if(!empty($preguntas)){
+		foreach($preguntas['pregunta'] as $p => $pregunta){	
+	?>	
+		<dl>
+			<dt><?=utf8_encode(str_replace("'",'&quot;',$pregunta));?></dt>
+			<? $i=0;
+				foreach($preguntas['alternativas'][$p] as $a => $alternativa){?>
+					<dd><input type="radio"><?=$fuentes[$i]." ".utf8_encode($alternativa);?></dd>
+					
+			<?	$i++;
+				}
+			?>
+		</dl><br />
+	<? } 
+	}?> 
+	<button type="button">Resolver</button>
+</div>
+
+</body>
+</html>
+
 								

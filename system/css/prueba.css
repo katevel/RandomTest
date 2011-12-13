@@ -1,0 +1,32 @@
+*{
+	margin:0; padding:0;
+}
+
+#prueba{
+	font-family:Arial, Helvetica, sans-serif;
+	font-size: 1em;
+	width: 750px;
+	height: auto;
+	margin-left:auto;
+	margin-right:auto;
+	margin-bottom 6px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	padding-left: 10px;
+	padding-right: 10px;
+	border: solid 1px #e2e2e2;
+}
+#prueba dl{
+	text-align: justify;
+}
+#prueba dt{
+	font-weight: bold;
+}
+#prueba dd{
+	margin-top: 4px;
+	margin-left: 5px;
+}
+#prueba input[type="radio"]{
+	margin-right: 4px;
+}
+
