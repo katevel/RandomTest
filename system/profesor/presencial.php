@@ -34,7 +34,7 @@ $(document).ready(function(){
         success:   responseForm2,  // la funcion que hace despues de guardar o recibir confirmacion de envio
  	    url:       'agrega_prueba.php',     //la ruta hacia donde van los datos
         type:      'post',        // el metodo de envio comun es post
-        dataType:  'json'        // el tipo de dato que quieres recibir de donde enviaste los datos puede ser html, json, xml
+        dataType:  'html'        // el tipo de dato que quieres recibir de donde enviaste los datos puede ser html, json, xml
     };
     function responseForm(J){
 		if(J.status=='ok'){
@@ -44,9 +44,9 @@ $(document).ready(function(){
 			$("#form2").find("#asign-form2").val(J.asignatura);
 		}
 	}
-	 function responseForm2(J){
-		if(J.status=='ok'){
-			
+	 function responseForm2(data){
+		if(data!=''){
+			$("#pdf").html(data);
 		}
 	}
   	$('#form').ajaxForm(options_form1);
@@ -99,7 +99,7 @@ $(document).ready(function(){
 		</li>
 	</ul>
 </form>
-<form class="form-style hide" id="form2">
+<form class="form-style hide" id="form2" method="post" action="pdf.php">
 	<input type="hidden" name="type" id="type" value="AFTER" />
 	<h2>Agregar Preguntas</h2>
 	<input type="hidden" id="curso-form2" name="curso" value="" />
@@ -123,4 +123,7 @@ $(document).ready(function(){
 	</table>
 	<input type="submit" value="Generar" />
 </form>
+<div id="pdf" class="hide">
+	
+</div>
 
