@@ -8,7 +8,7 @@ $qasignaturas = mysql_query("SELECT
 							  Asignatura.nombre_asignatura
 							FROM profesor_has_asignatura Has,
 							  asignatura Asignatura
-							WHERE Has.profesor_idprofesor = ".$_SESSION[user_id]."
+							WHERE Has.profesor_idprofesor = ".@$_SESSION['user_id']."
 							    AND Has.asignatura_idasignatura = Asignatura.idasignatura
 							ORDER BY Asignatura.nombre_asignatura ASC")or die(mysql_error());
 
@@ -17,7 +17,7 @@ $qcursos = mysql_query("SELECT curso.`idcurso`, curso.`letra_curso`, nivel.`nive
 					nivel.`asignatura_idasignatura`= asignatura.`idasignatura` INNER JOIN profesor_has_asignatura ON
 					asignatura.`idasignatura`= profesor_has_asignatura.`asignatura_idasignatura` INNER JOIN profesor ON
 					profesor_has_asignatura.`id_profe_asig`= profesor.`idprofesor` WHERE
-					profesor.`idprofesor`= ".$_SESSION[user_id]." ")or die(mysql_error());							
+					profesor.`idprofesor`= ".@$_SESSION['user_id']." ")or die(mysql_error());							
 
 ?>
 
