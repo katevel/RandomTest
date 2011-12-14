@@ -8,7 +8,7 @@ $query = mysql_query("SELECT
 						  Prueba.nombre,
 						  DATE(Prueba.fechaHora_inicio)
 						FROM prueba Prueba
-						WHERE Prueba.alumno_idalumno = ".$_SESSION['user_id']."
+						WHERE Prueba.alumno_idalumno = ".@$_SESSION['user_id']."
 						    AND Prueba.estado = 'ACTIVA'")or die(mysql_error());
 while($row = mysql_fetch_array($query)){
 	$nombre = $row[1];

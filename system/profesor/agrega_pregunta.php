@@ -4,17 +4,17 @@ $cn = conectar();
 
 /*echo "<pre>".print_r($_POST)."</pre>";
 die();*/
-if($_SERVER['REQUEST_METHOD']=='POST'){
-	if($_POST['type']=='PRESAVE'){
-		echo json_encode(array("status"=>"ok","asign"=>$_POST['asignatura'],"cant"=>$_POST['cant-preguntas']));
+if(@$_SERVER['REQUEST_METHOD']=='POST'){
+	if(@$_POST['type']=='PRESAVE'){
+		echo json_encode(array("status"=>"ok","asign"=>@$_POST['asignatura'],"cant"=>@$_POST['cant-preguntas']));
 	}else{
 		//guarda en la tabla pregunta
-		$docente 		= $_POST['id-docente'];
-		$asignatura 	= $_POST['asign-ing'];
-		$pregunta 		= $_POST['pregunta'];
-		$dificultad 	= $_POST['id_dificultad'];
-		$contenido 		= $_POST['id_contenido'];
-		$alternativas 	= $_POST['alternativa'];
+		$docente 		= @$_POST['id-docente'];
+		$asignatura 	= @$_POST['asign-ing'];
+		$pregunta 		= @$_POST['pregunta'];
+		$dificultad 	= @$_POST['id_dificultad'];
+		$contenido 		= @$_POST['id_contenido'];
+		$alternativas 	= @$_POST['alternativa'];
 		
 		//guarda la pregunta 
 		mysql_query("INSERT INTO pregunta 

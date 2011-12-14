@@ -1,7 +1,7 @@
 <?php
 include("../conexion.php");
 $cn = conectar();
-$asign = $_GET['asign'];
+$asign = @$_GET['asign'];
 
 $nq = mysql_query("SELECT nivel FROM nivel WHERE asignatura_idasignatura = ".$asign." ")or die(mysql_error());
 while($nm = mysql_fetch_array($nq)){
