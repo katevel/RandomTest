@@ -79,7 +79,12 @@ $(document).ready(function(){
   		$("#form3").removeClass("hide");
   	});
   	$("#close-add").click(function(e){
-  		$("#contetn-system").html("");   
+  		$.ajax({
+				url:"mis_ingresos.php",
+				success: function(data){
+					$("#content-system").html(data); 
+				}
+			});  
   	});	
   });
 </script>

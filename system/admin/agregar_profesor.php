@@ -65,7 +65,12 @@
 	    function responseFrom1(J){
 			if(J.status=='ok'){
 				$("#form").addClass("hide"); 
-				$("#content-system").html("");
+				$.ajax({
+					url:"mis_ingresos.php",
+					success: function(data){
+						$("#content-system").html(data); 
+					}
+				});
 			}
 		}
 	  	$('#form').ajaxForm(options_form1);		

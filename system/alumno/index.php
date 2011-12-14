@@ -8,13 +8,16 @@ $query = mysql_query("SELECT
 						  Prueba.nombre,
 						  DATE(Prueba.fechaHora_inicio)
 						FROM prueba Prueba
-						WHERE Prueba.alumno_idalumno = ".$_SESSION['user_id']."
+						WHERE Prueba.alumno_idalumno = ".@$_SESSION['user_id']."
 						    AND Prueba.estado = 'ACTIVA'")or die(mysql_error());
+							
+						
+
 while($row = mysql_fetch_array($query)){
 	$nombre = $row[1];
 	$fecha = $row[2];
-}	
-	
+}
+
 	
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -28,6 +31,7 @@ while($row = mysql_fetch_array($query)){
 <script type="text/javascript" src="../js/fancybox/jquery.fancybox-1.3.4.pack.js"></script>
 <script type="text/javascript" src="../js/jquery.validate.js"></script>
 <script type="text/javascript" src="../js/jquery.Rut.js"></script>
+<script type="text/javascript" src="../js/funciones.js"></script>
 <link rel="stylesheet" type="text/css" href="../css/newmenu.css" />
 <link rel="stylesheet" type="text/css" href="../css/prueba.css" />
 <script type="text/javascript">
@@ -48,7 +52,7 @@ $(document).ready(function(){
 			var href = "";
 			if(type!=''){
 				switch(type){// aqui se verifica la url que hay que traer
-					case("resolve"): href = 'resolver.php'; break;
+					case("resolve"): href = 'list_test.php'; break;
 					case("result"): href = 'resultado.php'; break;				
 				}
 	        	$.ajax({  
@@ -68,7 +72,7 @@ $(document).ready(function(){
 <body>
 	<div id="system-cont">
 	<div id="header">
-		
+		<img src="../../img/logo.png" />
 	</div>
 	<div id="main">
 		<div id="menu">
@@ -78,6 +82,9 @@ $(document).ready(function(){
 					</li>
 					<li>
 						<a href="Javascript: void(0);" class="option" data-url="result"><span>Resultados</span></a>
+					</li>
+					<li>
+						<a href="#" onclick="Javascript: cerrarSesion();">Cerrar sesion</a>
 					</li>
 				</ul>			
 		</div>

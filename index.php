@@ -140,6 +140,6 @@ $(document).ready(function(){
 				<li><a href="#">Contacto</a></li>
 			</ul>
 		</div>
-	</div>		
+	</div>	
 </body>
 </html>

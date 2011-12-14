@@ -1,13 +1,14 @@
 <?php 
 session_start();
 include("options.php");
- 
- 
+if(!empty($_GET['idprueba'])){
+$prueba_id_prueba = @$_GET['idprueba'];	 
 $query = mysql_query("SELECT
 						  Prueba.idprueba
 						FROM prueba Prueba
-						WHERE Prueba.alumno_idalumno = ".$_SESSION['user_id']."
-						    AND Prueba.estado = 'ACTIVA'")or die(mysql_error());
+						WHERE Prueba.alumno_idalumno = ".@$_SESSION['user_id']."
+						    AND Prueba.estado = 'ACTIVA'
+						AND Prueba.idprueba = ".$prueba_id_prueba." ")or die(mysql_error());
 							
 while($row = mysql_fetch_array($query)){
 	$id_prueba = $row[0];
@@ -74,5 +75,4 @@ $query_preguntas = mysql_query("SELECT Pregunta.idPregunta, Pregunta.pregunta
 
 </body>
 </html>
-
-								
+<?}?>							

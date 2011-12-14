@@ -91,7 +91,12 @@ $(document).ready(function(){
 				$("#cant-ing").val(cant);
 				$("#form2").find(".countdown").text("Preguntas restantes: "+cant);
 			}else{
-				$("#content-system").html(""); 
+				$.ajax({
+					url:"mis_pruebas.php",
+					success: function(data){
+						$("#content-system").html(data); 
+					}
+				});
 			}
 		}
 	}

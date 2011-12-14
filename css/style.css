@@ -29,6 +29,12 @@ a{
 	/*padding-bottom: 150px*/
 	margin: 0 auto -142px; /* the bottom margin is the negative value of the footer's height */
 }
+#front-main{
+	width:100%;
+	min-height: 380px;
+	height:auto;
+	margin: 0 auto -142px; /* the bottom margin is the negative value of the footer's height */
+}
 #main{
 	width:100%;
 	min-height: 380px;

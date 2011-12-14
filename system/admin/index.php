@@ -13,6 +13,7 @@
 <script type="text/javascript" src="../js/jquery.validate.js"></script>
 <script type="text/javascript" src="../js/jquery.form.js"></script>
 <script type="text/javascript" src="../js/jquery.Rut.js"></script>
+<script type="text/javascript" src="../js/funciones.js"></script>
 <script type="text/javascript" src="../js/jqueryui/js/jquery-ui-1.8.16.custom.min.js"></script>
 <script type="text/javascript" src="../js/jquery.alphanumeric.pack.js"></script>
 <script type="text/javascript" src="../js/fancybox/jquery.mousewheel-3.0.4.pack.js"></script>
@@ -52,11 +53,38 @@ $(document).ready(function(){
 <!-------------------------------------------->
 </head>
 <? session_start();?>
-<? if(!empty($_SESSION['user_id']) && !empty($_SESSION['user_name']) && $_SESSION['user_type']=='Admin'){ ?>
+<? if(!empty($_SESSION['user_id']) && !empty($_SESSION['user_name']) && $_SESSION['user_type']=='Admin'){ 
+	
+require("../conexion.php");
+$cn = conectar();
+$query = mysql_query("SELECT
+					  Curso.nivel_ens,
+					  Curso.letra_curso,
+					  Curso.generacion,
+					  Curso.tipo_ens  
+					FROM curso Curso
+					ORDER BY Curso.generacion DESC");
+					
+				
+
+
+$qcount_profe = mysql_query("SELECT COUNT(*) FROM profesor WHERE estado_profesor = 'ACTIVO'");
+$qcount_alumn = mysql_query("SELECT COUNT(*) FROM alumno WHERE estado = 'ACTIVO'");
+	
+while($row = mysql_fetch_assoc($query)){
+	$cursos[] = $row;
+}					
+while($rowp = mysql_fetch_array($qcount_profe)){
+	$cantidad_profe = $rowp[0];
+}	
+while($rowa = mysql_fetch_array($qcount_alumn)){
+	$cantidad_alumnos = $rowa[0];
+}	
+?>
 <body>
 	<div id="system-cont">
 	<div id="header">
-		
+		<img src="../../img/logo.png" />
 	</div>
 	<div id="main">
 		<div id="menu">
@@ -89,12 +117,33 @@ $(document).ready(function(){
 							<li><a class="option" data-url=" " href="Javascript: void(0);"><span>Modificar Asignaturas</span></a></li>
 						</ul>
 					</li>
+					<li>
+						<a href="#" onclick="Javascript: cerrarSesion();">Cerrar sesion</a>
+					</li>
 				</ul><br />
 			
 		</div>
 		<div id="content-system">
-			
-			
+			<div class="form-style">
+				<h2>Cursos Ingresados</h2>
+			<ul>
+			<? foreach($cursos as $curso){?>
+				<li><?=$curso['nivel_ens']." ".$curso['letra_curso']."  /  Generacion:".$curso['generacion']?><?=($curso['tipo_ens']==1)?'  /  Enseñanza Basica':'  /  Enseñanza Media';?></li>
+			<?} ?>
+			</ul>
+			</div>
+			<div class="form-style">
+				<h2>Cantidad Profesores</h2>
+				<ul>
+					<li><?=$cantidad_profe." profesores"?></li>
+				</ul>
+			</div>
+			<div class="form-style">
+				<h2>Cantidad Alumnos</h2>
+				<ul>
+					<li><?=$cantidad_alumnos." alumnos"?></li>
+				</ul>
+			</div>
 		</div>	
 	</div>
 	<div class="push"></div>
