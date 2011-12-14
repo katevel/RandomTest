@@ -1,4 +1,4 @@
-<?php
+	<?php
 require("../conexion.php");
 $cn = conectar();
 $query = mysql_query("SELECT
@@ -25,7 +25,7 @@ while($rowa = mysql_fetch_array($qcount_alumn)){
 	<h2>Cursos Ingresados</h2>
 <ul>
 <? foreach($cursos as $curso){?>
-	<li><?=$curso['nivel_ens']." ".$curso['letra_curso']."  /  Generacion:".$curso['generacion']?><?=($curso['tipo_ens']==1)?'  /  Enseñanza Basica':'  /  Enseñanza Media';?></li>
+	<li><?=$curso['nivel_ens']." ".$curso['letra_curso']."  /  Generacion:".$curso['generacion']?><?=(@$curso['tipo_ens']==1)?'  /  Enseñanza Basica':'  /  Enseñanza Media';?></li>
 <?} ?>
 </ul>
 </div>

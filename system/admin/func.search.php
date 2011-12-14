@@ -119,19 +119,19 @@ $query = mysql_query("SELECT
 					ORDER BY nombre_asignatura")or die(mysql_error());
 
 	while($row = mysql_fetch_assoc($query)){
-		$idprofe= $row['idasginatura'];
+		@$idprofe= @$row['idasginatura'];
 		$query2= mysql_query("SELECT idprofesor, 
 									rut_profesor, 
 									nombre_profesor 
 							 FROM profesor INNER JOIN profesor_has_asignatura ON
 							 idprofesor = profesor_idprofesor INNER JOIN asignatura ON
-							 asignatura_idasignatura = idasignatura WHERE idasignatura= '".$idasginatura."' ")or die(mysql_error());
+							 asignatura_idasignatura = idasignatura WHERE idasignatura= '".@$idasginatura."' ")or die(mysql_error());
 		while($row2 = mysql_fetch_assoc($query2)){
 			$nombreprofe= $row2['nombre_profesor']." ". $row2['apePat_profesor'];
 		}
 	   echo "<tr>
 			<td>".$row['nombre_asignatura']."</td>
-			<td>".$nombreprofe."</td>
+			<td>".@$nombreprofe."</td>
 			<td><a href='Javascript: void(0);' onclick='Javascript: agregar(".$row['idasignatura'].");'>Agregar</a></td>
 		 </td>";
 		 

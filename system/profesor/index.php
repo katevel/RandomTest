@@ -94,11 +94,11 @@ while($row = mysql_fetch_array($q_count)){
 							<li><a class="option" data-url="gen-presencial" href="Javascript: void(0);"><span>Prueba Presencial</span></a></li>
 							<li><a class="option" data-url="gen-online" href="Javascript: void(0);"><span>Prueba Online</span></a></li>
 						</ul>
-					<li>
+					<!--<li>
 						<a href="Javascript: void(0);" data-url="gen-test" class="option">
 						<span>Generar Prueba</span>
 						</a>
-					</li>
+					</li>-->
 					<li>
 						<a href="Javascript: void(0);" data-url="see-result" class="option">
 							<span>Resultados</span>
