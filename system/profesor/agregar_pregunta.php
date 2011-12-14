@@ -15,7 +15,7 @@ $asignaturas = mysql_query("SELECT
 							  Asignatura.nombre_asignatura
 							FROM profesor_has_asignatura Has,
 							  asignatura Asignatura
-							WHERE Has.profesor_idprofesor = ".$_SESSION['user_id']."
+							WHERE Has.profesor_idprofesor = ".@$_SESSION['user_id']."
 							    AND Has.asignatura_idasignatura = Asignatura.idasignatura
 							ORDER BY Asignatura.nombre_asignatura ASC")or die(mysql_error());
 
@@ -133,7 +133,7 @@ $(document).ready(function(){
 </ul>
 </form>
 <form id="form2" class="form-style hide">
-	<input type="hidden" name="id-docente" value="<?=$_SESSION['user_id']?>" />
+	<input type="hidden" name="id-docente" value="<?=@$_SESSION['user_id']?>" />
 	<input type="hidden" name="cant-ing" id="cant-ing" value="" />
 	<input type="hidden" name="asign-ing" id="asign-ing" value="" />
 	<ul>

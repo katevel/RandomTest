@@ -3,9 +3,9 @@ require("../conexion.php");
 include("global.php");
 $cn = conectar();
 
-if($_POST['type']=='AFTER'){
-		$preguntas = $_POST['pregunta'];		
-		$asign = $_POST['asignatura'];
+if(@$_POST['type']=='AFTER'){
+		$preguntas = @$_POST['pregunta'];		
+		$asign = @$_POST['asignatura'];
 		
 		$qasing = mysql_query("SELECT nombre_asignatura FROM asignatura WHERE idasignatura = ".$asign." ")or die(mysql_error());
 		while($row_asign = mysql_fetch_array($qasing)){

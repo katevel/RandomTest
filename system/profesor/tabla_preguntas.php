@@ -3,8 +3,8 @@ require("../conexion.php");
 $cn = conectar();
 if(!empty($_GET['asign'])){
 
-$asign = $_GET['asign'];
-$count = $_GET['count'];
+$asign = @$_GET['asign'];
+$count = @$_GET['count'];
 $dificultad = mysql_query("SELECT 
 							Dificultad.iddificultad, Dificultad.descripcion_dificultad  
 							FROM dificultad AS Dificultad")or die(mysql_error());

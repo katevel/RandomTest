@@ -3,14 +3,14 @@ require("../conexion.php");
 include("global.php");
 $cn = conectar();
 
-if($_POST['type']=='FIRST'){
-		echo json_encode(array("status"=>"ok","asignatura"=>$_POST['asignatura'],"curso"=>$_POST['curso']));	
+if(@$_POST['type']=='FIRST'){
+		echo json_encode(array("status"=>"ok","asignatura"=>@$_POST['asignatura'],"curso"=>@$_POST['curso']));	
 }else{
-	if($_POST['type']=='ONLINE'){
+	if(@$_POST['type']=='ONLINE'){
 		
-		$curso = $_POST['curso'];
-		$asign = $_POST['asignatura'];
-		$preguntas = $_POST['pregunta'];
+		$curso = @$_POST['curso'];
+		$asign = @$_POST['asignatura'];
+		$preguntas = @$_POST['pregunta'];
 		$qasing = mysql_query("SELECT nombre_asignatura FROM asignatura WHERE idasignatura = ".$asign." ")or die(mysql_error());
 		
 		while($row_asign = mysql_fetch_array($qasing)){
