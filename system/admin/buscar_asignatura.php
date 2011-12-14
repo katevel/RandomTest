@@ -20,7 +20,13 @@ $(document).ready(function(){
 			dataType:"html", type:"post",
 			success: function(data){
 					if(data!=''){
-						$("#list-searching tbody").append(data);
+						if(data!='ERROR'){
+							$("#list-searching tbody").append(data);
+						}else{
+							alert("No se encontraron resultados, ingrese un nombre nuevamente");
+							$("#search-text").val("");
+							$("#search-text").focus();
+						}
 					}else{
 						alert("No se encontraron resultados");
 					}	
