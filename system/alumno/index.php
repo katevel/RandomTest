@@ -27,7 +27,7 @@ while($row = mysql_fetch_array($query)){
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <link rel="stylesheet" type="text/css" href="../../css/style.css" />
 <link rel="stylesheet" type="text/css" href="../css/formvalidate.css" />
-<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.3/jquery.min.js"></script>
+<script type="text/javascript" src="../../js/jquery.min.js"></script>
 <script type="text/javascript" src="../js/fancybox/jquery.fancybox-1.3.4.pack.js"></script>
 <script type="text/javascript" src="../js/jquery.validate.js"></script>
 <script type="text/javascript" src="../js/jquery.Rut.js"></script>
